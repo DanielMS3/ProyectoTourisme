@@ -1,0 +1,141 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+header {
+    background-color: #c8dde8;
+    color: rgb(0, 0, 0);
+    padding: 5px;
+    text-align: center;
+}
+
+/* Navbar más compacta */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #c8dde8;
+    color: #01184e;
+    font-family:'Courier New', Courier, monospace;
+    height: 60px;
+}
+
+/* Ajuste del logo */
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.logo img {
+    width: 115px;
+    height: auto;
+    margin-right: 20px;
+}
+
+/* Contenedor de los elementos a la derecha */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Ícono de login */
+.login-icon {
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Selector de idioma */
+.language-selector {
+    position: relative;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.language-selector span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Menú de idiomas oculto por defecto */
+.language-menu {
+    display: none;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    background-color: #ffffff;
+    list-style: none;
+    padding: 5px 0;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.language-menu li {
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.language-menu li:hover {
+    background-color: #c4c4c4;
+}
+
+.language-menu a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    display: block;
+}
+
+/* Mostrar el menú cuando se activa */
+.language-selector.active .language-menu {
+    display: block;
+}
+
+
+/* Menú hamburguesa */
+.menu-toggle {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Menú desplegable */
+.menu {
+    list-style: none;
+    display: none;
+    position: absolute;
+    top: 60px; /* Ajusta según la altura del navbar */
+    right: 15px;
+    background-color: white;
+    width: 180px;
+    border-radius: 5px;
+    text-align: left; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Para que quede encima de otros elementos */
+    padding: auto;
+    
+}
+
+.menu li {
+    padding: 8px;
+}
+
+/* Mostrar el menú cuando está activo */
+.menu.active {
+    display: block;
+}
+
+.fondo img{
+    width: 100%;
+    height: 100vh;
+    background-image: url('/img/Imagen_principal.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
