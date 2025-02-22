@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: white;
+    background-color: #c8dde8;
 }
 
 header {
@@ -12,7 +12,7 @@ header {
     text-align: center;
 }
 
-/* Navbar más compacta */
+/* Navbar */
 nav {
     display: flex;
     justify-content: space-between;
@@ -20,16 +20,8 @@ nav {
     padding: 10px 15px;
     background-color: #c8dde8;
     color: #01184e;
-    font-family:'Courier New', Courier, monospace;
+    font-family: 'Courier New', Courier, monospace;
     height: 60px;
-}
-
-/* Ajuste del logo */
-.logo {
-    display: flex;
-    align-items: center;
-    font-size: 30px;
-    font-weight: bold;
 }
 
 .logo img {
@@ -65,7 +57,7 @@ nav {
     gap: 5px;
 }
 
-/* Menú de idiomas oculto por defecto */
+/* Menú de idiomas oculto */
 .language-menu {
     display: none;
     position: absolute;
@@ -98,44 +90,112 @@ nav {
     display: block;
 }
 
+/* 🔥 Menú Hamburguesa */
 
-/* Menú hamburguesa */
 .menu-toggle {
-    font-size: 20px;
+    font-size: 24px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    background: none; 
+    border: none; 
+    color: black; 
 }
 
-/* Menú desplegable */
-.menu {
-    list-style: none;
+/* 🔥 Menú desplegable */
+
+.nav-menu {
     display: none;
     position: absolute;
-    top: 60px; /* Ajusta según la altura del navbar */
-    right: 15px;
+    top: 70px;
+    right: 20px;
     background-color: white;
-    width: 180px;
-    border-radius: 5px;
-    text-align: left; 
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-    z-index: 1000; /* Para que quede encima de otros elementos */
-    padding: auto;
-    
+    width: 250px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: left;
 }
 
-.menu li {
-    padding: 8px;
-}
-
-/* Mostrar el menú cuando está activo */
-.menu.active {
+/* ✅ Se muestra cuando se activa */
+.nav-menu.show-menu {
     display: block;
 }
 
-.fondo img{
+.nav-menu li {
+    list-style: none;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #bebebe;
+}
+
+.nav-menu li:last-child {
+    border-bottom: none;
+}
+
+.nav-menu a {
+    color: black;
+    text-decoration: none;
+    display: block;
+}
+
+.nav-menu a:hover {
+    background-color: #b0aeae;
+}
+
+.fondo img {
     width: 100%;
     height: 100vh;
-    background-image: url('/img/Imagen_principal.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+.valle-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+    gap: 20px;
+}
+
+.valle-info {
+    flex: 1;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.valle-info h2 {
+    color: #01184e;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.valle-info ul {
+    padding-left: 20px;
+}
+
+.valle-info li {
+    margin-bottom: 5px;
+}
+
+/* Estilo de la imagen a la derecha */
+.valle-img {
+    flex: 1;
+    text-align: right;
+}
+
+.valle-img img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }

@@ -1,16 +1,22 @@
 document.addEventListener("DOMContentLoaded", function () {
     const menuToggle = document.querySelector(".menu-toggle");
-    const menu = document.querySelector(".menu");
-    const nav = document.querySelector("nav"); // Agregar referencia al navbar
+    const menu = document.querySelector(".nav-menu");
     const languageSelector = document.querySelector(".language-selector");
 
-    if (menuToggle && menu && nav) {
+    // Activar/desactivar menú hamburguesa
+    if (menuToggle && menu) {
         menuToggle.addEventListener("click", function () {
-            menu.classList.toggle("active");
-            nav.classList.toggle("menu-open"); // Nueva clase para expandir el fondo
+            menu.classList.toggle("show-menu");
+        });
+
+        document.addEventListener("click", function (event) {
+            if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+                menu.classList.remove("show-menu");
+            }
         });
     }
-
+ v
+    // Activar/desactivar menú de idioma
     if (languageSelector) {
         languageSelector.addEventListener("click", function () {
             this.classList.toggle("active");
