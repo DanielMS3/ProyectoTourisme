@@ -15,10 +15,11 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
- v
+
     // Activar/desactivar menú de idioma
     if (languageSelector) {
-        languageSelector.addEventListener("click", function () {
+        languageSelector.addEventListener("click", function (event) {
+            event.stopPropagation(); // Evita que el evento se propague al documento
             this.classList.toggle("active");
         });
 
