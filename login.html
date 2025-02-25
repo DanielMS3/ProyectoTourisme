@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOURISME - Login</title>
+    <!-- Asegúrate de que esta ruta sea correcta -->
+    <link rel="stylesheet" href="Styles/login.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="img/logo.png" alt="Tourisme Logo" class="logo">
+            <h1>TOURISME</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="login-container" id="step1">
+            <h2>Inicia sesión o ingresa con:</h2>
+            <p>Correo electrónico</p>
+            <div class="input-group">
+                <input type="email" id="email" placeholder="Correo electrónico" required>
+                <button class="continue-btn" onclick="nextStep()">
+                    Continuar
+                    <span class="cursor-icon">👆</span>
+                </button>
+            </div>
+            <div class="divider">
+                <span></span>
+                <p>o</p>
+                <span></span>
+            </div>
+            <button class="google-btn">
+                <img src="https://www.google.com/favicon.ico" alt="Google icon">
+                Inicia con Google
+            </button>
+            <button class="register-btn">Regístrate aquí</button>
+        </div>
+
+        <div class="login-container hidden" id="step2">
+            <h2>TOURISME</h2>
+            <p class="welcome-text">Hola de nuevo, usuario</p>
+            <p class="email-text">Inicia sesión con la contraseña para</p>
+            <p class="email-display" id="emailDisplay"></p>
+            
+            <div class="password-group">
+                <input type="password" id="password" placeholder="Contraseña">
+                <button class="show-password" onclick="togglePassword()">Mostrar</button>
+            </div>
+            
+            <button class="login-btn" onclick="login()">
+                Iniciar sesión
+                <span class="cursor-icon">👆</span>
+            </button>
+            
+            <a href="#" class="forgot-password">¿Olvidaste la contraseña?</a>
+            
+            <div class="divider">
+                <span></span>
+                <p>o también puedes</p>
+                <span></span>
+            </div>
+            
+            <button class="google-btn">
+                <img src="https://www.google.com/favicon.ico" alt="Google icon">
+                Continuar con Google
+            </button>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
