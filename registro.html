@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOURISME - Registro</title>
+    <link rel="stylesheet" href="Styles/registro.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="img/logo.png" alt="Tourisme Logo" class="logo">
+            <h1>TOURISME</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="register-container">
+            <h2>Completa tu perfil</h2>
+            
+            <div class="avatar-container">
+                <div class="avatar-circle">
+                    <img src="img/avatar.webp" alt="Avatar" class="avatar-img">
+                    <button class="avatar-upload">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z'%3E%3C/path%3E%3Ccircle cx='12' cy='13' r='4'%3E%3C/circle%3E%3C/svg%3E" alt="Subir foto" class="camera-icon">
+                    </button>
+                </div>
+                <p class="avatar-text">Sube una foto</p>
+            </div>
+
+            <form id="registerForm" onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <label>Nombre completo <span class="required">*</span></label>
+                    <input type="text" id="fullName" required placeholder="Ingrese su nombre completo">
+                </div>
+
+                <div class="form-group">
+                    <label>Correo electrónico <span class="required">*</span></label>
+                    <input type="email" id="email" required placeholder="Ingrese su correo electrónico">
+                </div>
+
+                <div class="form-group">
+                    <label>Fecha nacimiento <span class="required">*</span></label>
+                    <input type="date" id="birthDate" required placeholder="Ingrese su fecha de nacimiento">
+                </div>
+
+                <div class="form-group">
+                    <label>Género <span class="required">*</span></label>
+                    <select id="gender" required>
+                        <option value="" disabled selected>Seleccione su género</option>
+                        <option value="M">Masculino</option>
+                        <option value="F">Femenino</option>
+                        <option value="O">Otro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Nacionalidad</label>
+                    <select id="nationality">
+                        <option value="" disabled selected>Seleccione su nacionalidad</option>
+                        <option value="AR">Argentina</option>
+                        <option value="BO">Bolivia</option>
+                        <option value="CL">Chile</option>
+                        <option value="CO">Colombia</option>
+                        <option value="EC">Ecuador</option>
+                        <option value="PE">Perú</option>
+                        <option value="UY">Uruguay</option>
+                        <option value="VE">Venezuela</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Nombre de usuario <span class="required">*</span></label>
+                    <input type="text" id="username" required placeholder="Ingrese nombre de usuario">
+                </div>
+
+                <div class="form-group">
+                    <label>Contraseña <span class="required">*</span></label>
+                    <input type="password" id="password" required placeholder="Ingrese contraseña">
+                </div>
+
+                <button type="submit" class="continue-btn">Continuar</button>
+            </form>
+        </div>
+    </main>
+    <script src="registro.js"></script>
+</body>
+</html>

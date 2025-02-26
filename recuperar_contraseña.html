@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOURISME - Recuperar Contraseña</title>
+    <link rel="stylesheet" href="Styles/recuperar.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="/placeholder.svg?height=40&width=40" alt="Tourisme Logo" class="logo">
+            <h1>TOURISME</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="recover-container">
+            <h2>Recuperar contraseña</h2>
+            <p class="description">Ingresa tu correo electrónico para recibir un código de verificación</p>
+            
+            <form id="recoverForm" onsubmit="handleRecover(event)">
+                <div class="form-group">
+                    <label>Correo electrónico</label>
+                    <input type="email" id="email" required placeholder="Ingrese su correo electrónico">
+                </div>
+
+                <button type="submit" class="recover-btn">
+                    Enviar código
+                    <span class="cursor-icon">👆</span>
+                </button>
+            </form>
+
+            <a href="login.html" class="back-link">Volver al inicio de sesión</a>
+        </div>
+    </main>
+    <script src="recuperar.js"></script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+:root {
+    --primary-color: #00A4A6;
+    --panel-bg: rgba(255, 255, 255, 0.15);
+    --text-color: #333;
+    --button-bg: #f5f5f5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: var(--primary-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: var(--text-color);
+}
+
+header {
+    padding: 1rem 2rem;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-container h1 {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.recover-container {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.recover-container h2 {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.description {
+    color: var(--text-color);
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    margin-left: 0.5rem;
+    color: var(--text-color);
+}
+
+input[type="email"] {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: none;
+    border-radius: 25px;
+    background: white;
+    font-size: 0.9rem;
+}
+
+.code-inputs {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.code-input {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    background: white;
+}
+
+.recover-btn {
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 25px;
+    background: var(--button-bg);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+.recover-btn:hover {
+    background: #e0e0e0;
+}
+
+.resend-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    text-decoration: underline;
+    cursor: pointer;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+.back-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: block;
+    margin-top: 1rem;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .recover-container {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    .code-inputs {
+        gap: 0.25rem;
+    }
+
+    .code-input {
+        width: 35px;
+        height: 35px;
+    }
+}
