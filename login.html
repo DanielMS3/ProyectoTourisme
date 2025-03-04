@@ -5,52 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TOURISME - Login</title>
     <link rel="stylesheet" href="Styles/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <div class="background-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
     <header>
         <div class="logo-container">
-            <img src="img/logo.png" alt="Tourisme Logo" class="logo">
-            <h1>TOURISME</h1>
+            <img src="img/logo.png" alt="Logo">
+            
         </div>
     </header>
 
     <main>
         <div class="login-container" id="step1">
-            <h2>Inicia sesión</h2>
-            <div class="form-container">
-                <p>Correo electrónico</p>
-                <div class="input-group">
-                    <input type="email" id="email" placeholder="Correo electrónico" required>
-                </div>
-                
-                <p>Contraseña</p>
-                <div class="input-group">
-                    <input type="password" id="password" placeholder="Contraseña" required>
+            <div class="login-card">
+                <h2>Bienvenido de nuevo</h2>
+
+                <form class="form-container" id="loginForm">
+                    <div class="input-group">
+                        <label for="email">Correo electrónico</label>
+                        <div class="input-field">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="email" placeholder="tu@email.com" required>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="password">Contraseña</label>
+                        <div class="input-field">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="password" placeholder="••••••••" required>
+                            <button type="button" class="toggle-password" aria-label="Toggle password visibility">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="remember-forgot">
+                        <label class="remember-me">
+                            <input type="checkbox" id="remember">
+                            <span class="checkmark"></span>
+                            Recordarme
+                        </label>
+                        <a href="#" class="forgot-password">¿Olvidaste la contraseña?</a>
+                    </div>
+
+                    <button type="submit" class="login-btn">
+                        Iniciar sesión
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <div class="divider">
+                    <span></span>
+                    <p>o continúa con</p>
+                    <span></span>
                 </div>
 
-                <button class="login-btn" onclick="login()">
-                    Iniciar sesión
-                    <span class="cursor-icon">👆</span>
+                <button class="google-btn">
+                    <img src="https://www.google.com/favicon.ico" alt="Google icon">
+                    Iniciar sesión con Google
                 </button>
 
-                <a href="recuperar_contraseña.html" class="forgot-password">¿Olvidaste la contraseña?</a>
+                <p class="register-text">
+                    ¿No tienes una cuenta? 
+                    <a href="#" class="register-link">Regístrate aquí</a>
+                </p>
             </div>
-
-            <div class="divider">
-                <span></span>
-                <p>o</p>
-                <span></span>
-            </div>
-
-            <button class="google-btn">
-                <img src="https://www.google.com/favicon.ico" alt="Google icon">
-                Inicia con Google
-            </button>
-            <a href="registro.html" class="register-btn">Regístrate aquí</a>
-            
-            
         </div>
     </main>
-    <script src="login.js"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>
