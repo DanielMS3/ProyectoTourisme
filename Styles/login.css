@@ -93,13 +93,6 @@ header {
 }
 
 
-.logo-icon {
-    font-size: 2rem;
-    color: var(--primary-color);
-}
-
-
-
 /* Main content */
 main {
     flex: 1;
