@@ -203,7 +203,6 @@ main {
     border-bottom: 2px solid var(--border-color);
     background-color: transparent;
     transition: all 0.3s ease;
-    -moz-appearance: textfield; /* Firefox */
     caret-color: var(--primary-color);
 }
 
