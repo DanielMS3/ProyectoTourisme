@@ -412,8 +412,7 @@ const destinos = {
       },
     ],
   }
-  
-  // Función para crear una tarjeta de destino
+
   
   // Función para crear una tarjeta de destino
 function crearTarjetaDestino(destino) {

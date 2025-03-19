@@ -135,17 +135,6 @@
     margin-top: auto;
 }
 
-/* Estilos para destinos relacionados */
-.destinos-relacionados {
-    margin-bottom: 60px;
-}
-
-.destinos-relacionados h2 {
-    font-size: 2rem;
-    margin-bottom: 30px;
-    text-align: center;
-}
-
 /* Animaciones */
 @keyframes fadeIn {
     from {
