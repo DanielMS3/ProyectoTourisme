@@ -631,42 +631,6 @@ function crearTarjetaDestino(destino) {
     mobileMenu.classList.toggle("active")
   })
   
-  // Agregar estilos CSS para el contador y mensajes de no resultados
-  const style = document.createElement("style")
-  style.textContent = `
-      .contador-resultados {
-          width: 100%;
-          margin-top: 15px;
-          padding-top: 15px;
-          border-top: 1px solid #eee;
-          text-align: right;
-          color: #666;
-      }
-      
-      .no-resultados {
-          grid-column: 1 / -1;
-          text-align: center;
-          padding: 30px;
-          background-color: #f9f9f9;
-          border-radius: 8px;
-          color: #666;
-      }
-      
-      .btn-reset {
-          background: none;
-          border: none;
-          color: var(--primary-color);
-          cursor: pointer;
-          text-decoration: underline;
-          padding: 0;
-          font-weight: 500;
-      }
-      
-      .btn-reset:hover {
-          color: #ff5252;
-      }
-  `
-  document.head.appendChild(style)
   
   // Inicializar la página
   document.addEventListener("DOMContentLoaded", () => {
