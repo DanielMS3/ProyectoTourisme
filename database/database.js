@@ -14,6 +14,15 @@ db.connect(err => { //intenta conectar y muestra mensaje en la terminal
         return;
     }
     console.log('Conexión a MySQL exitosa');
+
+    //consulta de prueba de conexión
+    db.query('SELECT 1 + 1 AS resultado', (error, results) => {
+        if (error){
+            console.error('Error al ejecutar la consulta de prueba:', error);
+            return;
+        }
+        console.log('Resultado de la consulta de prueba:', results[0].resultado);
+    });
     
 });
 
