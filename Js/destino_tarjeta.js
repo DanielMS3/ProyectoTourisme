@@ -7,6 +7,13 @@ const destinos = {
       ubicacion: "Medellín",
       descripcion: "Ideal para senderismo, avistamiento de aves y picnic. Se puede llegar en metro y metrocable. El Parque Arví es una reserva natural de 16.000 hectáreas ubicada en la zona rural de Medellín. Cuenta con senderos ecológicos, miradores, lagos y zonas para picnic. Es un lugar perfecto para conectar con la naturaleza, hacer senderismo y disfrutar del aire puro. Además, ofrece actividades como avistamiento de aves, recorridos guiados y mercado campesino los fines de semana.",
       imagen: "img/parque_arvi.jpeg",
+      imagenes: [
+        "img/parque_arvi.jpeg",
+        "img/cerro_volador.jpg",
+        "img/parque_piedras_blancas.jpg",
+        "img/parque_arvi_3.jpg",
+        "img/parque_arvi_4.jpg"
+      ],
       rating: 4.8,
       reviews: 120,
       tags: ["Senderismo", "Naturaleza", "Picnic", "Avistamiento de aves", "Metrocable"],
@@ -18,6 +25,12 @@ const destinos = {
       ubicacion: "Medellín",
       descripcion: "Uno de los cerros tutelares con miradores y senderos ecológicos. El Cerro El Volador es uno de los siete cerros tutelares de Medellín y fue declarado Parque Natural Nacional en 1992. Con una altura de 1.628 metros sobre el nivel del mar, ofrece una vista panorámica de la ciudad. Es un espacio ideal para hacer ejercicio, caminar por sus senderos y disfrutar de la naturaleza en medio de la ciudad. También es un importante sitio arqueológico con vestigios de asentamientos prehispánicos.",
       imagen: "img/cerro_volador.jpg",
+      imagenes: [
+        "img/cerro_volador.jpg",
+        "img/parque_piedras_blancas.jpg",
+        "img/parque_arvi_3.jpg",
+        "img/parque_arvi_4.jpg"
+      ],
       rating: 4.5,
       reviews: 95,
       tags: ["Senderismo", "Mirador", "Deportes", "Arqueología", "Historia"],
@@ -566,8 +579,15 @@ function cargarDetallesDestino() {
   document.getElementById('destino-estrellas').innerHTML = generarEstrellas(destino.rating);
   document.getElementById('destino-rating').textContent = destino.rating.toFixed(1);
   document.getElementById('destino-reviews').textContent = destino.reviews;
+  /*
   document.getElementById('destino-img').src = destino.imagen;
   document.getElementById('destino-img').alt = destino.nombre;
+  document.getElementById('destino-descripcion').textContent = destino.descripcion;
+  */
+
+  // Cargar la galería de imágenes
+  cargarGaleriaImagenes(destino);
+
   document.getElementById('destino-descripcion').textContent = destino.descripcion;
   
   // Cargar tags
@@ -579,6 +599,58 @@ function cargarDetallesDestino() {
       tagElement.className = 'tag';
       tagElement.textContent = tag;
       tagsContainer.appendChild(tagElement);
+  });
+}
+
+// Función para cargar la galería de imágenes
+function cargarGaleriaImagenes(destino) {
+  // Verificar si el destino tiene imágenes
+  const imagenes = destino.imagenes || [destino.imagen];
+  
+  // Actualizar imagen principal
+  const imgPrincipal = document.getElementById('destino-img');
+  imgPrincipal.src = imagenes[0]; // Usar la primera imagen como principal
+  imgPrincipal.alt = destino.nombre;
+  
+  // Crear contenedor de miniaturas
+  const galeriaContainer = document.getElementById('galeria-imagenes');
+  galeriaContainer.innerHTML = '';
+  
+  // Agregar todas las imágenes como miniaturas
+  imagenes.forEach((src, index) => {
+      agregarMiniatura(galeriaContainer, src, `${destino.nombre} - imagen ${index + 1}`, index === 0);
+  });
+}
+
+// Función para agregar una miniatura a la galería
+function agregarMiniatura(container, src, alt, isActive = false) {
+  const div = document.createElement('div');
+  div.className = 'imagen-adicional';
+  if (isActive) div.classList.add('active');
+  
+  const img = document.createElement('img');
+  img.src = src;
+  img.alt = alt;
+  img.onclick = function() {
+      cambiarImagenPrincipal(this.src);
+  };
+  
+  div.appendChild(img);
+  container.appendChild(div);
+}
+
+// Función para cambiar la imagen principal
+function cambiarImagenPrincipal(src) {
+  document.getElementById('destino-img').src = src;
+  
+  // Marcar la miniatura activa
+  const miniaturas = document.querySelectorAll('.imagen-adicional');
+  miniaturas.forEach(miniatura => {
+      if (miniatura.querySelector('img').src === src) {
+          miniatura.classList.add('active');
+      } else {
+          miniatura.classList.remove('active');
+      }
   });
 }
 
