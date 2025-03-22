@@ -1,5 +1,5 @@
-create database Tourisme;
-use Tourisme;
+create database tourisme;
+use tourisme;
 
  -- TABLA DE ROLES (usuario, proveedor turistico, administrador unico) -- 
 create table Rol(
@@ -173,6 +173,20 @@ id_usuario int not null,
 accion varchar(100) not null,
 fecha timestamp default current_timestamp,
 foreign key(id_usuario) references Usuario(id_usuario) on delete cascade
+);
+
+-- TABLA CONTENIDO --
+create table Contenido(
+	id_contenido int primary key auto_increment,
+    titulo varchar (200) not null,
+    descripcion text not null,
+    imagen varchar(500) not null,
+    precio decimal(10,2) not null,
+    fecha_creacion timestamp default current_timestamp,
+    id_destino int,
+    id_empresa int,
+    foreign key(id_destino) references Destinos_Turisticos(id_destino) on delete cascade,
+    foreign key(id_empresa) references Empresa(id_empresa) on delete cascade
 );
 
 
@@ -1154,3 +1168,19 @@ begin
     signal sqlstate '45000' set message_text = 'No se puede modificar una reseña de empresa';
 end //
 DELIMITER ;
+
+-- NOMBRES PROCEDIMIENTOS ALMACENADOS TABLA USUARIO --
+
+
+-- INSERTAR DATOS A LAS TABLAS --
+
+
+
+
+
+
+
+
+
+
+
