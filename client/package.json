@@ -2,10 +2,10 @@
   "name": "proyectotourisme",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "indexdos.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
+    "start": "node indexdos.js",
+    "dev": "nodemon indexdos.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
