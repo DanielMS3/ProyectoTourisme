@@ -3,15 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD Admin Tourisme</title>
+    <title>CRUD Usuarios</title>
 </head>
 <body>
-    <h1>Tablas de la base de datos</h1>
-    <ul>
-        
+    <h1>CRUD Usuarios</h1>
 
+    <h2>Insertar Usuario</h2>
+    <form id="insertarForm">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre"><br><br>
 
-    </ul>
-    
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" name="correo"><br><br>
+
+        <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento"><br><br>
+
+        <label for="genero">Género:</label>
+        <input type="text" id="genero" name="genero"><br><br>
+
+        <label for="nacionalidad">Nacionalidad:</label>
+        <input type="text" id="nacionalidad" name="nacionalidad"><br><br>
+
+        <label for="contrasena_hash">Contraseña Hash:</label>
+        <input type="text" id="contrasena_hash" name="contrasena_hash"><br><br>
+
+        <label for="id_google">ID Google:</label>
+        <input type="text" id="id_google" name="id_google"><br><br>
+
+        <label for="id_rol">ID Rol:</label>
+        <input type="number" id="id_rol" name="id_rol"><br><br>
+
+        <button type="button" onclick="insertarUsuario()">Insertar</button>
+    </form>
+
+    <h2>Consultar Usuario por ID</h2>
+    <form id="consultarIdForm">
+        <label for="id_usuario_consulta">ID Usuario:</label>
+        <input type="number" id="id_usuario_consulta" name="id_usuario_consulta"><br><br>
+        <button type="button" onclick="consultarUsuarioPorId()">Consultar</button>
+    </form>
+    <div id="consultaIdResults"></div>
+
+    <h2>Consultar Todos los Usuarios</h2>
+    <button type="button" onclick="consultarUsuarios()">Consultar Todos</button>
+    <div id="consultaTodosResults"></div>
+
+    <h2>Actualizar Usuario</h2>
+    <form id="actualizarForm">
+        <label for="id_usuario_actualizar">ID Usuario:</label>
+        <input type="number" id="id_usuario_actualizar" name="id_usuario_actualizar"><br><br>
+
+        <label for="nombre_actualizar">Nombre:</label>
+        <input type="text" id="nombre_actualizar" name="nombre_actualizar"><br><br>
+
+        <label for="correo_actualizar">Correo:</label>
+        <input type="email" id="correo_actualizar" name="correo_actualizar"><br><br>
+
+        <label for="fecha_nacimiento_actualizar">Fecha de Nacimiento:</label>
+        <input type="date" id="fecha_nacimiento_actualizar" name="fecha_nacimiento_actualizar"><br><br>
+
+        <label for="genero_actualizar">Género:</label>
+        <input type="text" id="genero_actualizar" name="genero_actualizar"><br><br>
+
+        <label for="nacionalidad_actualizar">Nacionalidad:</label>
+        <input type="text" id="nacionalidad_actualizar" name="nacionalidad_actualizar"><br><br>
+
+        <label for="contrasena_hash_actualizar">Contraseña Hash:</label>
+        <input type="text" id="contrasena_hash_actualizar" name="contrasena_hash_actualizar"><br><br>
+
+        <label for="id_google_actualizar">ID Google:</label>
+        <input type="text" id="id_google_actualizar" name="id_google_actualizar"><br><br>
+
+        <label for="id_rol_actualizar">ID Rol:</label>
+        <input type="number" id="id_rol_actualizar" name="id_rol_actualizar"><br><br>
+
+        <button type="button" onclick="actualizarUsuario()">Actualizar</button>
+    </form>
+
+    <h2>Eliminar Usuario</h2>
+    <form id="eliminarForm">
+        <label for="id_usuario_eliminar">ID Usuario:</label>
+        <input type="number" id="id_usuario_eliminar" name="id_usuario_eliminar"><br><br>
+        <button type="button" onclick="eliminarUsuario()">Eliminar</button>
+    </form>
+
+    <script>
+        async function insertarUsuario() {
+            const form = document.getElementById('insertarForm');
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => data[key] = value);
+
+            const response = await fetch('/insertarUsuario', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+            const result = await response.json();
+            console.log(result);
+        }
+
+        async function consultarUsuarioPorId() {
+            const id = document.getElementById('id_usuario_consulta').value;
+            const response = await fetch(`/consultarUsuarioPorId/${id}`);
+            const result = await response.json();
+            document.getElementById('consultaIdResults').innerHTML = JSON.stringify(result);
+        }
+
+        async function consultarUsuarios() {
+            const response = await fetch('/consultarUsuarios');
+            const result = await response.json();
+            document.getElementById('consultaTodosResults').innerHTML = JSON.stringify(result);
+        }
+
+        async function actualizarUsuario() {
+            const form = document.getElementById('actualizarForm');
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => data[key] = value);
+
+            const response = await fetch('/actualizarUsuario', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+            const result = await response.json();
+            console.log(result);
+        }
+
+        async function eliminarUsuario() {
+            const id = document.getElementById('id_usuario_eliminar').value;
+            const response = await fetch(`/eliminarUsuario/${id}`, {
+                method: 'DELETE',
+            });
+            const result = await response.json();
+            console.log(result);
+        }
+    </script>
 </body>
 </html>
