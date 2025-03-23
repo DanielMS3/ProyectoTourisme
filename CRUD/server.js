@@ -1,12 +1,17 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const generalCrud = require('./general_crud');
+const path = require('path'); // Importa el modulo path.
 
 const app = express();
 const port = 3000;
 
 app.use(bodyParser.json());
 app.use(express.static(__dirname)); // Sirve archivos estáticos (HTML, JS, CSS)
+
+app.get('/', (req, res) => { // Agrega esta ruta
+    res.sendFile(path.join(__dirname, 'general_crud.html'));
+});
 
 app.post('/insertarUsuario', (req, res) => {
     const { nombre, correo, fecha_nacimiento, genero, nacionalidad, contrasena_hash, id_google, id_rol } = req.body;
