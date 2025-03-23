@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (response.ok) {
                 // Login exitoso - redirigir al dashboard
                 localStorage.setItem('user', JSON.stringify(data.user));
-                window.location.href = '/dashboard.html';
+                window.location.href = '/destinos.html'; // Redirigir a la página de destinos
             } else {
                 // Mostrar mensaje de error
                 showError(data.message || 'Error al iniciar sesión. Verifica tus credenciales.');
