@@ -98,6 +98,7 @@ const PORT = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '..'))); // Servir archivos estáticos desde la raíz del proyecto
+app.use('/uploads', express.static(path.join(__dirname, '../uploads'))); // Servir archivos de uploads
 
 // Configuración de sesiones
 app.use(session({
