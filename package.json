@@ -1,0 +1,20 @@
+{
+  "name": "proyectotourisme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielMS3/ProyectoTourisme.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanielMS3/ProyectoTourisme/issues"
+  },
+  "homepage": "https://github.com/DanielMS3/ProyectoTourisme#readme"
+}
