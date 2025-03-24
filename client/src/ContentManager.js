@@ -6,7 +6,7 @@ const API_URL = "http://localhost:3000/contenidos";
 
 // Opciones de categoría y ubicación
 const categorias = ["Parques y Reservas", "Miradores", "Museos y Cultura", "Actividades y Aventura", "Plazas y Parque Urbanos"];
-const ubicaciones = ["Medellin", "Bello", "Envigado", "Sabaneta", "Itagüí", "La Estrella", "El Retiro", "Todas las Ubicaciones"];
+const ubicaciones = ["Medellin", "Bello", "Envigado", "Sabaneta", "Itagüi", "La Estrella", "El Retiro", "Todas las Ubicaciones"];
 
 const ContentManager = () => {
   const [contenidos, setContenidos] = useState([]); // Lista de contenidos desde la API
@@ -58,10 +58,8 @@ const ContentManager = () => {
   // Preparar edición: cargar datos en el formulario
   const handleEdit = (id) => {
     const contenido = contenidos.find((c) => c.id === id);
-    if (contenido) {
-      setForm(contenido);
-      setEditId(id);
-    }
+    setForm(contenido);
+    setEditId(id);
   };
 
   // Eliminar contenido
@@ -76,7 +74,7 @@ const ContentManager = () => {
 
   return (
     <div>
-      <h2>Gestión de Contenidos</h2>
+      <h1>Gestión de Contenidos</h1>
 
       {/* Formulario */}
       <form onSubmit={handleSubmit}>
@@ -94,32 +92,28 @@ const ContentManager = () => {
       </form>
 
       {/* Listado de contenidos */}
-      <h3>Lista de Contenidos</h3>
-      {contenidos.length === 0 ? (
-        <p>No hay contenidos disponibles.</p>
-      ) : (
-        categorias.map((categoria) => (
-          <div key={categoria}>
-            <h4>{categoria}</h4>
-            {contenidos.filter((c) => c.category === categoria).length === 0 ? (
-              <p>No hay contenidos en esta categoría.</p>
-            ) : (
-              contenidos
-                .filter((c) => c.category === categoria)
-                .map((item) => (
-                  <div key={item.id}>
-                    <h5>{item.title} ({item.location})</h5>
-                    <p>{item.description}</p>
-                    <img src={item.image} alt={item.title} width="200" />
-                    <p>Precio: ${item.price}</p>
-                    <button onClick={() => handleEdit(item.id)}>Editar</button>
-                    <button onClick={() => handleDelete(item.id)}>Eliminar</button>
-                  </div>
-                ))
-            )}
-          </div>
-        ))
-      )}
+      <h2>Lista de Contenidos</h2>
+      {categorias.map((categoria) => (
+        <div key={categoria}>
+          <h3>{categoria}</h3>
+          {contenidos.filter((c) => c.category === categoria).length === 0 ? (
+            <p>No hay contenidos en esta categoría.</p>
+          ) : (
+            contenidos
+              .filter((c) => c.category === categoria)
+              .map((item) => (
+                <div key={item.id} style={{ border: "1px solid #ccc", marginBottom: "1rem", padding: "0.5rem" }}>
+                  <h4>{item.title} ({item.location})</h4>
+                  <p>{item.description}</p>
+                  <img src={item.image} alt={item.title} width="200" />
+                  <p>Precio: ${item.price}</p>
+                  <button onClick={() => handleEdit(item.id)}>Editar</button>
+                  <button onClick={() => handleDelete(item.id)}>Eliminar</button>
+                </div>
+              ))
+          )}
+        </div>
+      ))}
     </div>
   );
 };
