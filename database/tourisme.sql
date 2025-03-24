@@ -965,6 +965,70 @@ begin
 end //
 DELIMITER ;
 
+-- PROCEDIMIENTOS ALMACENADOS TABLA CONTENIDO --
+-- INSERTAR --
+DELIMITER //
+create procedure insertar_contenido(
+    in p_titulo varchar(200),
+    in p_descripcion text,
+    in p_imagen varchar(500),
+    in p_precio decimal(10,2),
+    in p_id_destino int,
+    in p_id_empresa int
+)
+begin
+    insert into contenido (titulo, descripcion, imagen, precio, id_destino, id_empresa)
+    values (p_titulo, p_descripcion, p_imagen, p_precio, p_id_destino, p_id_empresa);
+end //
+DELIMITER ;
+
+-- CONSULTAR CONTENIDO POR ID --
+DELIMITER //
+create procedure obtener_contenido_por_id(in p_id_contenido int)
+begin
+    select * from contenido where id_contenido = p_id_contenido;
+end //
+DELIMITER ;
+
+-- CONSULTAR CONTENIDOS --
+DELIMITER //
+create procedure obtener_contenidos()
+begin
+    select * from contenido;
+end //
+DELIMITER ;
+
+-- ACTUALIZAR CONTENIDOS --
+DELIMITER //
+create procedure actualizar_contenido(
+    in p_id_contenido int,
+    in p_titulo varchar(200),
+    in p_descripcion text,
+    in p_imagen varchar(500),
+    in p_precio decimal(10,2),
+    in p_id_destino int,
+    in p_id_empresa int
+)
+begin
+    update contenido
+    set titulo = p_titulo,
+        descripcion = p_descripcion,
+        imagen = p_imagen,
+        precio = p_precio,
+        id_destino = p_id_destino,
+        id_empresa = p_id_empresa
+    where id_contenido = p_id_contenido;
+end //
+DELIMITER ;
+
+-- ELIMINAR CONTENIDOS --
+DELIMITER //
+create procedure eliminar_contenido(in p_id_contenido int)
+begin
+    delete from contenido where id_contenido = p_id_contenido;
+end //
+DELIMITER ;
+
 
 
 -- TRIGGERS TABLA USUARIO --
@@ -1167,6 +1231,73 @@ for each row
 begin
     signal sqlstate '45000' set message_text = 'No se puede modificar una reseña de empresa';
 end //
+DELIMITER ;
+
+
+DELIMITER //
+create trigger before_insert_contenido
+before insert on contenido
+for each row
+begin
+    if new.precio < 0 then
+        signal sqlstate '45000'
+        set message_text = 'El precio no puede ser negativo';
+    end if;
+end;
+//
+
+-- Evitar precios negativos antes de actualizar
+create trigger before_update_contenido
+before update on contenido
+for each row
+begin
+    if new.precio < 0 then
+        signal sqlstate '45000'
+        set message_text = 'El precio no puede ser negativo';
+    end if;
+end;
+//
+
+-- Registrar cambios en contenido después de una actualización
+create table if not exists historial_contenido (
+    id_historial int primary key auto_increment,
+    id_contenido int,
+    titulo_anterior varchar(200),
+    descripcion_anterior text,
+    precio_anterior decimal(10,2),
+    fecha_cambio timestamp default current_timestamp,
+    foreign key (id_contenido) references contenido(id_contenido) on delete cascade
+);
+//
+
+create trigger after_update_contenido
+after update on contenido
+for each row
+begin
+    insert into historial_contenido (id_contenido, titulo_anterior, descripcion_anterior, precio_anterior)
+    values (old.id_contenido, old.titulo, old.descripcion, old.precio);
+end;
+//
+
+-- Registrar eliminaciones en contenido
+create table if not exists eliminaciones_contenido (
+    id_eliminacion int primary key auto_increment,
+    id_contenido int,
+    titulo varchar(200),
+    descripcion text,
+    precio decimal(10,2),
+    fecha_eliminacion timestamp default current_timestamp
+);
+//
+
+create trigger after_delete_contenido
+after delete on contenido
+for each row
+begin
+    insert into eliminaciones_contenido (id_contenido, titulo, descripcion, precio)
+    values (old.id_contenido, old.titulo, old.descripcion, old.precio);
+end;
+//
 DELIMITER ;
 
 -- NOMBRES PROCEDIMIENTOS ALMACENADOS TABLA USUARIO --

@@ -54,12 +54,18 @@
     color: var(--dark-color);
 }
 
+/* Movido debajo de los botones de acción */
 .destino-meta {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     align-items: center;
     color: var(--text-light);
+    margin-top: 25px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .destino-meta .ubicacion,
@@ -84,13 +90,54 @@
     margin-bottom: 40px;
 }
 
-.destino-imagen {
+/* Estilos para la galería de imágenes */
+.destino-galeria {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.destino-imagen-principal {
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: var(--shadow);
+    height: 400px;
 }
 
-.destino-imagen img {
+.destino-imagen-principal img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.destino-imagenes-adicionales {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.imagen-adicional {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    height: 100px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.imagen-adicional:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+}
+
+.imagen-adicional.active {
+    border-color: var(--primary-color);
+}
+
+.imagen-adicional img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -132,7 +179,7 @@
 .destino-acciones {
     display: flex;
     gap: 15px;
-    margin-top: auto;
+    margin-bottom: 10px;
 }
 
 /* Animaciones */
@@ -157,7 +204,7 @@
         grid-template-columns: 1fr;
     }
     
-    .destino-imagen {
+    .destino-imagen-principal {
         max-height: 500px;
     }
 }
@@ -176,6 +223,10 @@
     .destino-acciones {
         flex-direction: column;
     }
+    
+    .destino-imagenes-adicionales {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 576px) {
@@ -185,5 +236,9 @@
     
     .breadcrumb {
         padding: 10px 0;
+    }
+    
+    .destino-imagenes-adicionales {
+        grid-template-columns: repeat(2, 1fr);
     }
 }

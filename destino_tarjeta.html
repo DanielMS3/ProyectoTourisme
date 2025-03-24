@@ -59,22 +59,16 @@
         <div class="container">
             <div class="destino-header">
                 <h1 id="destino-nombre">Cargando destino...</h1>
-                <div class="destino-meta">
-                    <div class="ubicacion">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span id="destino-ubicacion">Cargando ubicación...</span>
-                    </div>
-                    <div class="rating">
-                        <div id="destino-estrellas"></div>
-                        <span id="destino-rating">0.0</span>
-                        <span>(<span id="destino-reviews">0</span>+ reseñas)</span>
-                    </div>
-                </div>
             </div>
 
             <div class="destino-content">
-                <div class="destino-imagen">
-                    <img id="destino-img" src="https://via.placeholder.com/800x500?text=Cargando+Imagen" alt="Imagen del destino">
+                <div class="destino-galeria">
+                    <div class="destino-imagen-principal">
+                        <img id="destino-img" src="https://via.placeholder.com/800x500?text=Cargando+Imagen" alt="Imagen del destino">
+                    </div>
+                    <div class="destino-imagenes-adicionales" id="galeria-imagenes">
+                        <!-- Las imágenes se cargarán dinámicamente aquí -->
+                    </div>
                 </div>
                 
                 <div class="destino-info">
@@ -97,6 +91,19 @@
                         <button class="btn btn-outline btn-lg">
                             <i class="far fa-heart"></i> Guardar en favoritos
                         </button>
+                    </div>
+                    
+                    <!-- Movido debajo de los botones de acción -->
+                    <div class="destino-meta">
+                        <div class="ubicacion">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span id="destino-ubicacion">Cargando ubicación...</span>
+                        </div>
+                        <div class="rating">
+                            <div id="destino-estrellas"></div>
+                            <span id="destino-rating">0.0</span>
+                            <span>(<span id="destino-reviews">0</span>+ reseñas)</span>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -63,7 +63,8 @@ app.use(express.json());
 app.use("/api/content", contentRoutes);
 */
 
-
+//Comentado para tenerlo de respaldo
+/*
 const express = require("express");
 const cors = require("cors");
 const destinoRoutes = require("./routes/destinorutas");
@@ -80,4 +81,42 @@ const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
+*/
 
+const express = require('express');
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const path = require('path');
+
+// Importar rutas
+const authRoutes = require('./routes/auth');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, '..'))); // Servir archivos estáticos desde la raíz del proyecto
+app.use('/uploads', express.static(path.join(__dirname, '../uploads'))); // Servir archivos de uploads
+
+// Configuración de sesiones
+app.use(session({
+    secret: process.env.SESSION_SECRET || 'tourisme_secret_key',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: process.env.NODE_ENV === 'production', maxAge: 24 * 60 * 60 * 1000 } // 24 horas
+}));
+
+// Rutas API
+app.use('/api/auth', authRoutes);
+
+// Ruta para la página de inicio
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'index.html'));
+});
+
+// Iniciar el servidor
+app.listen(PORT, () => {
+    console.log(`Servidor ejecutándose en http://localhost:${PORT}`);
+});
