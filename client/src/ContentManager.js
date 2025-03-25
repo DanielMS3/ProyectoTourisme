@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 // API Base URL
-const API_URL = "http://localhost:3000/contenidos"; 
+const API_URL = "http://localhost:3001/contenidos"; 
 
 // Opciones de categoría y ubicación
 const categorias = ["Parques y Reservas", "Miradores", "Museos y Cultura", "Actividades y Aventura", "Plazas y Parque Urbanos"];
