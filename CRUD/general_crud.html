@@ -9,36 +9,6 @@
 <body>
     <h1>CRUD de Turismo</h1>
 
-    <div id="tours-section">
-        <h2>Gestión de Tours</h2>
-        <div id="tour-form-container">
-            <h3>Crear/Actualizar Tour</h3>
-            <form id="tour-form">
-                <input type="hidden" id="tour-id">
-                <div>
-                    <label for="tour-nombre">Nombre:</label>
-                    <input type="text" id="tour-nombre" required>
-                </div>
-                <div>
-                    <label for="tour-descripcion">Descripción:</label>
-                    <textarea id="tour-descripcion"></textarea>
-                </div>
-                <div>
-                    <label for="tour-precio">Precio:</label>
-                    <input type="number" id="tour-precio" step="0.01" required>
-                </div>
-                <button type="submit">Guardar Tour</button>
-                <button type="button" id="cancel-tour-update" style="display:none;">Cancelar Edición</button>
-            </form>
-        </div>
-
-        <div id="tours-list">
-            <h3>Lista de Tours</h3>
-            <ul id="tours">
-            </ul>
-        </div>
-    </div>
-
     <div id="calificaciones-section">
         <h2>Gestión de Calificaciones</h2>
         <div id="calificacion-form-container">
