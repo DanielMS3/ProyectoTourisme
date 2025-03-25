@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD de Tours</title>
+    <link rel="stylesheet" href="general_crud.css">
+</head>
+<body>
+    <h2>Crear/Actualizar Calificación</h2>
+    <form id="calificacion-form">
+        <input type="hidden" id="calificacion-id">
+        <div>
+            <label for="id_usuario">ID Usuario:</label>
+            <input type="number" id="id_usuario" required>
+        </div>
+        <div>
+            <label for="id_destino">ID Destino:</label>
+            <input type="number" id="id_destino" required>
+        </div>
+        <div>
+            <label for="calificacion">Calificación (0-5):</label>
+            <input type="number" id="calificacion" min="0" max="5" required>
+        </div>
+        <div>
+            <label for="comentario">Comentario:</label>
+            <textarea id="comentario"></textarea>
+        </div>
+        <button type="submit">Guardar Calificación</button>
+        <button type="button" id="cancel-update" style="display:none;">Cancelar Edición</button>
+    </form>
+
+    <div id="calificaciones-list">
+        <h2>Lista de Calificaciones</h2>
+        <ul id="calificaciones">
+        </ul>
+    </div>
+    <script src="general_crud.js"></script>
+</body>
+</html>
