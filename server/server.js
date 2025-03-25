@@ -82,41 +82,59 @@ app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
 */
-
-const express = require('express');
-const bodyParser = require('body-parser');
-const session = require('express-session');
-const path = require('path');
-
-// Importar rutas
-const authRoutes = require('./routes/auth');
+require("dotenv").config();
+const express = require("express");
+const mysql = require("mysql2");
+const bcrypt = require("bcryptjs");
+const cors = require("cors");
+const bodyParser = require("body-parser");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
-
-// Middleware
+app.use(cors());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, '..'))); // Servir archivos estáticos desde la raíz del proyecto
-app.use('/uploads', express.static(path.join(__dirname, '../uploads'))); // Servir archivos de uploads
 
-// Configuración de sesiones
-app.use(session({
-    secret: process.env.SESSION_SECRET || 'tourisme_secret_key',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: process.env.NODE_ENV === 'production', maxAge: 24 * 60 * 60 * 1000 } // 24 horas
-}));
+// Configuración de la base de datos
+const db = mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
+});
 
-// Rutas API
-app.use('/api/auth', authRoutes);
+db.connect((err) => {
+    if (err) {
+        console.error("Error de conexión a la base de datos:", err);
+        return;
+    }
+    console.log("Conectado a MySQL");
+});
 
-// Ruta para la página de inicio
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'index.html'));
+// 🔹 Ruta para REGISTRAR usuario sin avatar
+app.post("/register", async (req, res) => {
+    const { nombreCompleto, email, fechaNacimiento, genero, nacionalidad, password } = req.body;
+
+    if (!nombreCompleto || !email || !fechaNacimiento || !genero || !password) {
+        return res.status(400).send({ msg: "Todos los campos obligatorios deben ser llenados" });
+    }
+
+    try {
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const sql = `INSERT INTO usuarios (nombre, email, fecha_nacimiento, genero, nacionalidad, password) 
+                     VALUES (?, ?, ?, ?, ?, ?)`;
+
+        db.query(sql, [nombreCompleto, email, fechaNacimiento, genero, nacionalidad, hashedPassword], (err, result) => {
+            if (err) {
+                console.error("Error en el registro:", err);
+                return res.status(500).send({ msg: "Error en el registro", error: err });
+            }
+            res.send({ msg: "Usuario registrado con éxito", id: result.insertId });
+        });
+    } catch (error) {
+        console.error("Error en el servidor:", error);
+        res.status(500).send({ msg: "Error en el servidor" });
+    }
 });
 
 // Iniciar el servidor
-app.listen(PORT, () => {
-    console.log(`Servidor ejecutándose en http://localhost:${PORT}`);
-});
+app.listen(3000, () => console.log("Servidor corriendo en http://localhost:3000"));

@@ -1,32 +1,29 @@
-require('dotenv').config(); // Carga variables de entorno desde .env
-const mysql = require('mysql2'); // Usa mysql2 en lugar de mysql
+const mysql = require('mysql2');
 
-console.log('DB_USER:', process.env.DB_USER);
-console.log('DB_PASSWORD:', process.env.DB_PASSWORD);
-
-const db = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
+// Configuración de la conexión a la base de datos
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD || '1020108889',
+    database: 'tourisme'
 });
 
-db.connect(err => {
+// Conectar a la base de datos
+connection.connect((err) => {
     if (err) {
-        console.error('Error al conectar a la base de datos:', err);
+        console.error('Error al conectar a MySQL:', err);
         return;
     }
     console.log('Conexión a MySQL exitosa');
-
-    // Consulta de prueba de conexión
-    db.query('SELECT 1 + 1 AS resultado', (error, results) => {
-        if (error) {
-            console.error('Error al ejecutar la consulta de prueba:', error);
+    
+    // Realizar una consulta de prueba
+    connection.query('SELECT 1 + 1 AS result', (err, results) => {
+        if (err) {
+            console.error('Error en la consulta de prueba:', err);
             return;
         }
-        console.log('Resultado de la consulta de prueba:', results[0].resultado);
+        console.log('Resultado de la consulta de prueba:', results[0].result);
     });
 });
 
-module.exports = db;
-
+module.exports = connection;
