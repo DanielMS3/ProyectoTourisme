@@ -82,59 +82,36 @@ app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
 */
-require("dotenv").config();
-const express = require("express");
-const mysql = require("mysql2");
-const bcrypt = require("bcryptjs");
-const cors = require("cors");
-const bodyParser = require("body-parser");
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
+const db = require('./database'); // Conexión a MySQL
+
+// Cargar variables de entorno desde .env
+dotenv.config();
 
 const app = express();
+
+// Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
-// Configuración de la base de datos
-const db = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
+// Rutas
+const registroRoutes = require('./routes/registro_conexion');
+app.use('/api', registroRoutes);
+
+const loginRoute = require('./routes/login');
+app.use('/login', loginRoute);
+
+
+// Ruta de prueba
+app.get('/', (req, res) => {
+    res.send('Servidor funcionando correctamente 🚀');
 });
 
-db.connect((err) => {
-    if (err) {
-        console.error("Error de conexión a la base de datos:", err);
-        return;
-    }
-    console.log("Conectado a MySQL");
+// Iniciar servidor
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
-
-// 🔹 Ruta para REGISTRAR usuario sin avatar
-app.post("/register", async (req, res) => {
-    const { nombreCompleto, email, fechaNacimiento, genero, nacionalidad, password } = req.body;
-
-    if (!nombreCompleto || !email || !fechaNacimiento || !genero || !password) {
-        return res.status(400).send({ msg: "Todos los campos obligatorios deben ser llenados" });
-    }
-
-    try {
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-        const sql = `INSERT INTO usuarios (nombre, email, fecha_nacimiento, genero, nacionalidad, password) 
-                     VALUES (?, ?, ?, ?, ?, ?)`;
-
-        db.query(sql, [nombreCompleto, email, fechaNacimiento, genero, nacionalidad, hashedPassword], (err, result) => {
-            if (err) {
-                console.error("Error en el registro:", err);
-                return res.status(500).send({ msg: "Error en el registro", error: err });
-            }
-            res.send({ msg: "Usuario registrado con éxito", id: result.insertId });
-        });
-    } catch (error) {
-        console.error("Error en el servidor:", error);
-        res.status(500).send({ msg: "Error en el servidor" });
-    }
-});
-
-// Iniciar el servidor
-app.listen(3000, () => console.log("Servidor corriendo en http://localhost:3000"));
