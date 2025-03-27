@@ -649,6 +649,6 @@ function crearTarjetaDestino(destino) {
     // Establecer el año actual en el footer
     document.getElementById("year").textContent = new Date().getFullYear()
 
-  })
+})
   
   

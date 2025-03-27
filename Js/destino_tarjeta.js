@@ -548,6 +548,29 @@ function generarEstrellas(rating) {
   return estrellas;
 }
 
+
+// Función para actualizar el contador de visitas
+function actualizarContadorVisitas(id) {
+  try {
+    // Obtener el contador actual del destino desde localStorage
+    let visitas = parseInt(localStorage.getItem(`visitas_${id}`), 10) || 0;
+
+    // Incrementar el contador
+    visitas++;
+
+    // Guardar el nuevo valor en localStorage
+    localStorage.setItem(`visitas_${id}`, visitas);
+
+    // Verificar si el elemento destino-visitas existe antes de actualizarlo
+    const contadorVisitas = document.getElementById('destino-visitas');
+    if (contadorVisitas) {
+      contadorVisitas.textContent = `Visitas: ${visitas}`;
+    }
+  } catch (error) {
+    console.error('Error al actualizar el contador de visitas:', error);
+  }
+}
+
 // Función para cargar los detalles del destino
 function cargarDetallesDestino() {
   const { id } = obtenerParametrosURL();
@@ -579,6 +602,10 @@ function cargarDetallesDestino() {
   document.getElementById('destino-estrellas').innerHTML = generarEstrellas(destino.rating);
   document.getElementById('destino-rating').textContent = destino.rating.toFixed(1);
   document.getElementById('destino-reviews').textContent = destino.reviews;
+
+  // Actualizar y mostrar el contador de visitas
+  actualizarContadorVisitas(id);
+
   /*
   document.getElementById('destino-img').src = destino.imagen;
   document.getElementById('destino-img').alt = destino.nombre;
@@ -667,29 +694,5 @@ document.addEventListener("DOMContentLoaded", () => {
   
   // Establecer el año actual en el footer
   document.getElementById("year").textContent = new Date().getFullYear();
-
-  //Funcion Contador de Visitas
-  function crearTarjetaDestino(destino) {
-    const tarjeta = document.createElement("div");
-    tarjeta.classList.add("destino-tarjeta");
- 
-     tarjeta.innerHTML = `
-        <img src="${destino.imagen}" alt="${destino.nombre}">
-        <div class="contenido">
-           <h3>${destino.nombre}</h3>
-           <p>${destino.descripcion}</p>
-           <div class="caracteristicas">
-               <span><i class="fas fa-map-marker-alt"></i> ${destino.ubicacion}</span>
-               <span><i class="fas fa-star"></i> ${destino.calificacion}</span>
-           </div>
-           <div class="popularidad">
-               <h4>Popularidad</h4>
-               <p class="num-visitas">Número de Visitas: <span id="visitas-${destino.id}">0</span></p>
-           </div>
-           <button class="btn-ver-detalles" data-id="${destino.id}">Ver detalles</button>
-       </div>
-     `;
-     return tarjeta;
-    }
 
 });
