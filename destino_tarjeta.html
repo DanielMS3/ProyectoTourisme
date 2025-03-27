@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourisme - Detalles del Destino</title>
+    <link rel="stylesheet" href="Styles/destino_tarjeta.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="img/logo.png" alt="Logo">
+                <span>Tourisme</span>
+            </div>
+            <nav class="nav-desktop">
+                <ul>
+                    <li><a href="index.html" class="active">Destinos</a></li>
+                    <li><a href="#">Sobre Nosotros</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="login.html">
+                <button class="btn btn-ghost login-button">Iniciar Sesión</button>
+                </a>
+                <a href="registro.html">
+                <button class="btn btn-primary">Registrarse</button>
+                </a>
+            </div>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="destinos.html" class="active">Destinos</a></li>
+            <li><a href="#">Paquetes</a></li>
+            <li><a href="#">Ofertas</a></li>
+            <li><a href="#">Sobre Nosotros</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </div>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="destinos.html">Destinos</a></li>
+                <li><span id="destino-breadcrumb">Detalles del Destino</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <section class="destino-detalle">
+        <div class="container">
+            <div class="destino-header">
+                <h1 id="destino-nombre">Cargando destino...</h1>
+            </div>
+
+            <div class="destino-content">
+                <div class="destino-galeria">
+                    <div class="destino-imagen-principal">
+                        <img id="destino-img" src="https://via.placeholder.com/800x500?text=Cargando+Imagen" alt="Imagen del destino">
+                    </div>
+                    <div class="destino-imagenes-adicionales" id="galeria-imagenes">
+                        <!-- Las imágenes se cargarán dinámicamente aquí -->
+                    </div>
+                </div>
+                
+                <div class="destino-info">
+                    <div class="destino-descripcion">
+                        <h2>Descripción</h2>
+                        <p id="destino-descripcion">Cargando descripción...</p>
+                    </div>
+                    
+                    <div class="destino-tags">
+                        <h3>Características</h3>
+                        <div id="destino-tags-container" class="tags-container">
+                            <!-- Los tags se cargarán dinámicamente -->
+                        </div>
+                    </div>
+
+                    <div class="popularidad">
+                        <h3>Popularidad</h3>
+                        <h4>Número de Visitas</h4>
+                        <p id="destino-visitas">Visitas: 0</p>
+                    </div>                      
+                    
+                    <div class="destino-acciones">
+                        <button class="btn btn-primary btn-lg">
+                            <i class="fas fa-calendar-alt"></i> Reservar visita
+                        </button>
+                        <button class="btn btn-outline btn-lg">
+                            <i class="far fa-heart"></i> Guardar en favoritos
+                        </button>
+                    </div>
+                    
+                    <!-- Movido debajo de los botones de acción -->
+                    <div class="destino-meta">
+                        <div class="ubicacion">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span id="destino-ubicacion">Cargando ubicación...</span>
+                        </div>
+                        <div class="rating">
+                            <div id="destino-estrellas"></div>
+                            <span id="destino-rating">0.0</span>
+                            <span>(<span id="destino-reviews">0</span>+ reseñas)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="logo">
+                        <img src="img/logo.png" alt="Logo">
+                        <span>Tourisme</span>
+                    </div>
+                    <p>Haz tu reserva de viajes con confianza para descubrir los maravillosos lugares del Valle de Aburrá</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Servicios</h3>
+                    <ul>
+                        <li><a href="#">Reservas</a></li>
+                        <li><a href="#">Rutas</a></li>
+                        <li><a href="#">Paquetes</a></li>
+                        <li><a href="#">Actividades</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Soporte</h3>
+                    <ul>
+                        <li><a href="#">Centro de Ayuda</a></li>
+                        <li><a href="#">Contacto</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="year"></span> Tourisme. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="Js/destino_tarjeta.js"></script>
+</body>
+</html>
