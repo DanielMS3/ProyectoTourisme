@@ -667,4 +667,29 @@ document.addEventListener("DOMContentLoaded", () => {
   
   // Establecer el año actual en el footer
   document.getElementById("year").textContent = new Date().getFullYear();
+
+  //Funcion Contador de Visitas
+  function crearTarjetaDestino(destino) {
+    const tarjeta = document.createElement("div");
+    tarjeta.classList.add("destino-tarjeta");
+ 
+     tarjeta.innerHTML = `
+        <img src="${destino.imagen}" alt="${destino.nombre}">
+        <div class="contenido">
+           <h3>${destino.nombre}</h3>
+           <p>${destino.descripcion}</p>
+           <div class="caracteristicas">
+               <span><i class="fas fa-map-marker-alt"></i> ${destino.ubicacion}</span>
+               <span><i class="fas fa-star"></i> ${destino.calificacion}</span>
+           </div>
+           <div class="popularidad">
+               <h4>Popularidad</h4>
+               <p class="num-visitas">Número de Visitas: <span id="visitas-${destino.id}">0</span></p>
+           </div>
+           <button class="btn-ver-detalles" data-id="${destino.id}">Ver detalles</button>
+       </div>
+     `;
+     return tarjeta;
+    }
+
 });
