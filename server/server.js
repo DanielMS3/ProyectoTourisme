@@ -82,41 +82,36 @@ app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
 */
-
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
-const session = require('express-session');
-const path = require('path');
+const dotenv = require('dotenv');
+const db = require('./database'); // Conexión a MySQL
 
-// Importar rutas
-const authRoutes = require('./routes/auth');
+// Cargar variables de entorno desde .env
+dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 // Middleware
+app.use(cors());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, '..'))); // Servir archivos estáticos desde la raíz del proyecto
-app.use('/uploads', express.static(path.join(__dirname, '../uploads'))); // Servir archivos de uploads
 
-// Configuración de sesiones
-app.use(session({
-    secret: process.env.SESSION_SECRET || 'tourisme_secret_key',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: process.env.NODE_ENV === 'production', maxAge: 24 * 60 * 60 * 1000 } // 24 horas
-}));
+// Rutas
+const registroRoutes = require('./routes/registro_conexion');
+app.use('/api', registroRoutes);
 
-// Rutas API
-app.use('/api/auth', authRoutes);
+const loginRoute = require('./routes/login');
+app.use('/login', loginRoute);
 
-// Ruta para la página de inicio
+
+// Ruta de prueba
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'index.html'));
+    res.send('Servidor funcionando correctamente 🚀');
 });
 
-// Iniciar el servidor
+// Iniciar servidor
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Servidor ejecutándose en http://localhost:${PORT}`);
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });

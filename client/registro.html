@@ -25,31 +25,23 @@
                 <h2>Completa tu perfil</h2>
                 <p class="subtitle">Crea tu cuenta para comenzar a viajar</p>
 
-                <div class="avatar-container">
-                    <div class="avatar-circle">
-                        <img src="https://via.placeholder.com/150" alt="Avatar" class="avatar-img" id="avatarPreview">
-                        <button type="button" class="avatar-upload" id="avatarUploadBtn">
-                            <i class="fas fa-camera"></i>
-                        </button>
-                        <input type="file" id="avatarInput" accept="image/*" hidden>
-                    </div>
-                    <p class="avatar-text">Sube una foto</p>
-                </div>
-
                 <form id="registerForm" class="form-container">
-                    <div class="input-group">
-                        <label for="fullName">Nombre completo <span class="required">*</span></label>
-                        <div class="input-field">
-                            <i class="fas fa-user"></i>
-                            <input type="text" id="fullName" required placeholder="Ingrese su nombre completo">
-                        </div>
-                    </div>
-
                     <div class="input-group">
                         <label for="email">Correo electrónico <span class="required">*</span></label>
                         <div class="input-field">
                             <i class="fas fa-envelope"></i>
                             <input type="email" id="email" required placeholder="Ingrese su correo electrónico">
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="password">Contraseña <span class="required">*</span></label>
+                        <div class="input-field">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="password" required placeholder="Ingrese contraseña">
+                            <button type="button" class="toggle-password" aria-label="Toggle password visibility">
+                                <i class="fas fa-eye"></i>
+                            </button>
                         </div>
                     </div>
 
@@ -93,16 +85,7 @@
                     </div>
 
 
-                    <div class="input-group">
-                        <label for="password">Contraseña <span class="required">*</span></label>
-                        <div class="input-field">
-                            <i class="fas fa-lock"></i>
-                            <input type="password" id="password" required placeholder="Ingrese contraseña">
-                            <button type="button" class="toggle-password" aria-label="Toggle password visibility">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                        </div>
-                    </div>
+                    
 
                     <button type="submit" class="register-btn">
                         Crear cuenta
