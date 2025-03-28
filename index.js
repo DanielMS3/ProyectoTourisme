@@ -1,10 +1,9 @@
-const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
-const dotenv = require('dotenv');
-const jwt = require('jsonwebtoken');
-const db = require('./server/database/database'); 
-
+const express = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const dotenv = require("dotenv");
+const jwt = require("jsonwebtoken");
+const db = require("./server/database/database");
 
 dotenv.config();
 const app = express();
@@ -14,15 +13,16 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const path = require("path");
+
 app.use(express.static(path.join(__dirname, "client", "public")));
 
 
 // Rutas
-const registroRoutes = require('./server/routes/registro_conexion');
-app.use('/api', registroRoutes);
+const registroRoutes = require("./server/routes/registro_conexion");
+app.use("/api", registroRoutes);
 
-const loginRoute = require('./server/routes/login');
-app.use('/login', loginRoute);
+const loginRoute = require("./server/routes/login");
+app.use("/login", loginRoute);
 
 // Ruta protegida /perfil
 app.get("/perfil", (req, res) => {
