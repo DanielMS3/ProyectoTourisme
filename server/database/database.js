@@ -4,7 +4,7 @@ const mysql = require('mysql2');
 const connection = mysql.createConnection({
     host: 'localhost',
     user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || '1020108889',
+    password: process.env.DB_PASSWORD || 'Alskdjfhg00*',
     database: 'tourisme'
 });
 
