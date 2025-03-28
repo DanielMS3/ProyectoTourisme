@@ -101,6 +101,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Cargar las listas iniciales
-    loadTours();
     loadCalificaciones();
 });

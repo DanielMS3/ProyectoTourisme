@@ -12,6 +12,10 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'CRUD')));
 
+//get
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'CRUD', 'general_crud.html'));
+});
 
 // --- Rutas para Calificaciones ---
 app.get('/api/calificaciones', (req, res) => {
