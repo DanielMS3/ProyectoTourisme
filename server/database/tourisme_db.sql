@@ -17,6 +17,18 @@ id_rol int not null default 1, -- 1 = usuario, 2 = proveedor, 3 = administrador 
 foreign key(id_rol) references rol (id_rol) on delete cascade
 );
 
+-- MODIFICACIONES TABLA USUARIO
+alter table usuario
+add column id_autenticacion int unique not null,
+add constraint fk_usuario_autenticacion foreign key (id_autenticacion) 
+references autenticacion (id_autenticacion) on delete cascade;
+
+alter table usuario drop foreign key fk_usuario_autenticacion;
+
+alter table usuario drop column id_autenticacion;
+
+
+
 -- TABLA DE AUTENTICACIÓN (Para el registro de los usuarios) --
 create table autenticacion(
 id_autenticacion int primary key auto_increment,
@@ -30,6 +42,52 @@ id_google varchar(100) null,
 tipo_autenticacion enum ('normal', 'google') not null,
 foreign key (id_usuario) references usuario (id_usuario) on delete cascade
 );
+
+-- MODIFICACIONES TABLA AUTENTICACIÓN
+alter table autenticacion add constraint unique_correo unique (correo);
+
+alter table autenticacion drop index unique_correo;
+alter table autenticacion drop check chk_tipo_autenticacion;
+
+show indexes from autenticacion;
+
+alter table autenticacion drop index correo_2;
+alter table autenticacion drop index id_google_2;
+
+select constraint_name 
+from information_schema.table_constraints 
+where table_name = 'autenticacion' and constraint_type = 'CHECK';
+
+alter table autenticacion drop check chk_tipo_autenticacion;
+
+alter table autenticacion 
+modify correo varchar(255) unique not null, 
+modify contrasena_hash varchar(255) null, 
+modify id_google varchar(255) unique null, 
+add constraint chk_tipo_autenticacion check (
+    (tipo_autenticacion = 'normal' and contrasena_hash is not null and id_google is null) or
+    (tipo_autenticacion = 'google' and contrasena_hash is null and id_google is not null)
+);
+
+alter table autenticacion
+add constraint fk_autenticacion_usuario 
+foreign key (id_usuario) references usuario (id_usuario) on delete cascade;
+
+desc autenticacion;
+
+SHOW COLUMNS FROM autenticacion LIKE 'id_usuario';
+
+alter table autenticacion
+modify id_usuario int unique not null;
+
+select constraint_name 
+from information_schema.key_column_usage 
+where table_name = 'autenticacion' 
+and column_name = 'id_usuario';
+
+alter table autenticacion drop foreign key fk_autenticacion_usuario;
+
+
 
 -- TABLA DE RECUPERACIÓN DE CONTRASEÑA (Tokens) --
 create table token_recuperacion(
@@ -245,14 +303,14 @@ DELIMITER ;
 DELIMITER //
 create procedure insertar_usuario(
     in p_nombre varchar(100),
+    in p_id_rol int,
     in p_correo varchar(100),
+    in p_contrasena_hash varchar(100),
     in p_fecha_nacimiento date,
     in p_genero enum('masculino', 'femenino', 'otro'),
     in p_nacionalidad varchar(50),
-    in p_contrasena_hash varchar(100),
     in p_id_google varchar(100),
-    in p_tipo_autenticacion enum('normal','google'),
-    in p_id_rol int
+    in p_tipo_autenticacion enum('normal','google')
 )
 begin
     -- asignar rol por defecto si no se proporciona
@@ -263,13 +321,13 @@ begin
     -- verificar si el correo ya está registrado en autenticacion
     if (select count(*) from autenticacion where correo = p_correo) > 0 then
         signal sqlstate '45000'
-        set message_text = 'Error: El correo ya está en uso.';
+        set message_text = 'error: el correo ya está en uso.';
     end if;
 
     -- evitar que haya más de un administrador
     if p_id_rol = 3 and (select count(*) from usuario where id_rol = 3) >= 1 then
         signal sqlstate '45000'
-        set message_text = 'Error: Ya existe un administrador registrado.';
+        set message_text = 'error: ya existe un administrador registrado.';
     end if;
 
     -- insertar el usuario en la tabla usuario
@@ -281,9 +339,9 @@ begin
 
     -- insertar en la tabla autenticacion
     insert into autenticacion(id_usuario, correo, contrasena_hash, fecha_nacimiento, 
-							  genero, nacionalidad, id_google, tipo_autenticacion) 
+                              genero, nacionalidad, id_google, tipo_autenticacion) 
     values (@id_usuario, p_correo, p_contrasena_hash, p_fecha_nacimiento, 
-		    p_genero, p_nacionalidad, p_id_google, p_tipo_autenticacion);
+            p_genero, p_nacionalidad, p_id_google, p_tipo_autenticacion);
 end //
 DELIMITER ;
 
@@ -313,29 +371,35 @@ DELIMITER //
 create procedure actualizar_usuario(
     in p_id_usuario int,
     in p_nombre varchar(100),
+    in p_id_rol int,
     in p_correo varchar(100),
+    in p_contrasena_hash varchar(100),
     in p_fecha_nacimiento date,
     in p_genero enum('masculino', 'femenino', 'otro'),
     in p_nacionalidad varchar(50),
-    in p_contrasena_hash varchar(100),
     in p_id_google varchar(100),
-    in p_tipo_autenticacion enum('normal', 'google'),
-    in p_id_rol int
+    in p_tipo_autenticacion enum('normal', 'google')
 )
 begin 
+    -- verificar que el usuario exista
+    if not exists (select 1 from usuario where id_usuario = p_id_usuario) then
+        signal sqlstate '45000'
+        set message_text = 'error: el usuario no existe.';
+    end if;
+
     -- verificar que el nuevo correo no esté en uso por otro usuario
     if (select count(*) from autenticacion where correo = p_correo and id_usuario != p_id_usuario) > 0 then
         signal sqlstate '45000'
-        set message_text = 'Error: El correo ya está en uso por otro usuario.';
+        set message_text = 'error: el correo ya está en uso por otro usuario.';
     end if;
 
     -- evitar que haya más de un administrador
     if p_id_rol = 3 and (select count(*) from usuario where id_rol = 3 and id_usuario != p_id_usuario) >= 1 then
         signal sqlstate '45000'
-        set message_text = 'Error: Ya existe un administrador registrado.';
+        set message_text = 'error: ya existe un administrador registrado.';
     end if;
 
-    -- actualizar el usuario
+    -- actualizar el usuario (solo nombre y rol)
     update usuario
     set nombre = p_nombre,
         id_rol = p_id_rol
@@ -360,25 +424,22 @@ begin
     -- verificar si el usuario existe
     if not exists (select 1 from usuario where id_usuario = p_id_usuario) then
         signal sqlstate '45000'
-        set message_text = 'Error: El usuario no existe.';
+        set message_text = 'error: el usuario no existe.';
     end if;
 
     -- evitar la eliminación del único administrador
     if (select id_rol from usuario where id_usuario = p_id_usuario) = 3 
        and (select count(*) from usuario where id_rol = 3) = 1 then
         signal sqlstate '45000'
-        set message_text = 'Error: No se puede eliminar el único administrador.';
+        set message_text = 'error: no se puede eliminar el único administrador.';
     end if;
 
     -- verificar si el usuario tiene dependencias antes de eliminarlo
-    if (select count(*) from autenticacion where id_usuario = p_id_usuario) > 0 then
-        delete from autenticacion where id_usuario = p_id_usuario;
-    end if;
-
     if (select count(*) from empresa where id_usuario = p_id_usuario) > 0 then
         delete from empresa where id_usuario = p_id_usuario;
     end if;
 
+    -- eliminar usuario (autenticacion se eliminará automáticamente por cascade)
     delete from usuario where id_usuario = p_id_usuario;
 end //
 DELIMITER ;
@@ -386,7 +447,7 @@ DELIMITER ;
 -- ----------------------------------------------------------------------------------------------------------------- --
 
 -- TABLA AUTENTICACION
--- INSERTAR AUTENTICACION
+-- INSERTAR AUTENTICACION - NUEVO CON VERIFICACIONES
 DELIMITER //
 create procedure insertar_autenticacion(
     in p_id_usuario int,
@@ -399,7 +460,7 @@ create procedure insertar_autenticacion(
     in p_tipo_autenticacion enum('normal', 'google')
 )
 begin
-    -- verificar si el correo ya existe
+    -- verificar si el correo ya existe (en cualquier tipo de autenticación)
     if exists (select 1 from autenticacion where correo = p_correo) then
         signal sqlstate '45000'
         set message_text = 'error: el correo ya está registrado.';
@@ -411,12 +472,21 @@ begin
         set message_text = 'error: los usuarios con autenticación de google no deben tener contraseña.';
     end if;
 
+    -- verificar que un usuario con autenticación normal tenga una contraseña
+    if p_tipo_autenticacion = 'normal' and (p_contrasena_hash is null or p_contrasena_hash = '') then
+        signal sqlstate '45000'
+        set message_text = 'error: los usuarios con autenticación normal deben tener una contraseña.';
+    end if;
+
+    -- Verificar que un usuario con autenticación de google tenga el id_google no nulo
+    if p_tipo_autenticacion = 'google' and (p_id_google is null or p_id_google = '') then
+        signal sqlstate '45000'
+        set message_text = 'error: los usuarios con autenticación de google deben tener un id_google.';
+    end if;
+
     insert into autenticacion(id_usuario, correo, contrasena_hash, fecha_nacimiento, genero, 
-							  nacionalidad, id_google, tipo_autenticacion)
-    values (p_id_usuario, p_correo, p_contrasena_hash, p_fecha_nacimiento, p_genero, 
-			p_nacionalidad, p_id_google, p_tipo_autenticacion);
-end //
-DELIMITER ;
+                              nacionalidad, id_google, tipo_autenticacion)
+    values (p_id_usuario, p_correo_
 
 -- CONSULTAR POR ID
 DELIMITER //
@@ -436,7 +506,8 @@ begin
 end //
 DELIMITER ;
 
--- ACTUALIZAR 
+-- ACTUALIZAR - NUEVO CON RESTRICCIONES
+-- ACTUALIZAR - NUEVO CON RESTRICCIONES
 DELIMITER //
 create procedure actualizar_autenticacion(
     in p_id_usuario int,
@@ -453,26 +524,50 @@ begin
     if exists (select 1 from autenticacion where correo = p_correo and id_usuario != p_id_usuario) then
         signal sqlstate '45000'
         set message_text = 'error: el correo ya está en uso por otro usuario.';
-    else
-        -- validar que si el usuario se autenticó con google, no pueda cambiar su correo
-        if (select tipo_autenticacion from autenticacion where id_usuario = p_id_usuario) = 'google' 
-			and p_correo != (select correo from autenticacion where id_usuario = p_id_usuario) then
-            signal sqlstate '45000'
-            set message_text = 'error: los usuarios autenticados con google no pueden cambiar su correo.';
-        end if;
-
-        update autenticacion
-        set correo = p_correo,
-            contrasena_hash = p_contrasena_hash,
-            fecha_nacimiento = p_fecha_nacimiento,
-            genero = p_genero,
-            nacionalidad = p_nacionalidad,
-            id_google = p_id_google,
-            tipo_autenticacion = p_tipo_autenticacion
-        where id_usuario = p_id_usuario;
     end if;
+
+    -- verificar si el usuario se autenticó con google, que no pueda cambiar su correo
+    if (select tipo_autenticacion from autenticacion where id_usuario = p_id_usuario) = 'google' 
+        and p_correo != (select correo from autenticacion where id_usuario = p_id_usuario) then
+        signal sqlstate '45000'
+        set message_text = 'error: los usuarios autenticados con google no pueden cambiar su correo.';
+    end if;
+
+    -- verificar que un usuario con google no tenga contraseña
+    if p_tipo_autenticacion = 'google' and p_contrasena_hash is not null then
+        signal sqlstate '45000'
+        set message_text = 'error: los usuarios con autenticación de google no deben tener contraseña.';
+    end if;
+
+    -- verificar que un usuario con autenticación normal tenga una contraseña
+    if p_tipo_autenticacion = 'normal' and (p_contrasena_hash is null or p_contrasena_hash = '') then
+        signal sqlstate '45000'
+        set message_text = 'error: los usuarios con autenticación normal deben tener una contraseña.';
+    end if;
+
+    -- Verificar que un usuario con autenticación de google tenga el id_google no nulo
+    if p_tipo_autenticacion = 'google' and (p_id_google is null or p_id_google = '') then
+        signal sqlstate '45000'
+        set message_text = 'error: los usuarios con autenticación de google deben tener un id_google.';
+    end if;
+
+    update autenticacion
+    set correo = p_correo,
+        contrasena_hash = p_contrasena_hash,
+        fecha_nacimiento = p_fecha_nacimiento,
+        genero = p_genero,
+        nacionalidad = p_nacionalidad,
+        id_google = p_id_google,
+        tipo_autenticacion = p_tipo_autenticacion
+    where id_usuario = p_id_usuario;
 end //
 DELIMITER ;
+
+
+-- ELIMINACION DE PROCEDIMIENTOS PARA CORREGIR COSAS DE AUTENTICACIÓN 
+drop procedure if exists insertar_autenticacion;
+drop procedure if exists actualizar_autenticacion;
+
 
 -- ------------------------------------------------------------------------------------------------------------------ --
 
@@ -1851,6 +1946,8 @@ begin
 end //
 DELIMITER ;
 
+drop trigger if exists tr_eliminar_usuario;
+
 
 -- --------------------------------------------------------------------------------------------------------------- --
 
@@ -1867,6 +1964,7 @@ begin
     end if;
 end //
 DELIMITER ;
+
 
 -- ANTES DE INSERTAR AUTENTICACION
 DELIMITER //
@@ -2322,3 +2420,6 @@ DELIMITER ;
 -- ------------------------------------------------------------------------------------------------------------------ --
 
 show triggers;
+
+DROP TRIGGER IF EXISTS tr_antes_de_actualizar_correo;
+DROP TRIGGER IF EXISTS tr_antes_de_actualizar_correo;
