@@ -24,6 +24,11 @@ app.use("/api", registroRoutes);
 const loginRoute = require("./server/routes/login");
 app.use("/login", loginRoute);
 
+const recuperacionRoute = require("./server/routes/recuperar_contrasena");
+app.use("/recuperar_contrasena", recuperacionRoute);
+
+
+
 // Ruta protegida /perfil
 app.get("/perfil", (req, res) => {
     const authHeader = req.headers["authorization"];
