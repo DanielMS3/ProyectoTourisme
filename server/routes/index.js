@@ -13,3 +13,4 @@ router.use('/auth', authRoutes);
 // Aquí puedes agregar otras rutas de tu API
 
 module.exports = router;
+
