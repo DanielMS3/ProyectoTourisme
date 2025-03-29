@@ -4,7 +4,7 @@ const authRoutes = require('./auth');
 
 // Ruta raíz
 router.get('/', (req, res) => {
-    res.send('Bienvenido a Tourisme API');
+    res.send('Bienvenido a Tourisme');
 });
 
 // Rutas de autenticación
