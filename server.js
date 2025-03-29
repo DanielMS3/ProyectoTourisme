@@ -1,5 +1,10 @@
 const express = require('express');
 const path = require('path');
+const dotenv = require('dotenv');
+
+// Cargar variables de entorno
+dotenv.config();
+
 const app = express();
 
 // Configuración
@@ -10,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Conexión a la base de datos
-const connection = require('./server/database/database'); // Ajuste de la ruta
+const connection = require('./server/database/database');
 
 // Rutas
 const routes = require('./server/routes/index');

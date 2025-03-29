@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const path = require('path');
 const fs = require('fs');
-const db = require('../../database/database');
+const db = require('../database/database.js');
 const multer = require('multer');
 
 // Asegúrate de que la carpeta de uploads exista
