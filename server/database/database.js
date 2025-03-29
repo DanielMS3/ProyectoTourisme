@@ -4,6 +4,9 @@ require('dotenv').config();
 // cargar dependencias
 const mysql = require('mysql2');
 
+// configuración del SSL 
+const sslConfig = process.env.DB_SSL === 'true' ? { rejectUnauthorized: true } : false;
+
 // crear conexion con la base de datos
 const conexion = mysql.createConnection({
     host: process.env.DB_HOST,
