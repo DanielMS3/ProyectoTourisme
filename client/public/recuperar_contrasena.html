@@ -31,19 +31,20 @@
 
                 <form id="recoverForm" class="form-container">
                     <div class="input-group">
-                        <label for="email">Correo electrónico</label>
+                        <label for="correo">Correo electrónico</label>
                         <div class="input-field">
                             <i class="fas fa-envelope"></i>
-                            <input type="email" id="email" required placeholder="Ingrese su correo electrónico">
+                            <input type="email" id="correo" name="correo" required placeholder="Ingrese su correo electrónico">
                         </div>
                     </div>
-                    <a href="ingresar_codigo.html">          
                     <button type="submit" class="recover-btn">
                         Enviar código
                         <i class="fas fa-paper-plane"></i>
                     </button>
-                    </a>  
                 </form>
+
+                <!-- Aquí se mostrará el mensaje de error o éxito -->
+                <p id="mensaje" class="mensaje"></p>
 
                 <div class="divider">
                     <span></span>
@@ -59,6 +60,7 @@
         </div>
     </main>
 
-    <script src="script.js"></script>
+    <script src="/js/recuperacion.js"></script>
+
 </body>
 </html>

@@ -15,7 +15,7 @@ const connection = mysql.createConnection({
   database: process.env.DB_NAME,
   port: process.env.DB_PORT,
   ssl: sslConfig  // Aplicar la configuración SSL corregida
-});
+}).promise();
 
 // Probar la conexión
 connection.connect((err) => {
