@@ -1,27 +1,22 @@
 const express = require('express');
-const connection = require('./database/database'); // Conexión a la base de datos
+const path = require('path');
 const app = express();
 
-// Middleware para servir archivos estáticos (si tienes un frontend en 'public')
-app.use(express.static('public'));
+// Configuración
+app.set('port', process.env.PORT || 3000);
 
-// Ruta principal para verificar que el servidor está funcionando
-app.get('/', (req, res) => {
-  res.send('<h1>Bienvenido a Tourisme</h1><p>El servidor está funcionando correctamente.</p>');
-});
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-// Ruta de prueba de conexión a la base de datos
-app.get('/test-db', (req, res) => {
-  connection.query('SELECT 1 + 1 AS result', (err, results) => {
-    if (err) {
-      console.error('Error ejecutando la consulta:', err);
-      return res.status(500).json({ error: 'Error en la base de datos' });
-    }
-    res.json({ message: 'Conexión exitosa', result: results[0].result });
-  });
-});
+// Conexión a la base de datos
+const connection = require('./server/database/database'); // Ajuste de la ruta
 
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`✅ Servidor corriendo en: http://localhost:${PORT}`);
+// Rutas
+const routes = require('./server/routes/index');
+app.use('/api', routes);
+
+// Iniciar el servidor
+app.listen(app.get('port'), () => {
+    console.log(`Servidor corriendo en http://localhost:${app.get('port')}`);
 });
