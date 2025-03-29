@@ -3,7 +3,7 @@ const path = require('path');
 const app = express();
 
 // Configuración
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3306);
 
 // Middleware
 app.use(express.json());
