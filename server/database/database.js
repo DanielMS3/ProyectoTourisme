@@ -1,30 +1,29 @@
-// cargar variables de entorno
+// Cargar las variables de entorno
 require('dotenv').config();
 
-// cargar dependencias
+// Importar mysql2
 const mysql = require('mysql2');
 
-// configuración del SSL 
+// Configurar SSL correctamente
 const sslConfig = process.env.DB_SSL === 'true' ? { rejectUnauthorized: true } : false;
 
-// crear conexion con la base de datos
-const conexion = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    port: process.env.DB_PORT,
-    ssl: process.env.DB_SSL
+// Crear conexión con MySQL en Azure
+const connection = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT,
+  ssl: sslConfig  // Aplicar la configuración SSL corregida
 });
 
-// conexion.connect();
+// Probar la conexión
 connection.connect((err) => {
-    if (err) {
-        console.error('Error al conectar con la base de datos:', err);
-        return;
-    } else {
-        console.log('Conexión establecida con éxito a la base de datos con Azure');
-    }
+  if (err) {
+    console.error('Error conectando a la base de datos: ', err);
+    return;
+  }
+  console.log('Conexión exitosa a la base de datos MySQL en Azure');
 });
-// exportar conexion
-module.exports = conexion;
+
+module.exports = connection;
