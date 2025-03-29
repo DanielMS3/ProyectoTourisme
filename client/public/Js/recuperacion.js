@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const formRecuperacion = document.getElementById("form-recuperacion");
+    const formRecuperacion = document.getElementById("recoverForm");
     const formCodigo = document.getElementById("form-codigo");
     const formContrasena = document.getElementById("form-contrasena");
     const mensaje = document.getElementById("mensaje");
@@ -11,26 +11,35 @@ document.addEventListener("DOMContentLoaded", () => {
     if (formRecuperacion) {
         formRecuperacion.addEventListener("submit", async (e) => {
             e.preventDefault();
-            correoUsuario = document.getElementById("correo").value;
-            localStorage.setItem("correoUsuario", correoUsuario); // Guardar el correo
+            
+            // 🔍 Verificar si el input #correo existe
+            const correoInput = document.getElementById("correo");
+            if (!correoInput) {
+                console.error("El input con id='correo' no existe.");
+                return;
+            }
     
-            const res = await fetch("/api/enviar-codigo", {
+            correoUsuario = correoInput.value;
+            localStorage.setItem("correoUsuario", correoUsuario);
+    
+            const res = await fetch("http://localhost:3000/api/enviar-codigo", { 
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ correo: correoUsuario })
             });
     
             const data = await res.json();
-            console.log(data); // 👉 Verifica qué responde el servidor
+            console.log(data);
     
             if (mensaje) mensaje.textContent = data.mensaje || data.error;
     
             if (res.ok) {
-                console.log("Redirigiendo a ingresar_codigo.html"); // 👉 Verifica si llega aquí
+                console.log("Redirigiendo a ingresar_codigo.html");
                 window.location.href = "ingresar_codigo.html";
             }
         });
     }
+
     
 
     // Verificar código
