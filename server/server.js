@@ -1,5 +1,5 @@
 const express = require('express');
-const connection = require('./server/database/database'); // Importar la conexión
+const connection = require('./database/database'); // Ruta corregida
 const app = express();
 
 app.get('/test-db', (req, res) => {
