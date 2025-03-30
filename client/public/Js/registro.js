@@ -10,7 +10,7 @@ document.getElementById('registerForm').addEventListener('submit', async (event)
     const userData = {correo, contrasena, fecha_nacimiento, genero, nacionalidad };
 
     try {
-        const response = await fetch('/api', {
+        const response = await fetch('/api/registro', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(userData)
