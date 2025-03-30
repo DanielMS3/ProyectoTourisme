@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, "client", "public")));
 
 // Rutas
 const registroRoutes = require("./server/routes/registro_conexion");
-app.use("/api", registroRoutes);
+app.use("/api/registro", registroRoutes);
 
 const loginRoute = require("./server/routes/login");
 app.use("/login", loginRoute);
