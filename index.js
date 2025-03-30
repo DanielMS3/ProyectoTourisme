@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const jwt = require("jsonwebtoken");
 const path = require("path");
 const db = require("./server/database/database.js");
+const expressListRoutes = require("express-list-routes");
 
 dotenv.config();
 const app = express();
@@ -50,6 +51,9 @@ app.get("/perfil", (req, res) => {
 
 // Iniciar servidor
 const PORT = process.env.PORT || 3000;
+
+expressListRoutes(app);
+
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
