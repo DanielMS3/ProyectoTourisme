@@ -6,7 +6,7 @@ const connection = require('../database/database');
 const router = express.Router();
 
 // Ruta para registrar usuario
-router.post('/', async (req, res) => {
+router.post('/registro', async (req, res) => {
     let { correo, contrasena, fecha_nacimiento, genero, nacionalidad } = req.body; // Usar let para genero
 
     // Si el usuario envió "M", "F" o "O", conviértelo a valores válidos
