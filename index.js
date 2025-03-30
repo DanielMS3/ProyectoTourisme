@@ -19,14 +19,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "client", "public")));
 
 
-// Rutas
+// Importaciòn de rutas
 const registroRoutes = require("./server/routes/registro_conexion");
-app.use("/api/registro", registroRoutes);
-
 const loginRoute = require("./server/routes/login");
-app.use("/login", loginRoute);
-
 const recuperarContrasenaRoutes = require('./server/routes/recuperar_contrasena');
+
+
+// Rutas
+app.use("/api/registro", registroRoutes);
+app.use("/login", loginRoute);
 app.use('/api', recuperarContrasenaRoutes);
 
 
@@ -51,7 +52,6 @@ app.get("/perfil", (req, res) => {
 
 // Iniciar servidor
 const PORT = process.env.PORT || 3000;
-
 expressListRoutes(app);
 
 app.listen(PORT, () => {
