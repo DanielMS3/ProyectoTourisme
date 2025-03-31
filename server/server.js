@@ -1,12 +1,16 @@
+require('dotenv').config();
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require("path");
 const jwt = require("jsonwebtoken");
 const expressListRoutes = require("express-list-routes");
-const db = require("./database/database"); // Conexión a la base de datos
+const db = require("./database/database"); 
+const helmet = require('helmet');
+const morgan = require('morgan');
 
 const app = express();
+const port = 3000;
 
 // Middleware
 app.use(cors());
