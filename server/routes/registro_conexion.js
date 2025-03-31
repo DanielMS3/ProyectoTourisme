@@ -2,54 +2,56 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const connection = require('../database/database');
 
-
 const router = express.Router();
 
 // Ruta para registrar usuario
 router.post('/', async (req, res) => {
-    let { role, correo, contrasena, fecha_nacimiento, genero, nacionalidad } = req.body; // Usar let para genero
+    let { role, correo, contrasena, fecha_nacimiento, genero, nacionalidad } = req.body;
 
-    // Si el usuario envió "M", "F" o "O", conviértelo a valores válidos
-    if (genero === "M") genero = "Masculino";
-    if (genero === "F") genero = "Femenino";
-    if (genero === "O") genero = "Otro";
+    console.log('Datos recibidos:', req.body);
 
-    // Validación de campos obligatorios
-    if (!correo || !contrasena || !fecha_nacimiento || !genero || !nacionalidad) {
+    // Validación de datos obligatorios
+    if (!correo || !contrasena || !fecha_nacimiento || !genero || !nacionalidad || !role) {
         return res.status(400).json({ error: "Todos los campos obligatorios deben ser completados." });
     }
 
-    try {
-        const hashedPassword = await bcrypt.hash(contrasena, 10);
+    // Validación del tipo de usuario
+    if (role !== "usuario" && role !== "empresa") {
+        return res.status(400).json({ error: "El tipo de usuario debe ser 'usuario' o 'empresa'." });
+    }
 
-        let id_rol = 1;
-        if(role === 'empresa'){
-            id_rol = 2;
+    try {
+        // Verificar si el correo ya está registrado
+        const [existingUser] = await connection.promise().query(
+            "SELECT id_usuario FROM usuario WHERE correo = ?",
+            [correo]
+        );
+
+        if (existingUser.length > 0) {
+            return res.status(400).json({ error: "El correo ya está registrado." });
         }
 
-        connection.query('INSERT INTO Usuario (correo, id_rol) VALUES (?, ?)', [correo, id_rol], (err, result) => {
-            if (err) {
-                console.error('Error al insertar en Usuario:', err);
-                return res.status(500).json({ error: 'Error en el servidor' });
-            }
+        // Encriptar contraseña
+        const hashedPassword = await bcrypt.hash(contrasena, 10);
 
-            const id_usuario = result.insertId;
+        // Asignar el rol
+        const id_rol = role === "empresa" ? 2 : 1; // 1 = Turista, 2 = Empresa
 
-            connection.query(
-                'INSERT INTO autenticacion (id_usuario, correo, contrasena_hash, fecha_nacimiento, genero, nacionalidad, tipo_autenticacion) VALUES (?, ?, ?, ?, ?, ?, "normal")',
-                [id_usuario, correo, hashedPassword, fecha_nacimiento, genero, nacionalidad],
-                (err) => {
-                    if (err) {
-                        console.error('Error al insertar en autenticacion:', err);
-                        return res.status(500).json({ error: 'Error en el servidor' });
-                    }
-                    res.json({ message: "Usuario registrado exitosamente" });
-                }
-            );
-        });
+        // Inserción en la base de datos (usuario y autenticación en un solo query)
+        const query = `
+            INSERT INTO usuario (correo, id_rol)
+            VALUES (?, ?);
+            
+            INSERT INTO autenticacion (id_usuario, correo, contrasena_hash, fecha_nacimiento, genero, nacionalidad, tipo_autenticacion)
+            VALUES (LAST_INSERT_ID(), ?, ?, ?, ?, ?, "normal");
+        `;
+
+        await connection.promise().query(query, [correo, id_rol, correo, hashedPassword, fecha_nacimiento, genero, nacionalidad]);
+
+        res.json({ message: "Usuario registrado exitosamente" });
     } catch (error) {
-        console.error('Error:', error);
-        res.status(500).json({ error: 'Error en el servidor' });
+        console.error("Error en el servidor:", error);
+        res.status(500).json({ error: "Error interno en el servidor." });
     }
 });
 
