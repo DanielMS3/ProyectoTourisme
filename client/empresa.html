@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourisme - Portal de Empresa</title>
+    <link rel="stylesheet" href="css/styles_pagina.css">
+    <link rel="stylesheet" href="css/empresa.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="img/logo.png" alt="Logo">
+                <span>Tourisme</span>
+            </div>
+            <nav class="nav-desktop">
+                <ul>
+                    <li><a href="#mis_destinos">Mis Destinos</a></li>
+                    <li><a href="#mis_productos">Mis Productos</a></li>
+                    <li><a href="#reservas_seccion">Reservas</a></li>
+                    <li><a href="#resenas_seccion">Reseñas</a></li>
+                    <li><a href="#contenido_seccion">Contenido</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <div class="empresa-profile">
+                    <span>Aventuras S.A.</span>
+                    <i class="fas fa-building"></i>
+                </div>
+                <a href="index.html">               
+                    <button class="btn btn-primary">Cerrar Sesión</button>
+                </a>  
+            </div>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#mis_destinos">Mis Destinos</a></li>
+            <li><a href="#mis_productos">Mis Productos</a></li>
+            <li><a href="#reservas_seccion">Reservas</a></li>
+            <li><a href="#resenas_seccion">Reseñas</a></li>
+            <li><a href="#contenido_seccion">Contenido</a></li>
+            <li><a href="index.html">Cerrar Sesión</a></li>
+        </ul>
+    </div>
+
+    <div class="empresa-dashboard">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>Portal de Empresa</h1>
+                <p>Bienvenido al portal de gestión para empresas asociadas</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>8</h3>
+                        <p>Destinos Activos</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>12</h3>
+                        <p>Productos/Servicios</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>42</h3>
+                        <p>Reservas Mensuales</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>4.7</h3>
+                        <p>Valoración Media</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="destinos empresa-section" id="mis_destinos">
+        <div class="container">
+            <div class="section-header empresa-header">
+                <h2>Mis Destinos</h2>
+                <p>Gestiona los destinos turísticos de tu empresa</p>
+                <button class="btn btn-primary add-btn">
+                    <i class="fas fa-plus"></i> Añadir Destino
+                </button>
+            </div>
+            <div class="empresa-table-container">
+                <table class="empresa-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Imagen</th>
+                            <th>Nombre</th>
+                            <th>Categoría</th>
+                            <th>Ciudad</th>
+                            <th>Dirección</th>
+                            <th>Valoración</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><img src="img/Comuna13.webp" alt="Comuna_13" class="table-img"></td>
+                            <td>La comuna 13</td>
+                            <td>Turismo Urbano</td>
+                            <td>Medellín</td>
+                            <td>Comuna 13, San Javier</td>
+                            <td>4.8</td>
+                            <td class="actions">
+                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn view-btn"><i class="fas fa-eye"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><img src="img/pueblito_paisa.jpg" alt="pueblito_paisa" class="table-img"></td>
+                            <td>Pueblito paisa</td>
+                            <td>Turismo Cultural</td>
+                            <td>Medellín</td>
+                            <td>Cerro Nutibara</td>
+                            <td>4.7</td>
+                            <td class="actions">
+                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn view-btn"><i class="fas fa-eye"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><img src="img/parque_arvi.jpeg" alt="Parque Arví" class="table-img"></td>
+                            <td>Parque Arví</td>
+                            <td>Ecoturismo</td>
+                            <td>Medellín</td>
+                            <td>Corregimiento de Santa Elena</td>
+                            <td>4.9</td>
+                            <td class="actions">
+                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn view-btn"><i class="fas fa-eye"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="productos empresa-section" id="mis_productos">
+        <div class="container">
+            <div class="section-header empresa-header">
+                <h2>Mis Productos y Servicios</h2>
+                <p>Gestiona los productos y servicios de tu empresa</p>
+                <button class="btn btn-primary add-btn">
+                    <i class="fas fa-plus"></i> Añadir Producto/Servicio
+                </button>
+            </div>
+            <div class="empresa-table-container">
+                <table class="empresa-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Precio</th>
+                            <th>Destino</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Tour Guiado Comuna 13</td>
+                            <td>Recorrido guiado por la Comuna 13 con explicación histórica</td>
+                            <td>$45.000</td>
+                            <td>Comuna 13</td>
+                            <td><span class="status active">Activo</span></td>
+                            <td class="actions">
+                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn view-btn"><i class="fas fa-eye"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Visita Pueblito Paisa</td>
+                            <td>Entrada y recorrido por el Pueblito Paisa</td>
+                            <td>$25.000</td>
+                            <td>Pueblito Paisa</td>
+                            <td><span class="status active">Activo</span></td>
+                            <td class="actions">
+                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn view-btn"><i class="fas fa-eye"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Senderismo Parque Arví</td>
+                            <td>Recorrido de senderismo por los principales senderos del parque</td>
+                            <td>$35.000</td>
+                            <td>Parque Arví</td>
+                            <td><span class="status inactive">Inactivo</span></td>
+                            <td class="actions">
+                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn view-btn"><i class="fas fa-eye"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Transporte Especial</td>
+                            <td>Servicio de transporte entre destinos turísticos</td>
+                            <td>$60.000</td>
+                            <td>Varios</td>
+                            <td><span class="status active">Activo</span></td>
+                            <td class="actions">
+                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn view-btn"><i class="fas fa-eye"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="reservas empresa-section" id="reservas_seccion">
+        <div class="container">
+            <div class="section-header empresa-header">
+                <h2>Reservas</h2>
+                <p>Gestiona las reservas de tus servicios</p>
+                <div class="filter-controls">
+                    <select class="filter-select">
+                        <option value="all">Todas las reservas</option>
+                        <option value="pendiente">Pendientes</option>
+                        <option value="confirmada">Confirmadas</option>
+                        <option value="cancelada">Canceladas</option>
+                    </select>
+                </div>
+            </div>
+            <div class="empresa-table-container">
+                <table class="empresa-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Cliente</th>
+                            <th>Destino</th>
+                            <th>Producto/Servicio</th>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Cantidad</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>María García</td>
+                            <td>Comuna 13</td>
+                            <td>Tour Guiado Comuna 13</td>
+                            <td>20/07/2023</td>
+                            <td>10:00 AM</td>
+                            <td>2</td>
+                            <td><span class="status confirmed">Confirmada</span></td>
+                            <td class="actions">
+                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn view-btn"><i class="fas fa-eye"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Carlos Rodríguez</td>
+                            <td>Parque Arví</td>
+                            <td>Senderismo Parque Arví</td>
+                            <td>15/08/2023</td>
+                            <td>09:30 AM</td>
+                            <td>4</td>
+                            <td><span class="status pending">Pendiente</span></td>
+                            <td class="actions">
+                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn view-btn"><i class="fas fa-eye"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Laura Martínez</td>
+                            <td>Pueblito Paisa</td>
+                            <td>Visita Pueblito Paisa</td>
+                            <td>05/09/2023</td>
+                            <td>11:00 AM</td>
+                            <td>3</td>
+                            <td><span class="status cancelled">Cancelada</span></td>
+                            <td class="actions">
+                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn view-btn"><i class="fas fa-eye"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="resenas empresa-section" id="resenas_seccion">
+        <div class="container">
+            <div class="section-header empresa-header">
+                <h2>Reseñas de Clientes</h2>
+                <p>Gestiona las reseñas y calificaciones de tus servicios</p>
+                <div class="filter-controls">
+                    <select class="filter-select">
+                        <option value="all">Todas las reseñas</option>
+                        <option value="5">5 estrellas</option>
+                        <option value="4">4 estrellas</option>
+                        <option value="3">3 estrellas</option>
+                        <option value="2">2 estrellas</option>
+                        <option value="1">1 estrella</option>
+                    </select>
+                </div>
+            </div>
+            <div class="resenas-grid">
+                <div class="resena-card">
+                    <div class="resena-header">
+                        <div class="cliente-info">
+                            <div class="cliente-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div>
+                                <h3>María García</h3>
+                                <p>Tour Guiado Comuna 13</p>
+                            </div>
+                        </div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>5.0</span>
+                        </div>
+                    </div>
+                    <p class="comentario">"Excelente experiencia. El guía conocía muy bien la historia del lugar y nos mostró los mejores murales. Definitivamente lo recomendaría."</p>
+                    <div class="resena-footer">
+                        <span class="fecha">20/07/2023</span>
+                        <button class="btn btn-ghost responder-btn">Responder</button>
+                    </div>
+                </div>
+                <div class="resena-card">
+                    <div class="resena-header">
+                        <div class="cliente-info">
+                            <div class="cliente-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div>
+                                <h3>Carlos Rodríguez</h3>
+                                <p>Visita Pueblito Paisa</p>
+                            </div>
+                        </div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>4.0</span>
+                        </div>
+                    </div>
+                    <p class="comentario">"Buena experiencia, aunque el lugar estaba un poco lleno. El servicio fue bueno pero podrían mejorar la organización de los grupos."</p>
+                    <div class="resena-footer">
+                        <span class="fecha">15/08/2023</span>
+                        <button class="btn btn-ghost responder-btn">Responder</button>
+                    </div>
+                </div>
+                <div class="resena-card">
+                    <div class="resena-header">
+                        <div class="cliente-info">
+                            <div class="cliente-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div>
+                                <h3>Laura Martínez</h3>
+                                <p>Senderismo Parque Arví</p>
+                            </div>
+                        </div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>4.5</span>
+                        </div>
+                    </div>
+                    <p class="comentario">"Hermoso lugar, senderos bien mantenidos y guías muy conocedores. El recorrido fue perfecto para toda la familia."</p>
+                    <div class="resena-footer">
+                        <span class="fecha">05/09/2023</span>
+                        <button class="btn btn-ghost responder-btn">Responder</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contenido empresa-section" id="contenido_seccion">
+        <div class="container">
+            <div class="section-header empresa-header">
+                <h2>Gestión de Contenido</h2>
+                <p>Administra el contenido promocional de tus servicios</p>
+                <button class="btn btn-primary add-btn">
+                    <i class="fas fa-plus"></i> Añadir Contenido
+                </button>
+            </div>
+            <div class="contenido-grid">
+                <div class="contenido-card">
+                    <div class="contenido-img">
+                        <img src="img/Comuna13.webp" alt="Comuna 13">
+                        <div class="contenido-actions">
+                            <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                            <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                    <div class="contenido-info">
+                        <h3>Descubre la Comuna 13</h3>
+                        <p>Conoce la transformación social a través del arte urbano</p>
+                        <div class="contenido-meta">
+                            <span class="precio">$45.000</span>
+                            <span class="fecha">Publicado: 10/06/2023</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contenido-card">
+                    <div class="contenido-img">
+                        <img src="img/pueblito_paisa.jpg" alt="Pueblito Paisa">
+                        <div class="contenido-actions">
+                            <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                            <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                    <div class="contenido-info">
+                        <h3>Pueblito Paisa: Tradición Antioqueña</h3>
+                        <p>Sumérgete en la cultura paisa con nuestra visita guiada</p>
+                        <div class="contenido-meta">
+                            <span class="precio">$25.000</span>
+                            <span class="fecha">Publicado: 15/07/2023</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contenido-card">
+                    <div class="contenido-img">
+                        <img src="img/parque_arvi.jpeg" alt="Parque Arví">
+                        <div class="contenido-actions">
+                            <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                            <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                    <div class="contenido-info">
+                        <h3>Aventura en Parque Arví</h3>
+                        <p>Explora la naturaleza en este increíble parque ecológico</p>
+                        <div class="contenido-meta">
+                            <span class="precio">$35.000</span>
+                            <span class="fecha">Publicado: 20/08/2023</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="logo">
+                        <img src="img/logo.png" alt="Logo">
+                        <span>Tourisme</span>
+                    </div>
+                    <p>Portal para empresas asociadas a la plataforma Tourisme</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Acceso Rápido</h3>
+                    <ul>
+                        <li><a href="#mis_destinos">Mis Destinos</a></li>
+                        <li><a href="#mis_productos">Mis Productos</a></li>
+                        <li><a href="#reservas_seccion">Reservas</a></li>
+                        <li><a href="#resenas_seccion">Reseñas</a></li>
+                        <li><a href="#contenido_seccion">Contenido</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Soporte</h3>
+                    <ul>
+                        <li><a href="#">Centro de Ayuda</a></li>
+                        <li><a href="#">Documentación</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="year"></span> Tourisme - Portal de Empresa. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/empresa.js"></script>
+</body>
+</html>
