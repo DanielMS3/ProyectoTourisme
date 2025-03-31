@@ -18,7 +18,7 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
             // Guardar el token en localStorage
             localStorage.setItem('token', result.token);
             alert('Inicio de sesión exitoso');
-            window.location.href = 'index.html'; // Redirigir al usuario a la página principal
+            window.location.href = 'home.html'; // Redirigir al usuario a la página principal
         } else {
             errorMessage.textContent = result.error; // Mostrar mensaje de error
             errorMessage.style.display = 'block';

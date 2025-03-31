@@ -1,4 +1,4 @@
-// Datos de los destinos (copia del archivo original)
+// Datos de los destinos 
 const destinos = {
   parques: [
     {
@@ -577,7 +577,7 @@ function cargarDetallesDestino() {
   
   if (!id) {
       // Si no hay ID, redirigir a la página principal
-      window.location.href = 'index.html';
+      window.location.href = 'home.html';
       return;
   }
 
