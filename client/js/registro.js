@@ -1,5 +1,5 @@
-document.getElementById('registerForm').addEventListener('submit', async (event) => {
-    event.preventDefault(); // Evita que la página se recargue
+document.getElementById('registerForm').addEventListener('submit', function(event) {
+    event.preventDefault();
 
 
     // Obtener los valores del formulario
@@ -11,32 +11,40 @@ document.getElementById('registerForm').addEventListener('submit', async (event)
     const nacionalidad = document.getElementById('nacionalidad').value;
 
 
-    // Validación para campos vacios 
-    if (role === '' || correo === '' || contrasena === '' || fecha_nacimiento === '' 
-        || genero === '' || nacionalidad === '') {
-        alert('Por favor, rellene todos los campos obligatorios.');
-        return;
-    }
-
-    const userData = {role, correo, contrasena, fecha_nacimiento, genero, nacionalidad };
-
-    try {
-        const response = await fetch('/registro', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(userData)
-        });
-
-        const result = await response.json();
-
-        if (response.ok) {
-            alert(result.message);
-            window.location.href = '../login.html'; // Redirige al login tras el registro
+    fetch('http://localhost:3000/api/registro', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            role,
+            correo,
+            contrasena,
+            fecha_nacimiento,
+            genero,
+            nacionalidad,
+        }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (response.ok){
+            alert(data.message);
         } else {
-            alert(result.error);
+            alert(data.error);
         }
-    } catch (error) {
-        console.error('Error al registrar usuario:', error);
-        alert('Error en el servidor');
-    }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Ocurrió un error en el registro.');
+    });
+});
+
+const togglePassword = document.querySelector('.toggle-password');
+const password = document.querySelector('#contrasena');
+
+togglePassword.addEventListener('click', function (e) {
+  const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+  password.setAttribute('type', type);
+  this.querySelector('i').classList.toggle('fa-eye');
+  this.querySelector('i').classList.toggle('fa-eye-slash');
 });
