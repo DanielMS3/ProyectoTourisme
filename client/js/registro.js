@@ -1,13 +1,24 @@
 document.getElementById('registerForm').addEventListener('submit', async (event) => {
     event.preventDefault(); // Evita que la página se recargue
 
-    const correo = document.getElementById('email').value;
-    const contrasena = document.getElementById('password').value;
-    const fecha_nacimiento = document.getElementById('birthDate').value;
-    const genero = document.getElementById('gender').value;
-    const nacionalidad = document.getElementById('nationality').value;
 
-    const userData = {correo, contrasena, fecha_nacimiento, genero, nacionalidad };
+    // Obtener los valores del formulario
+    const rol = document.getElementById('rol').value;
+    const correo = document.getElementById('correo').value;
+    const contrasena = document.getElementById('contrasena').value;
+    const fecha_nacimiento = document.getElementById('fecha_nacimiento').value;
+    const genero = document.getElementById('genero').value;
+    const nacionalidad = document.getElementById('nacionalidad').value;
+
+
+    // Validación para campos vacios 
+    if (rol === '' || correo === '' || contrasena === '' || fecha_nacimiento === '' 
+        || genero === '' || nacionalidad === '') {
+        alert('Por favor, rellene todos los campos obligatorios.');
+        return;
+    }
+
+    const userData = {rol, correo, contrasena, fecha_nacimiento, genero, nacionalidad };
 
     try {
         const response = await fetch('/api/registro', {
@@ -20,7 +31,7 @@ document.getElementById('registerForm').addEventListener('submit', async (event)
 
         if (response.ok) {
             alert(result.message);
-            window.location.href = 'login.html'; // Redirige al login tras el registro
+            window.location.href = '../login.html'; // Redirige al login tras el registro
         } else {
             alert(result.error);
         }
