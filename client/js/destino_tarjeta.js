@@ -9,10 +9,9 @@ const destinos = {
       imagen: "img/parque_arvi.jpeg",
       imagenes: [
         "img/parque_arvi.jpeg",
-        "img/cerro_volador.jpg",
-        "img/parque_piedras_blancas.jpg",
-        "img/parque_arvi_3.jpg",
-        "img/parque_arvi_4.jpg"
+        "img/parque_arvi_dos.jpg",
+        "img/parque_arvi_tres.jpg",
+        "img/parque_arvi_cuatro.jpg",
       ],
       rating: 4.8,
       reviews: 120,
@@ -27,9 +26,9 @@ const destinos = {
       imagen: "img/cerro_volador.jpg",
       imagenes: [
         "img/cerro_volador.jpg",
-        "img/parque_piedras_blancas.jpg",
-        "img/parque_arvi_3.jpg",
-        "img/parque_arvi_4.jpg"
+        "img/cerro_el_volador_dos.jpg",
+        "img/cerro_el_volador_tres.jpg",
+        "img/cerro_el_volador_cuatro.jpg"
       ],
       rating: 4.5,
       reviews: 95,
@@ -42,6 +41,12 @@ const destinos = {
       ubicacion: "Santa Elena",
       descripcion: "Un bosque con lagos, senderos y el Mariposario de Comfama. El Parque Ecológico Piedras Blancas está ubicado en el corregimiento de Santa Elena, a solo 30 minutos de Medellín. Este hermoso espacio natural cuenta con un embalse, bosques nativos, senderos ecológicos y el famoso Mariposario Piedras Blancas. Los visitantes pueden disfrutar de actividades como paseos en bote, caminatas, observación de flora y fauna, y visitas guiadas. Es un destino ideal para familias y amantes de la naturaleza.",
       imagen: "img/parque_piedras_blancas.jpg",
+      imagenes: [
+        "img/parque_piedras_blancas.jpg",
+        "img/parque_ecologico_piedras_blancas_dos.jpg",
+        "img/parque_ecologico_piedras_blancas_tres.jpg",
+        "img/parque_ecologico_piedras_blancas_cuatro.jpg"
+      ],
       rating: 4.7,
       reviews: 110,
       tags: ["Lagos", "Mariposario", "Naturaleza", "Senderismo", "Paseos en bote"],
