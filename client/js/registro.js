@@ -3,8 +3,8 @@ document.getElementById('registerForm').addEventListener('submit', async (event)
 
 
     // Obtener los valores del formulario
-    const rol = document.getElementById('rol').value;
-    const correo = document.getElementById('correo').value;
+    const role = document.getElementById('role').value;
+    const correo = document.getElementById('email').value;
     const contrasena = document.getElementById('contrasena').value;
     const fecha_nacimiento = document.getElementById('fecha_nacimiento').value;
     const genero = document.getElementById('genero').value;
@@ -12,13 +12,13 @@ document.getElementById('registerForm').addEventListener('submit', async (event)
 
 
     // Validación para campos vacios 
-    if (rol === '' || correo === '' || contrasena === '' || fecha_nacimiento === '' 
+    if (role === '' || correo === '' || contrasena === '' || fecha_nacimiento === '' 
         || genero === '' || nacionalidad === '') {
         alert('Por favor, rellene todos los campos obligatorios.');
         return;
     }
 
-    const userData = {rol, correo, contrasena, fecha_nacimiento, genero, nacionalidad };
+    const userData = {role, correo, contrasena, fecha_nacimiento, genero, nacionalidad };
 
     try {
         const response = await fetch('/api/registro', {
