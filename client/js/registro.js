@@ -3,8 +3,8 @@ document.getElementById('registerForm').addEventListener('submit', function(even
 
     // Obtener los valores del formulario
     const role = document.getElementById('role').value;
-    const correo = document.getElementById('email').value;
-    const contrasena = document.getElementById('contrasena').value;
+    const email = document.getElementById('correo').value;
+    const password = document.getElementById('password').value;
     const fecha_nacimiento = document.getElementById('fecha_nacimiento').value;
     const genero = document.getElementById('genero').value;
     const nacionalidad = document.getElementById('nacionalidad').value;

@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="css/registro.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<link rel="icon" href="data:,">
 <body>
     <div class="background-shapes">
         <div class="shape"></div>
@@ -31,46 +30,46 @@
                         <label for="role">Tipo de usuario <span class="required">*</span></label>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
-                            <select id="role" required>
+                            <select id="role" name="role" required>
                                 <option value="" disabled selected>Seleccione una opción</option>
-                                <option value="usuario">Turista</option>
+                                <option value="turista">Turista</option>
                                 <option value="empresa">Empresa</option>
                             </select>
                         </div>
                     </div>
-                
+
                     <div class="input-group">
                         <label for="email">Correo electrónico <span class="required">*</span></label>
                         <div class="input-field">
                             <i class="fas fa-envelope"></i>
-                            <input type="email" id="email" required placeholder="Ingrese su correo electrónico">
+                            <input type="email" id="email" name="email" required placeholder="Ingrese su correo electrónico">
                         </div>
                     </div>
-                
+
                     <div class="input-group">
-                        <label for="contrasena">Contraseña <span class="required">*</span></label>
+                        <label for="password">Contraseña <span class="required">*</span></label>
                         <div class="input-field">
                             <i class="fas fa-lock"></i>
-                            <input type="password" id="contrasena" required placeholder="Ingrese contraseña">
-                            <button type="button" class="toggle-password" aria-label="Toggle password visibility">
+                            <input type="password" id="password" name="password" required placeholder="Ingrese contraseña">
+                            <button type="button" class="toggle-password">
                                 <i class="fas fa-eye"></i>
                             </button>
                         </div>
                     </div>
-                
+
                     <div class="input-group">
                         <label for="fecha_nacimiento">Fecha nacimiento <span class="required">*</span></label>
                         <div class="input-field">
                             <i class="fas fa-calendar-alt"></i>
-                            <input type="date" id="fecha_nacimiento" required>
+                            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
                         </div>
                     </div>
-                
+
                     <div class="input-group">
                         <label for="genero">Género <span class="required">*</span></label>
                         <div class="input-field">
                             <i class="fas fa-venus-mars"></i>
-                            <select id="genero" required>
+                            <select id="genero" name="genero" required>
                                 <option value="" disabled selected>Seleccione su género</option>
                                 <option value="M">Masculino</option>
                                 <option value="F">Femenino</option>
@@ -78,12 +77,12 @@
                             </select>
                         </div>
                     </div>
-                
+
                     <div class="input-group">
                         <label for="nacionalidad">Nacionalidad</label>
                         <div class="input-field">
                             <i class="fas fa-globe-americas"></i>
-                            <select id="nacionalidad">
+                            <select id="nacionalidad" name="nacionalidad">
                                 <option value="" disabled selected>Seleccione su nacionalidad</option>
                                 <option value="AR">Argentina</option>
                                 <option value="USA">Estados Unidos</option>
@@ -96,13 +95,13 @@
                             </select>
                         </div>
                     </div>
-                
+
                     <button type="submit" class="register-btn">
                         Crear cuenta
                         <i class="fas fa-arrow-right"></i>
                     </button>
                 </form>
-                
+
                 <p class="login-text">
                     ¿Ya tienes una cuenta? 
                     <a href="login.html" class="login-link">Inicia sesión aquí</a>
