@@ -27,6 +27,18 @@
 
                 <form id="registerForm" class="form-container">
                     <div class="input-group">
+                        <label for="role">Tipo de usuario <span class="required">*</span></label>
+                        <div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <select id="role" required>
+                                <option value="" disabled selected>Seleccione una opción</option>
+                                <option value="usuario">Turista</option>
+                                <option value="empresa">Empresa</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
                         <label for="email">Correo electrónico <span class="required">*</span></label>
                         <div class="input-field">
                             <i class="fas fa-envelope"></i>
@@ -84,9 +96,6 @@
                         </div>
                     </div>
 
-
-                    
-
                     <button type="submit" class="register-btn">
                         Crear cuenta
                         <i class="fas fa-arrow-right"></i>
@@ -101,6 +110,6 @@
         </div>
     </main>
 
-    <script src="Js/registro.js"></script>
+    <script src="js/registro.js"></script>
 </body>
 </html>
