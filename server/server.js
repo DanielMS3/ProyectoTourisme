@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Servir archivos estáticos
-app.use(express.static(path.join(__dirname, "../client/public")));
+app.use(express.static(path.join(__dirname, "../client")));
 
 // Importación de rutas
 const registroRoutes = require("./routes/registro_conexion");
