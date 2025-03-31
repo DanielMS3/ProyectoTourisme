@@ -13,9 +13,15 @@ const app = express();
 const port = 3000;
 
 // Middleware
-app.use(cors());
+app.use(helmet());
+app.use(cors({
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+}));
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(morgan('combined'));
 
 // Servir archivos estáticos
 app.use(express.static(path.join(__dirname, "../client")));
@@ -40,13 +46,20 @@ app.get("/perfil", (req, res) => {
 
     const token = authHeader.split(" ")[1];
 
-    jwt.verify(token, process.env.JWT_SECRET || "clave_secreta", (err, decoded) => {
+    jwt.verify(token, process.env.JWT_SECRET , (err, decoded) => {
         if (err) {
             return res.status(403).json({ error: "Token inválido o expirado" });
         }
 
         res.json({ user: { email: decoded.email } });
     });
+});
+
+
+// Middleware para manejar errores
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ error: 'Error en el servidor' });
 });
 
 // Mostrar rutas en consola

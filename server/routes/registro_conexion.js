@@ -7,7 +7,9 @@ const router = express.Router();
 
 // Ruta para registrar usuario
 router.post('/', async (req, res) => {
-    let { role, correo, contrasena, fecha_nacimiento, genero, nacionalidad } = req.body; // Usar let para genero
+    let { role, correo, contrasena, fecha_nacimiento, genero, nacionalidad } = req.body; 
+
+    console.log('Datos recibidos:', req.body);
 
     // Si el usuario envió "M", "F" o "O", conviértelo a valores válidos
     if (genero === "M") genero = "Masculino";
@@ -27,10 +29,10 @@ router.post('/', async (req, res) => {
             id_rol = 2;
         }
 
-        connection.query('INSERT INTO Usuario (correo, id_rol) VALUES (?, ?)', [correo, id_rol], (err, result) => {
+        connection.query('INSERT INTO usuario (correo, id_rol) VALUES (?, ?)', [correo, id_rol], (err, result) => {
             if (err) {
                 console.error('Error al insertar en Usuario:', err);
-                return res.status(500).json({ error: 'Error en el servidor' });
+                return res.status(500).json({ error: 'Error en el servidor al registrar usuario' });
             }
 
             const id_usuario = result.insertId;
@@ -41,7 +43,7 @@ router.post('/', async (req, res) => {
                 (err) => {
                     if (err) {
                         console.error('Error al insertar en autenticacion:', err);
-                        return res.status(500).json({ error: 'Error en el servidor' });
+                        return res.status(500).json({ error: 'Error en el servidor al insertar autenticacion' });
                     }
                     res.json({ message: "Usuario registrado exitosamente" });
                 }
@@ -49,7 +51,7 @@ router.post('/', async (req, res) => {
         });
     } catch (error) {
         console.error('Error:', error);
-        res.status(500).json({ error: 'Error en el servidor' });
+        res.status(500).json({ error: 'Error en el servidor: error general' });
     }
 });
 
