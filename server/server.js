@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const jwt = require("jsonwebtoken");
 const expressListRoutes = require("express-list-routes");
-const db = require("./database/database"); // Conexión a la base de datos
+const db = require("../database/database"); // Conexión a la base de datos
 
 const app = express();
 
