@@ -17,9 +17,9 @@ app.use(helmet());
 app.use(cors({
     origin: "http://localhost:3000",
     methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type"],
+    allowedHeaders: ["Content-Type", "Authorization"],
 }));
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan('combined'));
 
