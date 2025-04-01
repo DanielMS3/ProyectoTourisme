@@ -26,6 +26,19 @@
                 <p class="subtitle">Crea tu cuenta para comenzar a viajar</p>
 
                 <form id="registerForm" class="form-container">
+
+                    <div class="input-group">
+                        <label for="rol">Tipo de rol <span class="required">*</span></label>
+                        <div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <select id="rol" name="rol" required>
+                                <option value="" disabled selected>Seleccione una opción</option>
+                                <option value="usuario">Usuario</option>
+                                <option value="negocio">Negocio</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="input-group">
                         <label for="nombre">Nombre <span class="required">*</span></label>
                         <div class="input-field">
