@@ -58,6 +58,12 @@ const destinos = {
       ubicacion: "Sabaneta",
       descripcion: "Reserva natural con biodiversidad y senderos ecológicos. El Ecoparque La Romera es una reserva natural ubicada en Sabaneta, a pocos kilómetros de Medellín. Con más de 180 hectáreas de bosque, este parque es hogar de una gran biodiversidad, incluyendo más de 70 especies de aves y mamíferos como monos aulladores. Cuenta con senderos ecológicos, cascadas, quebradas y miradores con vistas panorámicas del Valle de Aburrá. Es un lugar perfecto para el senderismo, la observación de fauna y la conexión con la naturaleza.",
       imagen: "img/ecoparque_romera.jpg",
+      imagenes: [
+        "img/ecoparque_romera.jpg",
+        "img/.jpg",
+        "img/.jpg",
+        "img/.jpg"
+      ],
       rating: 4.6,
       reviews: 85,
       tags: ["Reserva", "Biodiversidad", "Senderismo", "Cascadas", "Fauna"],
@@ -69,6 +75,12 @@ const destinos = {
       ubicacion: "Envigado",
       descripcion: "Una hermosa cascada escondida en las montañas de Envigado. La Cascada Salto del Ángel es una joya natural escondida en las montañas de Envigado. Con una caída de agua de aproximadamente 20 metros, esta cascada ofrece un espectáculo natural impresionante. Para llegar a ella, se debe realizar una caminata de dificultad media a través de senderos rodeados de vegetación exuberante. El recorrido permite disfrutar de la biodiversidad de la zona y culmina con la refrescante vista de la cascada, donde los visitantes pueden tomar un baño en sus aguas cristalinas.",
       imagen: "img/cascada_salto_angel.jpg",
+      imagenes: [
+        "img/cascada_salto_angel.jpg",
+        "img/.jpg",
+        "img/.jpg",
+        "img/.jpg"
+      ],
       rating: 4.9,
       reviews: 75,
       tags: ["Cascada", "Naturaleza", "Aventura", "Senderismo", "Baño natural"],
@@ -80,6 +92,12 @@ const destinos = {
       ubicacion: "El Retiro",
       descripcion: "Perfecto para caminatas y baños naturales.",
       imagen: "img/quebrada_miel.jpg",
+      imagenes: [
+        "img/quebrada_miel.jpg",
+        "img/.jpg",
+        "img/.jpg",
+        "img/.jpg"
+      ],
       rating: 4.7,
       reviews: 65,
       tags: ["Río", "Baño natural", "Caminata"],
