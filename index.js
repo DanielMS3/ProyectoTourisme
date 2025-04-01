@@ -1,8 +1,7 @@
+const app = require('./server/server');
 const dotenv = require("dotenv");
 dotenv.config(); 
 
-// Importa la configuración del servidor
-const app = require("./server/server"); 
 
 const PORT = process.env.PORT || 3000;
 

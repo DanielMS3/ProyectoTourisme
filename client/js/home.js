@@ -426,7 +426,51 @@ function crearTarjetaDestino(destino) {
           }
       }
   }
+
+  // Funcionalidad de autenticación
   
+  document.addEventListener("DOMContentLoaded", function () {
+    const authButtons = document.querySelector(".auth-buttons");
+    const userMenu = document.querySelector(".user-menu");
+    const dropdownMenu = document.querySelector(".dropdown-menu");
+    const logoutButton = document.getElementById("logoutButton");
+    const userIcon = document.querySelector(".user-icon");
+
+    // Verificar si el usuario está autenticado
+    function checkAuthStatus() {
+        if (localStorage.getItem("isLoggedIn") === "true") {
+            authButtons.classList.add("hidden");
+            userMenu.classList.remove("hidden");
+        } else {
+            authButtons.classList.remove("hidden");
+            userMenu.classList.add("hidden");
+        }
+    }
+
+    // Simulación de inicio de sesión (se debe hacer en login.js realmente)
+    if (window.location.pathname.includes("login.html")) {
+        document.querySelector("form").addEventListener("submit", function (e) {
+            e.preventDefault(); // Simulación, reemplazar con validación real
+            localStorage.setItem("isLoggedIn", "true");
+            window.location.href = "home.html"; // Redirigir a home
+        });
+    }
+
+    // Mostrar el menú desplegable al hacer clic en el icono de usuario
+    userIcon.addEventListener("click", function () {
+        dropdownMenu.classList.toggle("hidden");
+    });
+
+    // Cerrar sesión
+    logoutButton.addEventListener("click", function () {
+        localStorage.removeItem("isLoggedIn");
+        checkAuthStatus();
+    });
+
+    checkAuthStatus(); // Verificar estado de autenticación al cargar
+});
+
+
   // Crear un ID basado en el nombre si no existe
   if (!destino.id) {
       destino.id = destino.nombre.toLowerCase().replace(/\s+/g, '-').normalize("NFD").replace(/[\u0300-\u036f]/g, "");

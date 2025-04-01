@@ -9,10 +9,9 @@ const destinos = {
       imagen: "img/parque_arvi.jpeg",
       imagenes: [
         "img/parque_arvi.jpeg",
-        "img/cerro_volador.jpg",
-        "img/parque_piedras_blancas.jpg",
-        "img/parque_arvi_3.jpg",
-        "img/parque_arvi_4.jpg"
+        "img/parque_arvi_dos.jpg",
+        "img/parque_arvi_tres.jpg",
+        "img/parque_arvi_cuatro.jpg",
       ],
       rating: 4.8,
       reviews: 120,
@@ -27,9 +26,9 @@ const destinos = {
       imagen: "img/cerro_volador.jpg",
       imagenes: [
         "img/cerro_volador.jpg",
-        "img/parque_piedras_blancas.jpg",
-        "img/parque_arvi_3.jpg",
-        "img/parque_arvi_4.jpg"
+        "img/cerro_el_volador_dos.jpg",
+        "img/cerro_el_volador_tres.jpg",
+        "img/cerro_el_volador_cuatro.jpg"
       ],
       rating: 4.5,
       reviews: 95,
@@ -42,6 +41,12 @@ const destinos = {
       ubicacion: "Santa Elena",
       descripcion: "Un bosque con lagos, senderos y el Mariposario de Comfama. El Parque Ecológico Piedras Blancas está ubicado en el corregimiento de Santa Elena, a solo 30 minutos de Medellín. Este hermoso espacio natural cuenta con un embalse, bosques nativos, senderos ecológicos y el famoso Mariposario Piedras Blancas. Los visitantes pueden disfrutar de actividades como paseos en bote, caminatas, observación de flora y fauna, y visitas guiadas. Es un destino ideal para familias y amantes de la naturaleza.",
       imagen: "img/parque_piedras_blancas.jpg",
+      imagenes: [
+        "img/parque_piedras_blancas.jpg",
+        "img/parque_ecologico_piedras_blancas_dos.jpg",
+        "img/parque_ecologico_piedras_blancas_tres.jpg",
+        "img/parque_ecologico_piedras_blancas_cuatro.jpg"
+      ],
       rating: 4.7,
       reviews: 110,
       tags: ["Lagos", "Mariposario", "Naturaleza", "Senderismo", "Paseos en bote"],
@@ -53,6 +58,12 @@ const destinos = {
       ubicacion: "Sabaneta",
       descripcion: "Reserva natural con biodiversidad y senderos ecológicos. El Ecoparque La Romera es una reserva natural ubicada en Sabaneta, a pocos kilómetros de Medellín. Con más de 180 hectáreas de bosque, este parque es hogar de una gran biodiversidad, incluyendo más de 70 especies de aves y mamíferos como monos aulladores. Cuenta con senderos ecológicos, cascadas, quebradas y miradores con vistas panorámicas del Valle de Aburrá. Es un lugar perfecto para el senderismo, la observación de fauna y la conexión con la naturaleza.",
       imagen: "img/ecoparque_romera.jpg",
+      imagenes: [
+        "img/ecoparque_romera.jpg",
+        "img/.jpg",
+        "img/.jpg",
+        "img/.jpg"
+      ],
       rating: 4.6,
       reviews: 85,
       tags: ["Reserva", "Biodiversidad", "Senderismo", "Cascadas", "Fauna"],
@@ -64,6 +75,12 @@ const destinos = {
       ubicacion: "Envigado",
       descripcion: "Una hermosa cascada escondida en las montañas de Envigado. La Cascada Salto del Ángel es una joya natural escondida en las montañas de Envigado. Con una caída de agua de aproximadamente 20 metros, esta cascada ofrece un espectáculo natural impresionante. Para llegar a ella, se debe realizar una caminata de dificultad media a través de senderos rodeados de vegetación exuberante. El recorrido permite disfrutar de la biodiversidad de la zona y culmina con la refrescante vista de la cascada, donde los visitantes pueden tomar un baño en sus aguas cristalinas.",
       imagen: "img/cascada_salto_angel.jpg",
+      imagenes: [
+        "img/cascada_salto_angel.jpg",
+        "img/.jpg",
+        "img/.jpg",
+        "img/.jpg"
+      ],
       rating: 4.9,
       reviews: 75,
       tags: ["Cascada", "Naturaleza", "Aventura", "Senderismo", "Baño natural"],
@@ -75,6 +92,12 @@ const destinos = {
       ubicacion: "El Retiro",
       descripcion: "Perfecto para caminatas y baños naturales.",
       imagen: "img/quebrada_miel.jpg",
+      imagenes: [
+        "img/quebrada_miel.jpg",
+        "img/.jpg",
+        "img/.jpg",
+        "img/.jpg"
+      ],
       rating: 4.7,
       reviews: 65,
       tags: ["Río", "Baño natural", "Caminata"],
