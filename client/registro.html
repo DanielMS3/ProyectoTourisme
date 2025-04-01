@@ -27,30 +27,26 @@
 
                 <form id="registerForm" class="form-container">
                     <div class="input-group">
-                        <label for="role">Tipo de usuario <span class="required">*</span></label>
+                        <label for="nombre">Nombre <span class="required">*</span></label>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
-                            <select id="role" name="role" required>
-                                <option value="" disabled selected>Seleccione una opción</option>
-                                <option value="usuario">Usuario</option>
-                                <option value="empresa">Empresa</option>
-                            </select>
+                            <input type="text" id="nombre" name="nombre" required placeholder="Ingrese su nombre">
                         </div>
                     </div>
 
                     <div class="input-group">
-                        <label for="email">Correo electrónico <span class="required">*</span></label>
+                        <label for="correo">Correo electrónico <span class="required">*</span></label>
                         <div class="input-field">
                             <i class="fas fa-envelope"></i>
-                            <input type="email" id="email" name="email" required placeholder="Ingrese su correo electrónico">
+                            <input type="email" id="correo" name="correo" required placeholder="Ingrese su correo electrónico">
                         </div>
                     </div>
 
                     <div class="input-group">
-                        <label for="password">Contraseña <span class="required">*</span></label>
+                        <label for="contrasena_hash">Contraseña <span class="required">*</span></label>
                         <div class="input-field">
                             <i class="fas fa-lock"></i>
-                            <input type="password" id="password" name="password" required placeholder="Ingrese contraseña">
+                            <input type="password" id="contrasena_hash" name="contrasena_hash" required placeholder="Ingrese contraseña">
                             <button type="button" class="toggle-password">
                                 <i class="fas fa-eye"></i>
                             </button>
@@ -71,9 +67,9 @@
                             <i class="fas fa-venus-mars"></i>
                             <select id="genero" name="genero" required>
                                 <option value="" disabled selected>Seleccione su género</option>
-                                <option value="M">Masculino</option>
-                                <option value="F">Femenino</option>
-                                <option value="O">Otro</option>
+                                <option value="masculino">Masculino</option>
+                                <option value="femenino">Femenino</option>
+                                <option value="otro">Otro</option>
                             </select>
                         </div>
                     </div>
@@ -84,14 +80,14 @@
                             <i class="fas fa-globe-americas"></i>
                             <select id="nacionalidad" name="nacionalidad">
                                 <option value="" disabled selected>Seleccione su nacionalidad</option>
-                                <option value="AR">Argentina</option>
-                                <option value="USA">Estados Unidos</option>
-                                <option value="CL">Chile</option>
-                                <option value="CO">Colombia</option>
-                                <option value="EC">Ecuador</option>
-                                <option value="PE">Perú</option>
-                                <option value="UY">Uruguay</option>
-                                <option value="?">Otro</option>
+                                <option value="Argentina">Argentina</option>
+                                <option value="Estados Unidos">Estados Unidos</option>
+                                <option value="Chile">Chile</option>
+                                <option value="Colombia">Colombia</option>
+                                <option value="Ecuador">Ecuador</option>
+                                <option value="Perú">Perú</option>
+                                <option value="Uruguay">Uruguay</option>
+                                <option value="Otro">Otro</option>
                             </select>
                         </div>
                     </div>
