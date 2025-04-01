@@ -20,12 +20,13 @@ app.use(express.static(path.join(__dirname, "../client")));
 const registroRoutes = require("./routes/registro_conexion");
 const loginRoute = require("./routes/login");
 const recuperarContrasenaRoutes = require("./routes/recuperar_contrasena");
+const categoriesRoutes = require('./routes/categoria');
 
 // Definir rutas
 app.use("/api/registro", registroRoutes);
 app.use("/login", loginRoute);
 app.use("/api", recuperarContrasenaRoutes);
-
+app.use(categoriesRoutes);
 // Ruta protegida /perfil
 app.get("/perfil", (req, res) => {
     const authHeader = req.headers["authorization"];
