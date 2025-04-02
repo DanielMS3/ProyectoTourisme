@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourisme - Panel de Administrador</title>
+    <link rel="stylesheet" href="/client/src/assets/css/estilos_pagina.css">
+    <link rel="stylesheet" href="/client/src/assets/css/administrador.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="img/logo.png" alt="Logo">
+                <span>Tourisme</span>
+            </div>
+            <nav class="nav-desktop">
+                <ul>
+                    <li><a href="#destinos_seccion">Destinos</a></li>
+                    <li><a href="#paquetes_seccion">Paquetes</a></li>
+                    <li><a href="#usuarios_seccion">Usuarios</a></li>
+                    <li><a href="#reservas_seccion">Reservas</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <div class="admin-profile">
+                    <span>Admin</span>
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <a href="index.html">               
+                    <button class="btn btn-primary">Cerrar Sesión</button>
+                </a>  
+            </div>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#destinos_seccion">Destinos</a></li>
+            <li><a href="#paquetes_seccion">Paquetes</a></li>
+            <li><a href="#usuarios_seccion">Usuarios</a></li>
+            <li><a href="#reservas_seccion">Reservas</a></li>
+            <li><a href="index.html">Cerrar Sesión</a></li>
+        </ul>
+    </div>
+
+    <div class="admin-dashboard">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>Panel de Administración</h1>
+                <p>Bienvenido al panel de control de Tourisme</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>1,245</h3>
+                        <p>Usuarios Registrados</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>24</h3>
+                        <p>Destinos Activos</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-suitcase"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>18</h3>
+                        <p>Paquetes Disponibles</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>156</h3>
+                        <p>Reservas Mensuales</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="destinos admin-section" id="destinos_seccion">
+        <div class="container">
+            <div class="section-header admin-header">
+                <h2>Gestión de Destinos</h2>
+                <p>Administra los destinos turísticos disponibles</p>
+                <button class="btn btn-primary add-btn">
+                    <i class="fas fa-plus"></i> Añadir Destino
+                </button>
+            </div>
+            <div class="admin-table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Imagen</th>
+                            <th>Nombre</th>
+                            <th>Valoración</th>
+                            <th>Reseñas</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><img src="img/Comuna13.webp" alt="Comuna_13" class="table-img"></td>
+                            <td>La comuna 13</td>
+                            <td>4.8</td>
+                            <td>120</td>
+                            <td class="actions">
+                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><img src="img/pueblito_paisa.jpg" alt="pueblito_paisa" class="table-img"></td>
+                            <td>Pueblito paisa</td>
+                            <td>4.7</td>
+                            <td>98</td>
+                            <td class="actions">
+                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><img src="img/parque_arvi.jpeg" alt="Parque Arví" class="table-img"></td>
+                            <td>Parque Arví</td>
+                            <td>4.9</td>
+                            <td>150</td>
+                            <td class="actions">
+                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><img src="img/parque_explora.jpg" alt="Parque explora" class="table-img"></td>
+                            <td>Parque explora</td>
+                            <td>4.6</td>
+                            <td>200</td>
+                            <td class="actions">
+                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><img src="img/plaza_botero.jpg" alt="Plaza Botero" class="table-img"></td>
+                            <td>Plaza Botero</td>
+                            <td>4.3</td>
+                            <td>180</td>
+                            <td class="actions">
+                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="paquetes admin-section" id="paquetes_seccion">
+        <div class="container">
+            <div class="section-header admin-header">
+                <h2>Gestión de Paquetes</h2>
+                <p>Administra los paquetes turísticos disponibles</p>
+                <button class="btn btn-primary add-btn">
+                    <i class="fas fa-plus"></i> Añadir Paquete
+                </button>
+            </div>
+            <div class="admin-table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Imagen</th>
+                            <th>Nombre</th>
+                            <th>Duración</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><img src="img/parejas_crae.jpg" alt="Escapada Romántica" class="table-img"></td>
+                            <td>Escapada Romántica</td>
+                            <td>5 días / 4 noches</td>
+                            <td><span class="status active">Activo</span></td>
+                            <td class="actions">
+                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><img src="img/familiar_plan.jpg" alt="Aventura Familiar" class="table-img"></td>
+                            <td>Aventura Familiar</td>
+                            <td>7 días / 6 noches</td>
+                            <td><span class="status active">Activo</span></td>
+                            <td class="actions">
+                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><img src="img/bienestar_actividades.jpg" alt="Relax y Bienestar" class="table-img"></td>
+                            <td>Relax y Bienestar</td>
+                            <td>4 días / 3 noches</td>
+                            <td><span class="status inactive">Inactivo</span></td>
+                            <td class="actions">
+                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><img src="img/aventuras_extremas.jpg" alt="Aventura Extrema" class="table-img"></td>
+                            <td>Aventura Extrema</td>
+                            <td>6 días / 5 noches</td>
+                            <td><span class="status active">Activo</span></td>
+                            <td class="actions">
+                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="usuarios admin-section" id="usuarios_seccion">
+        <div class="container">
+            <div class="section-header admin-header">
+                <h2>Gestión de Usuarios</h2>
+                <p>Administra los usuarios registrados en la plataforma</p>
+                <button class="btn btn-primary add-btn">
+                    <i class="fas fa-plus"></i> Añadir Usuario
+                </button>
+            </div>
+            <div class="admin-table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Fecha Registro</th>
+                            <th>Rol</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>María García</td>
+                            <td>maria@ejemplo.com</td>
+                            <td>15/03/2023</td>
+                            <td>Usuario</td>
+                            <td class="actions">
+                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Carlos Rodríguez</td>
+                            <td>carlos@ejemplo.com</td>
+                            <td>22/04/2023</td>
+                            <td>Usuario</td>
+                            <td class="actions">
+                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Laura Martínez</td>
+                            <td>laura@ejemplo.com</td>
+                            <td>10/05/2023</td>
+                            <td>Usuario</td>
+                            <td class="actions">
+                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Juan Pérez</td>
+                            <td>juan@ejemplo.com</td>
+                            <td>05/06/2023</td>
+                            <td>Administrador</td>
+                            <td class="actions">
+                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="reservas admin-section" id="reservas_seccion">
+        <div class="container">
+            <div class="section-header admin-header">
+                <h2>Gestión de Reservas</h2>
+                <p>Administra las reservas realizadas por los usuarios</p>
+                <button class="btn btn-primary add-btn">
+                    <i class="fas fa-plus"></i> Añadir Reserva
+                </button>
+            </div>
+            <div class="admin-table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Usuario</th>
+                            <th>Destino/Paquete</th>
+                            <th>Fecha</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>María García</td>
+                            <td>Escapada Romántica</td>
+                            <td>20/07/2023</td>
+                            <td><span class="status confirmed">Confirmada</span></td>
+                            <td class="actions">
+                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Carlos Rodríguez</td>
+                            <td>Parque Arví</td>
+                            <td>15/08/2023</td>
+                            <td><span class="status pending">Pendiente</span></td>
+                            <td class="actions">
+                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Laura Martínez</td>
+                            <td>Aventura Familiar</td>
+                            <td>05/09/2023</td>
+                            <td><span class="status confirmed">Confirmada</span></td>
+                            <td class="actions">
+                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Juan Pérez</td>
+                            <td>Plaza Botero</td>
+                            <td>12/09/2023</td>
+                            <td><span class="status cancelled">Cancelada</span></td>
+                            <td class="actions">
+                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="logo">
+                        <img src="img/logo.png" alt="Logo">
+                        <span>Tourisme</span>
+                    </div>
+                    <p>Panel de administración para gestionar destinos, paquetes, usuarios y reservas</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Acceso Rápido</h3>
+                    <ul>
+                        <li><a href="#destinos_seccion">Destinos</a></li>
+                        <li><a href="#paquetes_seccion">Paquetes</a></li>
+                        <li><a href="#usuarios_seccion">Usuarios</a></li>
+                        <li><a href="#reservas_seccion">Reservas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Soporte</h3>
+                    <ul>
+                        <li><a href="#">Centro de Ayuda</a></li>
+                        <li><a href="#">Documentación</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="year"></span> Tourisme - Panel de Administración. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

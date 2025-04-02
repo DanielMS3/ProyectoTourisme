@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOURISME - Verificar Código</title>
+    <link rel="stylesheet" href="/client/src/assets/css/ingresar_codigo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <header>
+        <div class="logo-container">
+            <img src="img/logo.png" alt="Logo">
+        </div>
+    </header>
+
+    <main>
+        <div class="recover-container">
+            <div class="recover-card">
+                <h2>Verificar código</h2>
+                <p class="subtitle" id="emailInfo">Hemos enviado un código de verificación a tu correo electrónico</p>
+
+                <div class="recover-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+
+                <form id="verifyForm" class="form-container">
+                    <div class="verification-section">
+                        <p class="verification-text">Ingresa el código de 6 dígitos</p>
+                        <div class="otp-container">
+                            <input type="text" maxlength="1" class="otp-input" data-index="0" autofocus>
+                            <input type="text" maxlength="1" class="otp-input" data-index="1">
+                            <input type="text" maxlength="1" class="otp-input" data-index="2">
+                            <input type="text" maxlength="1" class="otp-input" data-index="3">
+                            <input type="text" maxlength="1" class="otp-input" data-index="4">
+                            <input type="text" maxlength="1" class="otp-input" data-index="5">
+                        </div>
+                    </div>
+
+                    <div class="timer-container">
+                        <p>Código válido por: <span id="timer">05:00</span></p>
+                    </div>
+
+                    <button type="submit" class="recover-btn">
+                        Verificar código
+                        <i class="fas fa-check"></i>
+                    </button>
+                </form>
+
+                <div class="divider">
+                    <span></span>
+                    <p>o</p>
+                    <span></span>
+                </div>
+
+                <div class="action-links">
+                    <a href="#" id="resendCode" class="resend-link">
+                        <i class="fas fa-redo"></i>
+                        Reenviar código
+                    </a>
+                    <a href="recuperar_contraseña.html" class="back-link">
+                        <i class="fas fa-arrow-left"></i>
+                        Volver atrás
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
