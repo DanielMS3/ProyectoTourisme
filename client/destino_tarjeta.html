@@ -97,6 +97,9 @@
                         <button class="btn btn-outline btn-lg">
                             <i class="far fa-heart"></i> Guardar en favoritos
                         </button>
+                        <button class="btn btn-secondary btn-lg" id="btn-calificar">
+                            <i class="fas fa-star"></i> Calificar
+                        </button>
                     </div>
                     
                     <!-- Movido debajo de los botones de acción -->
@@ -113,8 +116,56 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Sección de reseñas de usuarios -->
+            <div class="destino-resenas">
+                <h2>Reseñas de usuarios</h2>
+                <div class="testimonios-grid" id="resenas-container">
+                    <!-- Las reseñas se cargarán dinámicamente aquí -->
+                    <p id="no-resenas-mensaje" class="no-resenas">No hay reseñas disponibles para este destino. ¡Sé el primero en calificar!</p>
+                </div>
+            </div>
         </div>
     </section>
+
+    <!-- Modal de calificación mejorado -->
+    <div class="modal-calificacion" id="modalCalificacion">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Calificar este destino</h2>
+            <div class="form-calificacion">
+                <div class="rating-selector">
+                    <h3>¿Cómo calificarías tu experiencia?</h3>
+                    <div class="stars-container">
+                        <i class="far fa-star" data-value="1"></i>
+                        <i class="far fa-star" data-value="2"></i>
+                        <i class="far fa-star" data-value="3"></i>
+                        <i class="far fa-star" data-value="4"></i>
+                        <i class="far fa-star" data-value="5"></i>
+                    </div>
+                    <span class="rating-text">Selecciona una calificación</span>
+                </div>
+                <div class="comentario-container">
+                    <h3>Comparte tu experiencia</h3>
+                    <textarea id="comentario-usuario" placeholder="Cuéntanos sobre tu experiencia en este destino..."></textarea>
+                </div>
+                <div class="user-info">
+                    <div class="user-name">
+                        <label for="nombre-usuario">Nombre:</label>
+                        <input type="text" id="nombre-usuario" placeholder="Tu nombre">
+                    </div>
+                    <div class="user-location">
+                        <label for="ubicacion-usuario">Ciudad:</label>
+                        <input type="text" id="ubicacion-usuario" placeholder="Tu ciudad">
+                    </div>
+                </div>
+                <div class="modal-buttons">
+                    <button class="btn btn-outline" id="cancelar-calificacion">Cancelar</button>
+                    <button class="btn btn-primary" id="guardar-calificacion">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="container">

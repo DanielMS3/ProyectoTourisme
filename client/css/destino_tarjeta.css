@@ -182,6 +182,238 @@
     margin-bottom: 10px;
 }
 
+/* Estilos para el botón de calificar */
+.btn-secondary {
+    background-color: #ffc107;
+    color: #333;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #e0a800;
+}
+
+/* Estilos para el modal de calificación */
+.modal-calificacion {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    animation: modalFadeIn 0.3s ease-in-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    color: #333;
+}
+
+.form-calificacion {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.rating-selector {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.stars-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0;
+    font-size: 30px;
+}
+
+.stars-container i {
+    color: #ddd;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.stars-container i.fas {
+    color: #ffc107;
+}
+
+.stars-container i:hover {
+    color: #ffc107;
+}
+
+.rating-text {
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+    color: #666;
+}
+
+.comentario-container textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.user-info {
+    display: flex;
+    gap: 15px;
+}
+
+.user-name, .user-location {
+    flex: 1;
+}
+
+.user-info label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.user-info input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Botones del modal */
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.modal-buttons .btn {
+    padding: 10px 20px;
+    font-weight: 500;
+}
+
+/* Estilos para la sección de reseñas */
+.destino-resenas {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid #eee;
+}
+
+.testimonios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.testimonio-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.testimonio-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.cliente-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.cliente-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    color: #666;
+}
+
+.cliente-info h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.cliente-info p {
+    margin: 3px 0 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.testimonio-card .rating {
+    margin-bottom: 12px;
+    color: #ffc107;
+}
+
+.testimonio-card .comentario {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+    margin: 0;
+}
+
+.fecha-resena {
+    margin-top: 15px;
+    font-size: 12px;
+    color: #999;
+    text-align: right;
+}
+
+/* Mensaje cuando no hay reseñas */
+.no-resenas {
+    text-align: center;
+    color: #777;
+    font-style: italic;
+    padding: 20px;
+    grid-column: 1 / -1;
+}
+
 /* Animaciones */
 @keyframes fadeIn {
     from {
@@ -226,6 +458,29 @@
     
     .destino-imagenes-adicionales {
         grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .user-info {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .testimonios-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 5% auto;
+        padding: 20px;
+    }
+    
+    .modal-buttons {
+        flex-direction: column;
+    }
+    
+    .modal-buttons .btn {
+        width: 100%;
     }
 }
 
