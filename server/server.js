@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const jwt = require("jsonwebtoken");
 const expressListRoutes = require("express-list-routes");
-const db = require("./database/database"); 
+const db = require("./database/database");
 const helmet = require('helmet');
 const morgan = require('morgan');
 
@@ -15,7 +15,7 @@ const port = 3000;
 // Middleware
 app.use(helmet());
 app.use(cors({
-    origin: "http://localhost:3000",
+    origin: "*",
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"],
 }));
@@ -26,13 +26,13 @@ app.use(morgan('combined'));
 // Servir archivos estáticos
 app.use(express.static(path.join(__dirname, "../client")));
 
-// Importación de rutas
-const registroRoutes = require("./routes/registro_conexion");
+// Importación de rutas 
+const registroRoutes = require("./routes/autenticacion"); // Nueva ruta para autenticación
 const loginRoute = require("./routes/login");
 const recuperarContrasenaRoutes = require("./routes/recuperar_contrasena");
 
 // Definir rutas
-app.use("/api/registro", registroRoutes);
+app.use("/api/registro", registroRoutes);  
 app.use("/login", loginRoute);
 app.use("/api", recuperarContrasenaRoutes);
 
@@ -46,7 +46,7 @@ app.get("/perfil", (req, res) => {
 
     const token = authHeader.split(" ")[1];
 
-    jwt.verify(token, process.env.JWT_SECRET , (err, decoded) => {
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
         if (err) {
             return res.status(403).json({ error: "Token inválido o expirado" });
         }
@@ -54,7 +54,6 @@ app.get("/perfil", (req, res) => {
         res.json({ user: { email: decoded.email } });
     });
 });
-
 
 // Middleware para manejar errores
 app.use((err, req, res, next) => {

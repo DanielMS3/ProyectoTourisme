@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const db = require('../config/db');
+const db = require('../database/database');
 
 exports.register = async (req, res) => {
     try {
@@ -8,7 +8,6 @@ exports.register = async (req, res) => {
 
         const { correo, contrasena_hash, fecha_nacimiento, genero, nacionalidad, nombre, rol } = req.body;
 
-        // Ahora se incluyen todos los campos necesarios, incluyendo el campo 'nombre'
         console.log('Datos procesados:', {
             correo, contrasena_hash, fecha_nacimiento, genero, nacionalidad, nombre, rol
         });
