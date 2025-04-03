@@ -184,238 +184,254 @@
 
 /* Estilos para el botón de calificar */
 .btn-accent {
-    background-color: var(--accent-color);
-    color: white;
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.btn-accent:hover {
+  background-color: #e09500;
+}
+
+/* Estilos para el modal de calificación */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-container {
+  background-color: white;
+  border-radius: var(--border-radius);
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-20px);
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-container {
+  transform: translateY(0);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid var(--gray-color);
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: var(--dark-color);
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--text-light);
+  transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+  color: var(--primary-color);
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--dark-color);
+}
+
+.rating-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stars-container {
+  display: flex;
+  gap: 5px;
+}
+
+.star-rating {
+  font-size: 1.5rem;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.star-rating.active {
+  color: var(--accent-color);
+}
+
+.rating-text {
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--gray-color);
+  border-radius: var(--border-radius);
+  resize: vertical;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+/* Estilos para los campos de entrada */
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--gray-color);
+  border-radius: var(--border-radius);
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Estilos para la sección de testimonios */
+.testimonios-seccion {
+  margin-top: 60px;
+}
+
+.testimonios-seccion h2 {
+  margin-bottom: 30px;
+  color: var(--dark-color);
+  text-align: center;
+}
+
+.testimonios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.testimonio-card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  padding: 25px;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonio-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.cliente-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.cliente-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.cliente-info h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--dark-color);
+}
+
+.cliente-info p {
+  margin: 5px 0 0;
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+.testimonio-card .rating {
+  margin-bottom: 15px;
+  color: var(--accent-color);
+}
+
+.testimonio-card .comentario {
+  line-height: 1.6;
+  color: var(--text-color);
+  font-style: italic;
+}
+
+.no-testimonios {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 30px;
+  color: var(--text-light);
+  background-color: #f9f9f9;
+  border-radius: var(--border-radius);
+}
+
+/* Estilos responsivos */
+@media (max-width: 992px) {
+  .destino-content {
+    grid-template-columns: 1fr;
   }
-  
-  .btn-accent:hover {
-    background-color: #e09500;
-  }
-  
-  /* Estilos para el modal de calificación */
-  .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-  }
-  
-  .modal-overlay.active {
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  .modal-container {
-    background-color: white;
-    border-radius: var(--border-radius);
-    width: 90%;
-    max-width: 500px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    transform: translateY(-20px);
-    transition: transform 0.3s ease;
-  }
-  
-  .modal-overlay.active .modal-container {
-    transform: translateY(0);
-  }
-  
-  .modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    border-bottom: 1px solid var(--gray-color);
-  }
-  
-  .modal-header h3 {
-    margin: 0;
-    color: var(--dark-color);
-  }
-  
-  .modal-close {
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-    cursor: pointer;
-    color: var(--text-light);
-    transition: color 0.3s ease;
-  }
-  
-  .modal-close:hover {
-    color: var(--primary-color);
-  }
-  
-  .modal-body {
-    padding: 20px;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: var(--dark-color);
-  }
-  
-  .rating-selector {
-    display: flex;
+}
+
+@media (max-width: 768px) {
+  .destino-acciones {
     flex-direction: column;
-    gap: 10px;
   }
-  
-  .stars-container {
-    display: flex;
-    gap: 5px;
-  }
-  
-  .star-rating {
-    font-size: 1.5rem;
-    color: #ccc;
-    cursor: pointer;
-    transition: color 0.2s ease;
-  }
-  
-  .star-rating.active {
-    color: var(--accent-color);
-  }
-  
-  .rating-text {
-    font-size: 0.9rem;
-    color: var(--text-light);
-  }
-  
-  textarea {
+
+  .destino-acciones .btn {
     width: 100%;
-    padding: 12px;
-    border: 1px solid var(--gray-color);
-    border-radius: var(--border-radius);
-    resize: vertical;
-    font-family: inherit;
-    transition: border-color 0.3s ease;
   }
-  
-  textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-  }
-  
-  .form-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 15px;
-    margin-top: 20px;
-  }
-  
-  /* Estilos para la sección de testimonios */
-  .testimonios-seccion {
-    margin-top: 60px;
-  }
-  
-  .testimonios-seccion h2 {
-    margin-bottom: 30px;
-    color: var(--dark-color);
-    text-align: center;
-  }
-  
+
   .testimonios-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: 1fr;
   }
-  
-  .testimonio-card {
-    background-color: white;
-    border-radius: var(--border-radius);
-    padding: 25px;
-    box-shadow: var(--shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .testimonio-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  .cliente-info {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
-  }
-  
-  .cliente-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: var(--primary-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 1.2rem;
-  }
-  
-  .cliente-info h3 {
-    margin: 0;
-    font-size: 1.1rem;
-    color: var(--dark-color);
-  }
-  
-  .cliente-info p {
-    margin: 5px 0 0;
-    font-size: 0.9rem;
-    color: var(--text-light);
-  }
-  
-  .testimonio-card .rating {
-    margin-bottom: 15px;
-    color: var(--accent-color);
-  }
-  
-  .testimonio-card .comentario {
-    line-height: 1.6;
-    color: var(--text-color);
-    font-style: italic;
-  }
-  
-  .no-testimonios {
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: 30px;
-    color: var(--text-light);
-    background-color: #f9f9f9;
-    border-radius: var(--border-radius);
-  }
-  
-  /* Estilos responsivos */
-  @media (max-width: 992px) {
-    .destino-content {
-      grid-template-columns: 1fr;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .destino-acciones {
-      flex-direction: column;
-    }
-  
-    .destino-acciones .btn {
-      width: 100%;
-    }
-  
-    .testimonios-grid {
-      grid-template-columns: 1fr;
-    }
-  }
+}
+

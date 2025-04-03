@@ -992,7 +992,20 @@ function enviarCalificacion(event) {
   }
 
   const comentario = document.getElementById("comentario").value.trim()
+  const nombreUsuario = document.getElementById("nombre_usuario").value.trim()
+  const ubicacionUsuario = document.getElementById("ubicacion_usuario").value.trim()
   const { id } = obtenerParametrosURL()
+
+  // Validar campos obligatorios
+  if (!nombreUsuario) {
+    alert("Por favor, ingresa tu nombre")
+    return
+  }
+
+  if (!ubicacionUsuario) {
+    alert("Por favor, ingresa tu ciudad")
+    return
+  }
 
   // En un entorno real, aquí se enviaría la información al servidor
   // Para este ejemplo, simularemos el guardado en localStorage
@@ -1008,9 +1021,9 @@ function enviarCalificacion(event) {
     calificacion: calificacionSeleccionada,
     comentario: comentario,
     fecha: new Date().toISOString(),
-    // Datos adicionales para mostrar (en un entorno real vendrían de la BD)
-    nombre_usuario: "Usuario Ejemplo",
-    ubicacion_usuario: "Ciudad Ejemplo",
+    // Ahora usamos los valores ingresados por el usuario
+    nombre_usuario: nombreUsuario,
+    ubicacion_usuario: ubicacionUsuario,
   }
 
   // Guardar en localStorage
