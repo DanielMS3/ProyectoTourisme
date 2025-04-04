@@ -1,0 +1,48 @@
+/* Estilos específicos para la gestión de destinos */
+/* Nota: La mayoría de los estilos son compartidos con category-management.css */
+
+/* Estilos para el selector de categorías */
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: white;
+  }
+  
+  .form-group select:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+  }
+  
+  /* Estilos para la tabla de destinos */
+  .admin-table td {
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  /* Estilos para la columna de descripción */
+  .admin-table td:nth-child(3) {
+    max-width: 200px;
+  }
+  
+  /* Estilos para la columna de ubicación */
+  .admin-table td:nth-child(4) {
+    max-width: 150px;
+  }
+  
+  /* Tooltip para mostrar texto completo al hacer hover */
+  .admin-table td[title] {
+    cursor: help;
+  }
+  
+  /* Estilos para las filas al hacer hover */
+  .admin-table tbody tr:hover {
+    background-color: #f5f8ff;
+  }
+  
+  
