@@ -12,7 +12,7 @@
     <header class="header">
         <div class="container">
             <div class="logo">
-                <img src="img/logo.png" alt="Logo">
+                <img src="/client/src/assets/img/logo.png" alt="Logo">
                 <span>Tourisme</span>
             </div>
             <nav class="nav-desktop">
@@ -28,7 +28,7 @@
                     <span>Admin</span>
                     <i class="fas fa-user-shield"></i>
                 </div>
-                <a href="index.html">               
+                <a href="/client/src/pages/index.html">               
                     <button class="btn btn-primary">Cerrar Sesión</button>
                 </a>  
             </div>
@@ -44,7 +44,7 @@
             <li><a href="#paquetes_seccion">Paquetes</a></li>
             <li><a href="#usuarios_seccion">Usuarios</a></li>
             <li><a href="#reservas_seccion">Reservas</a></li>
-            <li><a href="index.html">Cerrar Sesión</a></li>
+            <li><a href="/client/src/pages/index.html">Cerrar Sesión</a></li>
         </ul>
     </div>
 
@@ -120,7 +120,7 @@
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td><img src="img/Comuna13.webp" alt="Comuna_13" class="table-img"></td>
+                            <td><img src="/client/src/assets/img/Comuna13.webp" alt="Comuna_13" class="table-img"></td>
                             <td>La comuna 13</td>
                             <td>4.8</td>
                             <td>120</td>
@@ -131,7 +131,7 @@
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td><img src="img/pueblito_paisa.jpg" alt="pueblito_paisa" class="table-img"></td>
+                            <td><img src="/client/src/assets/img/pueblito_paisa.jpg" alt="pueblito_paisa" class="table-img"></td>
                             <td>Pueblito paisa</td>
                             <td>4.7</td>
                             <td>98</td>
@@ -142,7 +142,7 @@
                         </tr>
                         <tr>
                             <td>3</td>
-                            <td><img src="img/parque_arvi.jpeg" alt="Parque Arví" class="table-img"></td>
+                            <td><img src="/client/src/assets/img/parque_arvi.jpeg" alt="Parque Arví" class="table-img"></td>
                             <td>Parque Arví</td>
                             <td>4.9</td>
                             <td>150</td>
@@ -153,7 +153,7 @@
                         </tr>
                         <tr>
                             <td>4</td>
-                            <td><img src="img/parque_explora.jpg" alt="Parque explora" class="table-img"></td>
+                            <td><img src="/client/src/assets/img/parque_explora.jpg" alt="Parque explora" class="table-img"></td>
                             <td>Parque explora</td>
                             <td>4.6</td>
                             <td>200</td>
@@ -164,7 +164,7 @@
                         </tr>
                         <tr>
                             <td>5</td>
-                            <td><img src="img/plaza_botero.jpg" alt="Plaza Botero" class="table-img"></td>
+                            <td><img src="/client/src/assets/img/plaza_botero.jpg" alt="Plaza Botero" class="table-img"></td>
                             <td>Plaza Botero</td>
                             <td>4.3</td>
                             <td>180</td>
@@ -203,7 +203,7 @@
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td><img src="img/parejas_crae.jpg" alt="Escapada Romántica" class="table-img"></td>
+                            <td><img src="/client/src/assets/img/parejas_crae.jpg" alt="Escapada Romántica" class="table-img"></td>
                             <td>Escapada Romántica</td>
                             <td>5 días / 4 noches</td>
                             <td><span class="status active">Activo</span></td>
@@ -214,7 +214,7 @@
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td><img src="img/familiar_plan.jpg" alt="Aventura Familiar" class="table-img"></td>
+                            <td><img src="/client/src/assets/img/familiar_plan.jpg" alt="Aventura Familiar" class="table-img"></td>
                             <td>Aventura Familiar</td>
                             <td>7 días / 6 noches</td>
                             <td><span class="status active">Activo</span></td>
@@ -225,7 +225,7 @@
                         </tr>
                         <tr>
                             <td>3</td>
-                            <td><img src="img/bienestar_actividades.jpg" alt="Relax y Bienestar" class="table-img"></td>
+                            <td><img src="/client/src/assets/img/bienestar_actividades.jpg" alt="Relax y Bienestar" class="table-img"></td>
                             <td>Relax y Bienestar</td>
                             <td>4 días / 3 noches</td>
                             <td><span class="status inactive">Inactivo</span></td>
@@ -236,7 +236,7 @@
                         </tr>
                         <tr>
                             <td>4</td>
-                            <td><img src="img/aventuras_extremas.jpg" alt="Aventura Extrema" class="table-img"></td>
+                            <td><img src="/client/src/assets/img/aventuras_extremas.jpg" alt="Aventura Extrema" class="table-img"></td>
                             <td>Aventura Extrema</td>
                             <td>6 días / 5 noches</td>
                             <td><span class="status active">Activo</span></td>
@@ -400,7 +400,7 @@
             <div class="footer-grid">
                 <div class="footer-about">
                     <div class="logo">
-                        <img src="img/logo.png" alt="Logo">
+                        <img src="/client/src/assets/img/logo.png" alt="Logo">
                         <span>Tourisme</span>
                     </div>
                     <p>Panel de administración para gestionar destinos, paquetes, usuarios y reservas</p>

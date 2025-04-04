@@ -26,7 +26,8 @@ const pool = mysql.createPool({
     const [rows] = await pool.query("SELECT 1");
     console.log("✅ Conexión exitosa a la base de datos MySQL en Azure");
   } catch (error) {
-    console.error("❌ Error conectando a la base de datos:", error);
+    console.error("❌ Error conectando a la base de datos:", error.message);
+    process.exit(1); // Finaliza el proceso si la conexión falla
   }
 })();
 

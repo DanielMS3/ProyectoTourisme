@@ -1,0 +1,24 @@
+{
+  "name": "proyectotourisme",
+  "version": "1.0.0",
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"cd client && npm run dev\" \"cd server && npm run dev\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielMS3/ProyectoTourisme.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanielMS3/ProyectoTourisme/issues"
+  },
+  "homepage": "https://github.com/DanielMS3/ProyectoTourisme#readme",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

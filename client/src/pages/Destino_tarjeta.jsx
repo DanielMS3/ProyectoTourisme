@@ -11,21 +11,21 @@
     <header class="header">
         <div class="container">
             <div class="logo">
-                <img src="img/logo.png" alt="Logo">
+                <img src="/client/src/assets/img/logo.png" alt="Logo">
                 <span>Tourisme</span>
             </div>
             <nav class="nav-desktop">
                 <ul>
-                    <li><a href="index.html" class="active">Destinos</a></li>
+                    <li><a href="/client/src/pages/index.html" class="active">Destinos</a></li>
                     <li><a href="#">Sobre Nosotros</a></li>
                     <li><a href="#">Contacto</a></li>
                 </ul>
             </nav>
             <div class="auth-buttons">
-                <a href="login.html">
+                <a href="/client/src/pages/login.html">
                 <button class="btn btn-ghost login-button">Iniciar Sesión</button>
                 </a>
-                <a href="registro.html">
+                <a href="/client/src/pages/registro.html">
                 <button class="btn btn-primary">Registrarse</button>
                 </a>
             </div>
@@ -37,7 +37,7 @@
 
     <div class="mobile-menu" id="mobileMenu">
         <ul>
-            <li><a href="home.html" class="active">Destinos</a></li>
+            <li><a href="/client/src/pages/home.html" class="active">Destinos</a></li>
             <li><a href="#">Paquetes</a></li>
             <li><a href="#">Ofertas</a></li>
             <li><a href="#">Sobre Nosotros</a></li>
@@ -48,8 +48,8 @@
     <div class="breadcrumb">
         <div class="container">
             <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="home.html">Destinos</a></li>
+                <li><a href="/client/src/pages/index.html">Inicio</a></li>
+                <li><a href="/client/src/pages/home.html">Destinos</a></li>
                 <li><span id="destino-breadcrumb">Detalles del Destino</span></li>
             </ul>
         </div>
@@ -121,7 +121,7 @@
             <div class="footer-grid">
                 <div class="footer-about">
                     <div class="logo">
-                        <img src="img/logo.png" alt="Logo">
+                        <img src="/client/src/assets/img/logo.png" alt="Logo">
                         <span>Tourisme</span>
                     </div>
                     <p>Haz tu reserva de viajes con confianza para descubrir los maravillosos lugares del Valle de Aburrá</p>

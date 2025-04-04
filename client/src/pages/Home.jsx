@@ -11,7 +11,7 @@
     <header class="header">
         <div class="container">
             <div class="logo">
-                <img src="img/logo.png" alt="Logo">
+                <img src="/client/src/assets/img/logo.png" alt="Logo">
                 <span>Tourisme</span>
             </div>
             <nav class="nav-desktop">
@@ -22,10 +22,10 @@
                 </ul>
             </nav>
             <div class="auth-buttons">
-                <a href="login.html">
+                <a href="/client/src/pages/login.html">
               <button class="btn btn-ghost login-button">Iniciar Sesión</button>
                 </a>
-                <a href="registro.html">
+                <a href="/client/src/pages/registro.html">
                 <button class="btn btn-primary">Registrarse</button>
                 </a>
             </div>
@@ -53,7 +53,7 @@
 
     <section class="hero">
         <div class="hero-overlay">
-            <img src="img/imgvalle2.jpg" alt="Valle de Aburrá">
+            <img src="/client/src/assets/img/imgvalle2.jpg" alt="Valle de Aburrá">
         </div>
         <div class="container">
             <div class="hero-content">
@@ -167,7 +167,7 @@
             <div class="footer-grid">
                 <div class="footer-about">
                     <div class="logo">
-                        <img src="img/logo.png" alt="Logo">
+                        <img src="/client/src/assets/img/logo.png" alt="Logo">
                         <span>Tourisme</span>
                     </div>
                     <p>Haz tu reserva de viajes con confianza para descubrir los maravillosos lugares del Valle de Aburrá</p>

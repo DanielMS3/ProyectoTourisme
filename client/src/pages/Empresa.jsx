@@ -12,7 +12,7 @@
     <header class="header">
         <div class="container">
             <div class="logo">
-                <img src="img/logo.png" alt="Logo">
+                <img src="/client/src/assets/img/logo.png" alt="Logo">
                 <span>Tourisme</span>
             </div>
             <nav class="nav-desktop">
@@ -29,7 +29,7 @@
                     <span>Aventuras S.A.</span>
                     <i class="fas fa-building"></i>
                 </div>
-                <a href="index.html">               
+                <a href="/client/src/pages/index.html">               
                     <button class="btn btn-primary">Cerrar Sesión</button>
                 </a>  
             </div>
@@ -46,7 +46,7 @@
             <li><a href="#reservas_seccion">Reservas</a></li>
             <li><a href="#resenas_seccion">Reseñas</a></li>
             <li><a href="#contenido_seccion">Contenido</a></li>
-            <li><a href="index.html">Cerrar Sesión</a></li>
+            <li><a href="/client/src/pages/index.html">Cerrar Sesión</a></li>
         </ul>
     </div>
 
@@ -124,7 +124,7 @@
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td><img src="img/Comuna13.webp" alt="Comuna_13" class="table-img"></td>
+                            <td><img src="/client/src/assets/img/Comuna13.webp" alt="Comuna_13" class="table-img"></td>
                             <td>La comuna 13</td>
                             <td>Turismo Urbano</td>
                             <td>Medellín</td>
@@ -137,7 +137,7 @@
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td><img src="img/pueblito_paisa.jpg" alt="pueblito_paisa" class="table-img"></td>
+                            <td><img src="/client/src/assets/img/pueblito_paisa.jpg" alt="pueblito_paisa" class="table-img"></td>
                             <td>Pueblito paisa</td>
                             <td>Turismo Cultural</td>
                             <td>Medellín</td>
@@ -150,7 +150,7 @@
                         </tr>
                         <tr>
                             <td>3</td>
-                            <td><img src="img/parque_arvi.jpeg" alt="Parque Arví" class="table-img"></td>
+                            <td><img src="/client/src/assets/img/parque_arvi.jpeg" alt="Parque Arví" class="table-img"></td>
                             <td>Parque Arví</td>
                             <td>Ecoturismo</td>
                             <td>Medellín</td>
@@ -433,7 +433,7 @@
             <div class="contenido-grid">
                 <div class="contenido-card">
                     <div class="contenido-img">
-                        <img src="img/Comuna13.webp" alt="Comuna 13">
+                        <img src="/client/src/assets/img/Comuna13.webp" alt="Comuna 13">
                         <div class="contenido-actions">
                             <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
                             <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
@@ -450,7 +450,7 @@
                 </div>
                 <div class="contenido-card">
                     <div class="contenido-img">
-                        <img src="img/pueblito_paisa.jpg" alt="Pueblito Paisa">
+                        <img src="/client/src/assets/img/pueblito_paisa.jpg" alt="Pueblito Paisa">
                         <div class="contenido-actions">
                             <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
                             <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
@@ -467,7 +467,7 @@
                 </div>
                 <div class="contenido-card">
                     <div class="contenido-img">
-                        <img src="img/parque_arvi.jpeg" alt="Parque Arví">
+                        <img src="/client/src/assets/img/parque_arvi.jpeg" alt="Parque Arví">
                         <div class="contenido-actions">
                             <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
                             <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
@@ -491,7 +491,7 @@
             <div class="footer-grid">
                 <div class="footer-about">
                     <div class="logo">
-                        <img src="img/logo.png" alt="Logo">
+                        <img src="/client/src/assets/img/logo.png" alt="Logo">
                         <span>Tourisme</span>
                     </div>
                     <p>Portal para empresas asociadas a la plataforma Tourisme</p>

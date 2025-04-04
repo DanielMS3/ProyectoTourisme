@@ -15,7 +15,7 @@
 
     <header>
         <div class="logo-container">
-            <img src="img/logo.png" alt="Logo">
+            <img src="/client/src/assets/img/logo.png" alt="Logo">
         </div>
     </header>
 
@@ -77,7 +77,7 @@
                     <span></span>
                 </div>
 
-                <a href="login.html" class="back-link">
+                <a href="/client/src/pages/login.html" class="back-link">
                     <i class="fas fa-arrow-left"></i>
                     Volver al inicio de sesión
                 </a>
