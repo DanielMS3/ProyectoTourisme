@@ -1,220 +1,209 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tourisme - Detalles del Destino</title>
-    <link rel="stylesheet" href="css/destino_tarjeta.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tourisme - Detalles del Destino</title>
+  <link rel="stylesheet" href="css/destino_tarjeta.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <div class="logo">
-                <img src="img/logo.png" alt="Logo">
-                <span>Tourisme</span>
-            </div>
-            <nav class="nav-desktop">
-                <ul>
-                    <li><a href="index.html" class="active">Destinos</a></li>
-                    <li><a href="#">Sobre Nosotros</a></li>
-                    <li><a href="#">Contacto</a></li>
-                </ul>
-            </nav>
-            <div class="auth-buttons">
-                <a href="login.html">
-                <button class="btn btn-ghost login-button">Iniciar Sesión</button>
-                </a>
-                <a href="registro.html">
-                <button class="btn btn-primary">Registrarse</button>
-                </a>
-            </div>
-            <button class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </header>
-
-    <div class="mobile-menu" id="mobileMenu">
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <img src="img/logo.png" alt="Logo" />
+        <span>Tourisme</span>
+      </div>
+      <nav class="nav-desktop">
         <ul>
-            <li><a href="home.html" class="active">Destinos</a></li>
-            <li><a href="#">Paquetes</a></li>
-            <li><a href="#">Ofertas</a></li>
-            <li><a href="#">Sobre Nosotros</a></li>
-            <li><a href="#">Contacto</a></li>
+          <li><a href="home.html" class="active">Destinos</a></li>
+          <li><a href="#">Sobre Nosotros</a></li>
+          <li><a href="#">Contacto</a></li>
         </ul>
+      </nav>
+      <div class="auth-buttons">
+        <a href="login.html">
+          <button class="btn btn-ghost login-button">Iniciar Sesión</button>
+        </a>
+        <a href="registro.html">
+          <button class="btn btn-primary">Registrarse</button>
+        </a>
+      </div>
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
+  </header>
 
-    <div class="breadcrumb">
-        <div class="container">
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="home.html">Destinos</a></li>
-                <li><span id="destino-breadcrumb">Detalles del Destino</span></li>
-            </ul>
-        </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="home.html" class="active">Destinos</a></li>
+      <li><a href="#">Paquetes</a></li>
+      <li><a href="#">Ofertas</a></li>
+      <li><a href="#">Sobre Nosotros</a></li>
+      <li><a href="#">Contacto</a></li>
+    </ul>
+  </div>
+
+  <div class="breadcrumb">
+    <div class="container">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="home.html">Destinos</a></li>
+        <li><span id="destino-breadcrumb">Detalles del Destino</span></li>
+      </ul>
     </div>
+  </div>
 
-    <section class="destino-detalle">
-        <div class="container">
-            <div class="destino-header">
-                <h1 id="destino-nombre">Cargando destino...</h1>
-            </div>
+  <section class="destino-detalle">
+    <div class="container">
+      <div class="destino-header">
+        <h1 id="destino-nombre">Cargando destino...</h1>
+      </div>
 
-            <div class="destino-content">
-                <div class="destino-galeria">
-                    <div class="destino-imagen-principal">
-                        <img id="destino-img" src="https://via.placeholder.com/800x500?text=Cargando+Imagen" alt="Imagen del destino">
-                    </div>
-                    <div class="destino-imagenes-adicionales" id="galeria-imagenes">
-                        <!-- Las imágenes se cargarán dinámicamente aquí -->
-                    </div>
-                </div>
-                
-                <div class="destino-info">
-                    <div class="destino-descripcion">
-                        <h2>Descripción</h2>
-                        <p id="destino-descripcion">Cargando descripción...</p>
-                    </div>
-                    
-                    <div class="destino-tags">
-                        <h3>Características</h3>
-                        <div id="destino-tags-container" class="tags-container">
-                            <!-- Los tags se cargarán dinámicamente -->
-                        </div>
-                    </div>
-
-                    <div class="popularidad">
-                        <h3>Popularidad</h3>
-                        <h4>Número de Visitas</h4>
-                        <p id="destino-visitas">Visitas: 0</p>
-                    </div>                      
-                    
-                    <div class="destino-acciones">
-                        <button class="btn btn-primary btn-lg">
-                            <i class="fas fa-calendar-alt"></i> Reservar visita
-                        </button>
-                        <button class="btn btn-outline btn-lg">
-                            <i class="far fa-heart"></i> Guardar en favoritos
-                        </button>
-                        <button class="btn btn-accent btn-lg" id="btn-calificar">
-                            <i class="fas fa-star"></i> Calificar
-                        </button>
-                    </div>
-                    
-                    <!-- Movido debajo de los botones de acción -->
-                    <div class="destino-meta">
-                        <div class="ubicacion">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span id="destino-ubicacion">Cargando ubicación...</span>
-                        </div>
-                        <div class="rating">
-                            <div id="destino-estrellas"></div>
-                            <span id="destino-rating">0.0</span>
-                            <span>(<span id="destino-reviews">0</span>+ reseñas)</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sección de testimonios/calificaciones -->
-            <div class="testimonios-seccion">
-                <h2>Opiniones de Visitantes</h2>
-                <div class="testimonios-grid" id="testimonios-container">
-                    <!-- Los testimonios se cargarán dinámicamente aquí -->
-                    <p id="no-testimonios" class="no-testimonios">No hay opiniones disponibles para este destino. ¡Sé el primero en calificar!</p>
-                </div>
-            </div>
+      <div class="destino-content">
+        <div class="destino-galeria">
+          <div class="destino-imagen-principal">
+            <img id="destino-img" src="https://via.placeholder.com/800x500?text=Cargando+Imagen" alt="Imagen del destino" />
+          </div>
+          <div class="destino-imagenes-adicionales" id="galeria-imagenes">
+            <!-- Imágenes adicionales -->
+          </div>
         </div>
-    </section>
 
-    <!-- Modal de calificación -->
-    <div class="modal-overlay" id="modal-calificar">
-        <div class="modal-container">
-            <div class="modal-header">
-                <h3>Calificar Destino</h3>
-                <button class="modal-close" id="btn-cerrar-modal">
-                    <i class="fas fa-times"></i>
-                </button>
+        <div class="destino-info">
+          <div class="destino-descripcion">
+            <h2>Descripción</h2>
+            <p id="destino-descripcion">Cargando descripción...</p>
+          </div>
+
+          <div class="destino-tags">
+            <h3>Características</h3>
+            <div id="destino-tags-container" class="tags-container"></div>
+          </div>
+
+          <div class="popularidad">
+            <h3>Popularidad</h3>
+            <h4>Número de Visitas</h4>
+            <p id="destino-visitas">Visitas: 0</p>
+          </div>
+
+          <div class="destino-acciones">
+            <button class="btn btn-primary btn-lg">
+              <i class="fas fa-calendar-alt"></i> Reservar visita
+            </button>
+            <button class="btn btn-outline btn-lg">
+              <i class="far fa-heart"></i> Guardar en favoritos
+            </button>
+            <button class="btn btn-accent btn-lg" id="btn-calificar">
+              <i class="fas fa-star"></i> Calificar
+            </button>
+          </div>
+
+          <div class="destino-meta">
+            <div class="ubicacion">
+              <i class="fas fa-map-marker-alt"></i>
+              <span id="destino-ubicacion">Cargando ubicación...</span>
             </div>
-            <div class="modal-body">
-                <form id="form-calificacion">
-                    <div class="form-group">
-                        <label for="nombre_usuario">Tu nombre:</label>
-                        <input type="text" id="nombre_usuario" name="nombre_usuario" placeholder="Ingresa tu nombre" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="ubicacion_usuario">Tu ciudad:</label>
-                        <input type="text" id="ubicacion_usuario" name="ubicacion_usuario" placeholder="Ingresa tu ciudad" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Tu calificación:</label>
-                        <div class="rating-selector">
-                            <div class="stars-container">
-                                <i class="far fa-star star-rating" data-value="1"></i>
-                                <i class="far fa-star star-rating" data-value="2"></i>
-                                <i class="far fa-star star-rating" data-value="3"></i>
-                                <i class="far fa-star star-rating" data-value="4"></i>
-                                <i class="far fa-star star-rating" data-value="5"></i>
-                            </div>
-                            <span class="rating-text">Selecciona una calificación</span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="comentario">Tu opinión:</label>
-                        <textarea id="comentario" name="comentario" rows="5" placeholder="Comparte tu experiencia en este destino..."></textarea>
-                    </div>
-                    <div class="form-actions">
-                        <button type="button" class="btn btn-ghost" id="btn-cancelar">Cancelar</button>
-                        <button type="submit" class="btn btn-primary" id="btn-guardar">Guardar calificación</button>
-                    </div>
-                </form>
+            <div class="rating">
+              <div id="destino-estrellas"></div>
+              <span id="destino-rating">0.0</span>
+              <span>(<span id="destino-reviews">0</span>+ reseñas)</span>
             </div>
+          </div>
         </div>
+      </div>
+
+      <div class="testimonios-seccion">
+        <h2>Opiniones de Visitantes</h2>
+        <div class="testimonios-grid" id="testimonios-container">
+          <p id="no-testimonios" class="no-testimonios">No hay opiniones disponibles para este destino. ¡Sé el primero en calificar!</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-about">
-                    <div class="logo">
-                        <img src="img/logo.png" alt="Logo">
-                        <span>Tourisme</span>
-                    </div>
-                    <p>Haz tu reserva de viajes con confianza para descubrir los maravillosos lugares del Valle de Aburrá</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-links">
-                    <h3>Servicios</h3>
-                    <ul>
-                        <li><a href="#">Reservas</a></li>
-                        <li><a href="#">Rutas</a></li>
-                        <li><a href="#">Paquetes</a></li>
-                        <li><a href="#">Actividades</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h3>Soporte</h3>
-                    <ul>
-                        <li><a href="#">Centro de Ayuda</a></li>
-                        <li><a href="#">Contacto</a></li>
-                        <li><a href="#">Política de Privacidad</a></li>
-                        <li><a href="#">Términos y Condiciones</a></li>
-                    </ul>
-                </div>
+  <div class="modal-overlay" id="modal-calificar">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3>Calificar Destino</h3>
+        <button class="modal-close" id="btn-cerrar-modal">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="form-calificacion">
+          <div class="form-group">
+            <label for="nombre_usuario">Tu nombre:</label>
+            <input type="text" id="nombre_usuario" name="nombre_usuario" placeholder="Ingresa tu nombre" required />
+          </div>
+          <div class="form-group">
+            <label for="ubicacion_usuario">Tu ciudad:</label>
+            <input type="text" id="ubicacion_usuario" name="ubicacion_usuario" placeholder="Ingresa tu ciudad" required />
+          </div>
+          <div class="form-group">
+            <label>Tu calificación:</label>
+            <div class="rating-selector">
+              <div class="stars-container">
+                <i class="far fa-star star-rating" data-value="1"></i>
+                <i class="far fa-star star-rating" data-value="2"></i>
+                <i class="far fa-star star-rating" data-value="3"></i>
+                <i class="far fa-star star-rating" data-value="4"></i>
+                <i class="far fa-star star-rating" data-value="5"></i>
+              </div>
+              <span class="rating-text">Selecciona una calificación</span>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; <span id="year"></span> Tourisme. Todos los derechos reservados.</p>
-            </div>
+          </div>
+          <div class="form-group">
+            <label for="comentario">Tu opinión:</label>
+            <textarea id="comentario" name="comentario" rows="5" placeholder="Comparte tu experiencia en este destino..."></textarea>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn btn-ghost" id="btn-cancelar">Cancelar</button>
+            <button type="submit" class="btn btn-primary" id="btn-guardar">Guardar calificación</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <div class="logo">
+            <img src="img/logo.png" alt="Logo" />
+            <span>Tourisme</span>
+          </div>
+          <p>Haz tu reserva de viajes con confianza para descubrir los maravillosos lugares del Valle de Aburrá</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
         </div>
-    </footer>
+        <div class="footer-links">
+          <h3>Servicios</h3>
+          <ul>
+            <li><a href="#">Reservas</a></li>
+            <li><a href="#">Rutas</a></li>
+            <li><a href="#">Paquetes</a></li>
+            <li><a href="#">Actividades</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h3>Soporte</h3>
+          <ul>
+            <li><a href="#">Centro de Ayuda</a></li>
+            <li><a href="#">Contacto</a></li>
+            <li><a href="#">Política de Privacidad</a></li>
+            <li><a href="#">Términos y Condiciones</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-    <script src="js/destino_tarjeta.js"></script>
+  <script src="js/destino_tarjeta.js"></script>
 </body>
 </html>
-

@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const jwt = require("jsonwebtoken");
 const expressListRoutes = require("express-list-routes");
-const db = require("./database/database"); 
+const db = require("./database/database");
 const helmet = require('helmet');
 const morgan = require('morgan');
 
@@ -31,12 +31,15 @@ const registroRoutes = require("./routes/registro_conexion");
 const loginRoute = require("./routes/login");
 const recuperarContrasenaRoutes = require("./routes/recuperar_contrasena");
 const categoriesRoutes = require('./routes/categoria');
+const calificacionRoute = require("./routes/calificaciones"); // ← CORREGIDO
 
 // Definir rutas
 app.use("/api/registro", registroRoutes);
 app.use("/login", loginRoute);
 app.use("/api", recuperarContrasenaRoutes);
 app.use(categoriesRoutes);
+app.use("/api/calificacion", calificacionRoute); // ← CORREGIDO
+
 // Ruta protegida /perfil
 app.get("/perfil", (req, res) => {
     const authHeader = req.headers["authorization"];
@@ -47,7 +50,7 @@ app.get("/perfil", (req, res) => {
 
     const token = authHeader.split(" ")[1];
 
-    jwt.verify(token, process.env.JWT_SECRET , (err, decoded) => {
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
         if (err) {
             return res.status(403).json({ error: "Token inválido o expirado" });
         }
@@ -55,7 +58,6 @@ app.get("/perfil", (req, res) => {
         res.json({ user: { email: decoded.email } });
     });
 });
-
 
 // Middleware para manejar errores
 app.use((err, req, res, next) => {

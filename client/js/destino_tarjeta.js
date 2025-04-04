@@ -770,7 +770,6 @@ function obtenerParametrosURL() {
 
 // Función para encontrar un destino por su ID
 function encontrarDestinoPorId(id) {
-  // Buscar en todas las categorías
   for (const categoria in destinos) {
     const destinoEncontrado = destinos[categoria].find((destino) => destino.id === id)
     if (destinoEncontrado) {
@@ -802,16 +801,10 @@ function generarEstrellas(rating) {
 // Función para actualizar el contador de visitas
 function actualizarContadorVisitas(id) {
   try {
-    // Obtener el contador actual del destino desde localStorage
     let visitas = Number.parseInt(localStorage.getItem(`visitas_${id}`), 10) || 0
-
-    // Incrementar el contador
     visitas++
-
-    // Guardar el nuevo valor en localStorage
     localStorage.setItem(`visitas_${id}`, visitas)
 
-    // Verificar si el elemento destino-visitas existe antes de actualizarlo
     const contadorVisitas = document.getElementById("destino-visitas")
     if (contadorVisitas) {
       contadorVisitas.textContent = `Visitas: ${visitas}`
@@ -824,48 +817,34 @@ function actualizarContadorVisitas(id) {
 // Función para cargar los detalles del destino
 function cargarDetallesDestino() {
   const { id } = obtenerParametrosURL()
-
   if (!id) {
-    // Si no hay ID, redirigir a la página principal
     window.location.href = "home.html"
     return
   }
 
   const destino = encontrarDestinoPorId(id)
-
   if (!destino) {
-    // Si no se encuentra el destino, mostrar mensaje de error
     document.querySelector(".destino-header h1").textContent = "Destino no encontrado"
     document.querySelector(".destino-descripcion p").textContent =
       "Lo sentimos, el destino que buscas no existe o ha sido removido."
     return
   }
 
-  // Actualizar el título de la página
   document.title = `${destino.nombre} - Tourisme`
-
-  // Actualizar el breadcrumb
   document.getElementById("destino-breadcrumb").textContent = destino.nombre
-
-  // Actualizar los detalles del destino
   document.getElementById("destino-nombre").textContent = destino.nombre
   document.getElementById("destino-ubicacion").textContent = destino.ubicacion
   document.getElementById("destino-estrellas").innerHTML = generarEstrellas(destino.rating)
   document.getElementById("destino-rating").textContent = destino.rating.toFixed(1)
   document.getElementById("destino-reviews").textContent = destino.reviews
 
-  // Actualizar y mostrar el contador de visitas
   actualizarContadorVisitas(id)
-
-  // Cargar la galería de imágenes
   cargarGaleriaImagenes(destino)
 
   document.getElementById("destino-descripcion").textContent = destino.descripcion
 
-  // Cargar tags
   const tagsContainer = document.getElementById("destino-tags-container")
   tagsContainer.innerHTML = ""
-
   destino.tags.forEach((tag) => {
     const tagElement = document.createElement("span")
     tagElement.className = "tag"
@@ -873,31 +852,24 @@ function cargarDetallesDestino() {
     tagsContainer.appendChild(tagElement)
   })
 
-  // Cargar calificaciones existentes
   cargarCalificaciones(id)
 }
 
-// Función para cargar la galería de imágenes
+// Galería de imágenes
 function cargarGaleriaImagenes(destino) {
-  // Verificar si el destino tiene imágenes
   const imagenes = destino.imagenes || [destino.imagen]
-
-  // Actualizar imagen principal
   const imgPrincipal = document.getElementById("destino-img")
-  imgPrincipal.src = imagenes[0] // Usar la primera imagen como principal
+  imgPrincipal.src = imagenes[0]
   imgPrincipal.alt = destino.nombre
 
-  // Crear contenedor de miniaturas
   const galeriaContainer = document.getElementById("galeria-imagenes")
   galeriaContainer.innerHTML = ""
 
-  // Agregar todas las imágenes como miniaturas
   imagenes.forEach((src, index) => {
     agregarMiniatura(galeriaContainer, src, `${destino.nombre} - imagen ${index + 1}`, index === 0)
   })
 }
 
-// Función para agregar una miniatura a la galería
 function agregarMiniatura(container, src, alt, isActive = false) {
   const div = document.createElement("div")
   div.className = "imagen-adicional"
@@ -906,59 +878,45 @@ function agregarMiniatura(container, src, alt, isActive = false) {
   const img = document.createElement("img")
   img.src = src
   img.alt = alt
-  img.onclick = function () {
-    cambiarImagenPrincipal(this.src)
-  }
+  img.onclick = () => cambiarImagenPrincipal(img.src)
 
   div.appendChild(img)
   container.appendChild(div)
 }
 
-// Función para cambiar la imagen principal
 function cambiarImagenPrincipal(src) {
   document.getElementById("destino-img").src = src
 
-  // Marcar la miniatura activa
   const miniaturas = document.querySelectorAll(".imagen-adicional")
   miniaturas.forEach((miniatura) => {
-    if (miniatura.querySelector("img").src === src) {
-      miniatura.classList.add("active")
-    } else {
-      miniatura.classList.remove("active")
-    }
+    const imagen = miniatura.querySelector("img")
+    miniatura.classList.toggle("active", imagen.src === src)
   })
 }
 
-// Variables para el sistema de calificación
+// Calificaciones
 let calificacionSeleccionada = 0
 const modal = document.getElementById("modal-calificar")
 
-// Función para abrir el modal de calificación
 function abrirModalCalificacion() {
   modal.classList.add("active")
-  // Resetear el formulario
   document.getElementById("form-calificacion").reset()
   resetearEstrellas()
 }
 
-// Función para cerrar el modal de calificación
 function cerrarModalCalificacion() {
   modal.classList.remove("active")
 }
 
-// Función para resetear las estrellas
 function resetearEstrellas() {
   calificacionSeleccionada = 0
-  const estrellas = document.querySelectorAll(".star-rating")
-  estrellas.forEach((estrella) => {
-    estrella.classList.remove("active")
-    estrella.classList.remove("fas")
+  document.querySelectorAll(".star-rating").forEach((estrella) => {
+    estrella.classList.remove("active", "fas")
     estrella.classList.add("far")
   })
   document.querySelector(".rating-text").textContent = "Selecciona una calificación"
 }
 
-// Función para manejar la selección de estrellas
 function manejarSeleccionEstrellas(valor) {
   calificacionSeleccionada = valor
   const estrellas = document.querySelectorAll(".star-rating")
@@ -966,26 +924,17 @@ function manejarSeleccionEstrellas(valor) {
 
   estrellas.forEach((estrella) => {
     const valorEstrella = Number.parseInt(estrella.getAttribute("data-value"))
-
-    if (valorEstrella <= valor) {
-      estrella.classList.remove("far")
-      estrella.classList.add("fas", "active")
-    } else {
-      estrella.classList.remove("fas", "active")
-      estrella.classList.add("far")
-    }
+    estrella.classList.toggle("active", valorEstrella <= valor)
+    estrella.classList.toggle("fas", valorEstrella <= valor)
+    estrella.classList.toggle("far", valorEstrella > valor)
   })
 
-  // Actualizar texto según la calificación
   const textos = ["Selecciona una calificación", "Muy malo", "Malo", "Regular", "Bueno", "Excelente"]
-
   textoRating.textContent = textos[valor]
 }
 
-// Función para enviar la calificación
 function enviarCalificacion(event) {
   event.preventDefault()
-
   if (calificacionSeleccionada === 0) {
     alert("Por favor, selecciona una calificación")
     return
@@ -996,162 +945,59 @@ function enviarCalificacion(event) {
   const ubicacionUsuario = document.getElementById("ubicacion_usuario").value.trim()
   const { id } = obtenerParametrosURL()
 
-  // Validar campos obligatorios
-  if (!nombreUsuario) {
-    alert("Por favor, ingresa tu nombre")
+  if (!nombreUsuario || !ubicacionUsuario) {
+    alert("Por favor, completa todos los campos obligatorios")
     return
   }
 
-  if (!ubicacionUsuario) {
-    alert("Por favor, ingresa tu ciudad")
-    return
-  }
+  // Guardar datos en localStorage
+  localStorage.setItem("nombreUsuario", nombreUsuario)
+  localStorage.setItem("ubicacionUsuario", ubicacionUsuario)
 
-  // En un entorno real, aquí se enviaría la información al servidor
-  // Para este ejemplo, simularemos el guardado en localStorage
-
-  // Obtener el ID de usuario (en un entorno real vendría de la sesión)
-  const idUsuario = 1 // Usuario de prueba
-
-  // Crear objeto de calificación
   const nuevaCalificacion = {
-    id_calificacion: Date.now(), // Simulamos un ID único
-    id_usuario: idUsuario,
+    id_calificacion: Date.now(),
+    id_usuario: 1,
     id_destino: id,
     calificacion: calificacionSeleccionada,
-    comentario: comentario,
+    comentario,
     fecha: new Date().toISOString(),
-    // Ahora usamos los valores ingresados por el usuario
     nombre_usuario: nombreUsuario,
     ubicacion_usuario: ubicacionUsuario,
   }
 
-  // Guardar en localStorage
-  guardarCalificacion(nuevaCalificacion)
+  const calificacionesGuardadas = JSON.parse(localStorage.getItem(`calificaciones_${id}`)) || []
+  calificacionesGuardadas.unshift(nuevaCalificacion)
+  localStorage.setItem(`calificaciones_${id}`, JSON.stringify(calificacionesGuardadas))
 
-  // Cerrar el modal
-  cerrarModalCalificacion()
-
-  // Recargar las calificaciones
   cargarCalificaciones(id)
+  cerrarModalCalificacion()
+  alert("¡Gracias por tu calificación!")
 }
 
-// Función para guardar la calificación en localStorage
-function guardarCalificacion(calificacion) {
-  // Obtener calificaciones existentes
-  const calificaciones = JSON.parse(localStorage.getItem("calificaciones")) || []
+function cargarCalificaciones(id) {
+  const contenedor = document.getElementById("contenedor-calificaciones")
+  contenedor.innerHTML = ""
 
-  // Agregar la nueva calificación
-  calificaciones.push(calificacion)
-
-  // Guardar en localStorage
-  localStorage.setItem("calificaciones", JSON.stringify(calificaciones))
-}
-
-// Función para cargar las calificaciones
-function cargarCalificaciones(idDestino) {
-  // Obtener calificaciones del localStorage
-  const calificaciones = JSON.parse(localStorage.getItem("calificaciones")) || []
-
-  // Filtrar por el destino actual
-  const calificacionesDestino = calificaciones.filter((cal) => cal.id_destino === idDestino)
-
-  const contenedorTestimonios = document.getElementById("testimonios-container")
-  const mensajeNoTestimonios = document.getElementById("no-testimonios")
-
-  // Limpiar el contenedor
-  contenedorTestimonios.innerHTML = ""
-
-  if (calificacionesDestino.length === 0) {
-    // Mostrar mensaje de que no hay testimonios
-    contenedorTestimonios.appendChild(mensajeNoTestimonios)
+  const calificaciones = JSON.parse(localStorage.getItem(`calificaciones_${id}`)) || []
+  if (calificaciones.length === 0) {
+    contenedor.innerHTML = "<p>No hay calificaciones aún.</p>"
     return
   }
 
-  // Ocultar el mensaje de no testimonios
-  if (mensajeNoTestimonios) {
-    mensajeNoTestimonios.style.display = "none"
-  }
+  calificaciones.forEach((cal) => {
+    const div = document.createElement("div")
+    div.className = "calificacion"
 
-  // Mostrar las calificaciones
-  calificacionesDestino.forEach((cal) => {
-    const testimonioCard = document.createElement("div")
-    testimonioCard.className = "testimonio-card"
-
-    const fecha = new Date(cal.fecha)
-    const fechaFormateada = `${fecha.getDate()}/${fecha.getMonth() + 1}/${fecha.getFullYear()}`
-
-    testimonioCard.innerHTML = `
-            <div class="cliente-info">
-                <div class="cliente-icon">
-                    <i class="fas fa-user"></i>
-                </div>
-                <div>
-                    <h3>${cal.nombre_usuario}</h3>
-                    <p>${cal.ubicacion_usuario} - ${fechaFormateada}</p>
-                </div>
-            </div>
-            <div class="rating">
-                ${generarEstrellas(cal.calificacion)}
-            </div>
-            <p class="comentario">"${cal.comentario}"</p>
-        `
-
-    contenedorTestimonios.appendChild(testimonioCard)
+    div.innerHTML = `
+      <div class="calificacion-header">
+        <strong>${cal.nombre_usuario}</strong> - <em>${cal.ubicacion_usuario}</em> - 
+        <span class="fecha">${new Date(cal.fecha).toLocaleDateString()}</span>
+      </div>
+      <div class="calificacion-estrellas">${generarEstrellas(cal.calificacion)}</div>
+      <p class="comentario">${cal.comentario}</p>
+    `
+    contenedor.appendChild(div)
   })
 }
 
-// Evento para el menú móvil
-document.getElementById("menuToggle").addEventListener("click", () => {
-  const mobileMenu = document.getElementById("mobileMenu")
-  mobileMenu.classList.toggle("active")
-})
 
-// Inicializar la página
-document.addEventListener("DOMContentLoaded", () => {
-  // Cargar los detalles del destino
-  cargarDetallesDestino()
-
-  // Establecer el año actual en el footer
-  document.getElementById("year").textContent = new Date().getFullYear()
-
-  // Eventos para el modal de calificación
-  document.getElementById("btn-calificar").addEventListener("click", abrirModalCalificacion)
-  document.getElementById("btn-cerrar-modal").addEventListener("click", cerrarModalCalificacion)
-  document.getElementById("btn-cancelar").addEventListener("click", cerrarModalCalificacion)
-
-  // Eventos para las estrellas
-  const estrellas = document.querySelectorAll(".star-rating")
-  estrellas.forEach((estrella) => {
-    estrella.addEventListener("click", function () {
-      const valor = Number.parseInt(this.getAttribute("data-value"))
-      manejarSeleccionEstrellas(valor)
-    })
-
-    // Efecto hover
-    estrella.addEventListener("mouseenter", function () {
-      const valor = Number.parseInt(this.getAttribute("data-value"))
-
-      estrellas.forEach((e) => {
-        const valorE = Number.parseInt(e.getAttribute("data-value"))
-        if (valorE <= valor) {
-          e.classList.add("fas")
-          e.classList.remove("far")
-        }
-      })
-    })
-
-    estrella.addEventListener("mouseleave", () => {
-      estrellas.forEach((e) => {
-        const valorE = Number.parseInt(e.getAttribute("data-value"))
-        if (valorE > calificacionSeleccionada) {
-          e.classList.remove("fas")
-          e.classList.add("far")
-        }
-      })
-    })
-  })
-
-  // Evento para enviar el formulario
-  document.getElementById("form-calificacion").addEventListener("submit", enviarCalificacion)
-})
