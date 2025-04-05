@@ -23,7 +23,5 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'client', 'registro.html'));
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Servidor corriendo en http://localhost:${PORT}`);
-});
+module.exports = app;
+
