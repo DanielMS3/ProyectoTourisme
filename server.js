@@ -1,0 +1,27 @@
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const path = require('path'); // <-- nuevo
+const connection = require('./server/database/database');
+const registroRouter = require('./server/routes/registro_conexion');
+
+const app = express();
+
+app.use(cors());
+app.use(bodyParser.json());
+
+// Servir archivos estáticos desde la carpeta client
+app.use(express.static(path.join(__dirname, 'client')));
+
+// Ruta para el registro
+app.use('/registro_conexion', registroRouter);
+
+// Ruta principal para mostrar el formulario
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'registro.html'));
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+});
