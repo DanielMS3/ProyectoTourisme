@@ -702,5 +702,15 @@
       transform: translateY(0);
     }
   }
-  
-  
+
+  .logout-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre el ícono y el botón */
+}
+
+.user-icon {
+    font-size: 20px;
+    color: #0277bd; /* O el color que combine con tu diseño */
+}
+
