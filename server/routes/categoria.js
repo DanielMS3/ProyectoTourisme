@@ -1,5 +1,5 @@
 // Importar el módulo de conexión a la base de datos
-const pool = require("../../database")
+const pool = require("../database/database")
 const express = require("express")
 const router = express.Router()
 

@@ -97,6 +97,9 @@
                         <button class="btn btn-outline btn-lg">
                             <i class="far fa-heart"></i> Guardar en favoritos
                         </button>
+                        <button class="btn btn-accent btn-lg" id="btn-calificar">
+                            <i class="fas fa-star"></i> Calificar
+                        </button>
                     </div>
                     
                     <!-- Movido debajo de los botones de acción -->
@@ -113,8 +116,62 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Sección de testimonios/calificaciones -->
+            <div class="testimonios-seccion">
+                <h2>Opiniones de Visitantes</h2>
+                <div class="testimonios-grid" id="testimonios-container">
+                    <!-- Los testimonios se cargarán dinámicamente aquí -->
+                    <p id="no-testimonios" class="no-testimonios">No hay opiniones disponibles para este destino. ¡Sé el primero en calificar!</p>
+                </div>
+            </div>
         </div>
     </section>
+
+    <!-- Modal de calificación -->
+    <div class="modal-overlay" id="modal-calificar">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3>Calificar Destino</h3>
+                <button class="modal-close" id="btn-cerrar-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="form-calificacion">
+                    <div class="form-group">
+                        <label for="nombre_usuario">Tu nombre:</label>
+                        <input type="text" id="nombre_usuario" name="nombre_usuario" placeholder="Ingresa tu nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ubicacion_usuario">Tu ciudad:</label>
+                        <input type="text" id="ubicacion_usuario" name="ubicacion_usuario" placeholder="Ingresa tu ciudad" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tu calificación:</label>
+                        <div class="rating-selector">
+                            <div class="stars-container">
+                                <i class="far fa-star star-rating" data-value="1"></i>
+                                <i class="far fa-star star-rating" data-value="2"></i>
+                                <i class="far fa-star star-rating" data-value="3"></i>
+                                <i class="far fa-star star-rating" data-value="4"></i>
+                                <i class="far fa-star star-rating" data-value="5"></i>
+                            </div>
+                            <span class="rating-text">Selecciona una calificación</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="comentario">Tu opinión:</label>
+                        <textarea id="comentario" name="comentario" rows="5" placeholder="Comparte tu experiencia en este destino..."></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-ghost" id="btn-cancelar">Cancelar</button>
+                        <button type="submit" class="btn btn-primary" id="btn-guardar">Guardar calificación</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="container">
@@ -160,3 +217,4 @@
     <script src="js/destino_tarjeta.js"></script>
 </body>
 </html>
+
