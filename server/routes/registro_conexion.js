@@ -2,56 +2,68 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const connection = require('../database/database');
 
-
 const router = express.Router();
 
 // Ruta para registrar usuario
 router.post('/', async (req, res) => {
-    let { role, correo, contrasena, fecha_nacimiento, genero, nacionalidad } = req.body; 
+    let { role, nombre, email, password, fecha_nacimiento, genero, nacionalidad } = req.body;
 
     console.log('Datos recibidos:', req.body);
 
-    // Si el usuario envió "M", "F" o "O", conviértelo a valores válidos
-    if (genero === "M") genero = "Masculino";
-    if (genero === "F") genero = "Femenino";
-    if (genero === "O") genero = "Otro";
+    // Normalizar valores de género
+    const generosValidos = { M: "Masculino", F: "Femenino", O: "Otro" };
+    genero = generosValidos[genero] || null;
 
-    // Validación de campos obligatorios
-    if (!correo || !contrasena || !fecha_nacimiento || !genero || !nacionalidad) {
+    // Validación de entrada
+    if (!email || !password || !fecha_nacimiento || !genero || !nacionalidad) {
         return res.status(400).json({ error: "Todos los campos obligatorios deben ser completados." });
     }
 
-    try {
-        const hashedPassword = await bcrypt.hash(contrasena, 10);
+    if (!/^\S+@\S+\.\S+$/.test(email)) {
+        return res.status(400).json({ error: "El formato del correo electrónico no es válido." });
+    }
 
-        let id_rol = 1;
-        if(role === 'empresa'){
-            id_rol = 2;
+    if (password.length < 6) {
+        return res.status(400).json({ error: "La contraseña debe tener al menos 6 caracteres." });
+    }
+
+    try {
+        // Verificar si el usuario ya existe
+        const [userExists] = await connection.promise().query(
+            'SELECT id_usuario FROM usuario WHERE correo = ?',
+            [email]
+        );
+
+        if (userExists.length > 0) {
+            return res.status(400).json({ error: "El correo electrónico ya está registrado." });
         }
 
-        connection.query('INSERT INTO usuario (correo, id_rol) VALUES (?, ?)', [correo, id_rol], (err, result) => {
-            if (err) {
-                console.error('Error al insertar en Usuario:', err);
-                return res.status(500).json({ error: 'Error en el servidor al registrar usuario' });
-            }
+        // Encriptar contraseña
+        const hashedPassword = await bcrypt.hash(password, 10);
 
-            const id_usuario = result.insertId;
+        // Determinar rol del usuario
+        let id_rol = role === 'empresa' ? 2 : 1;
 
-            connection.query(
-                'INSERT INTO autenticacion (id_usuario, correo, contrasena_hash, fecha_nacimiento, genero, nacionalidad, tipo_autenticacion) VALUES (?, ?, ?, ?, ?, ?, "normal")',
-                [id_usuario, correo, hashedPassword, fecha_nacimiento, genero, nacionalidad],
-                (err) => {
-                    if (err) {
-                        console.error('Error al insertar en autenticacion:', err);
-                        return res.status(500).json({ error: 'Error en el servidor al insertar autenticacion' });
-                    }
-                    res.json({ message: "Usuario registrado exitosamente" });
-                }
-            );
-        });
+        // Insertar en la tabla usuario
+        const [userResult] = await connection.promise().query(
+            'INSERT INTO usuario (nombre, correo, id_rol) VALUES (?, ?, ?)',
+            [nombre, email, id_rol]
+        );
+        
+
+        const id_usuario = userResult.insertId;
+
+        // Insertar en la tabla autenticacion
+        await connection.promise().query(
+            'INSERT INTO autenticacion (id_usuario, correo, contrasena_hash, fecha_nacimiento, genero, nacionalidad, tipo_autenticacion) VALUES (?, ?, ?, ?, ?, ?, "normal")',
+            [id_usuario, email, hashedPassword, fecha_nacimiento, genero, nacionalidad]
+        );
+
+        res.json({ message: "Usuario registrado exitosamente" });
+
     } catch (error) {
         console.error('Error:', error);
-        res.status(500).json({ error: 'Error en el servidor: error general' });
+        res.status(500).json({ error: 'Error en el servidor' });
     }
 });
 
