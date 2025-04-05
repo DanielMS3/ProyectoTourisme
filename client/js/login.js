@@ -1,47 +1,38 @@
-document.getElementById('loginForm').addEventListener('submit', async (event) => {
-    event.preventDefault(); // Evita el envío del formulario
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-    const correo = document.getElementById('email').value;
-    const contrasena = document.getElementById('password').value;
-    const errorMessage = document.getElementById('error-message');
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value.trim();
+    const errorDiv = document.getElementById('error-message');
 
     try {
-        const response = await fetch('/login', {
+        const response = await fetch('/api/login', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ correo, contrasena })
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
         });
 
-        const result = await response.json();
+        const data = await response.json();
 
         if (response.ok) {
-            // Guardar el token en localStorage
-            localStorage.setItem('token', result.token);
-            alert('Inicio de sesión exitoso');
-            window.location.href = 'home.html'; // Redirigir al usuario a la página principal
+            // Redirige según el rol
+            if (data.rol === 'usuario') {
+                window.location.href = 'index.html';
+            } else if (data.rol === 'negocio') {
+                window.location.href = 'empresa.html';
+            } else {
+                errorDiv.style.display = 'block';
+                errorDiv.textContent = 'Rol no reconocido.';
+            }
         } else {
-            errorMessage.textContent = result.error; // Mostrar mensaje de error
-            errorMessage.style.display = 'block';
+            errorDiv.style.display = 'block';
+            errorDiv.textContent = data.error || 'Error al iniciar sesión';
         }
     } catch (error) {
-        console.error('Error en el login:', error);
-        errorMessage.textContent = 'Error en el servidor';
-        errorMessage.style.display = 'block';
-    }
-});
-
-// Mostrar/ocultar contraseña
-document.querySelector('.toggle-password').addEventListener('click', () => {
-    const passwordInput = document.getElementById('password');
-    const icon = document.querySelector('.toggle-password i');
-
-    if (passwordInput.type === 'password') {
-        passwordInput.type = 'text';
-        icon.classList.remove('fa-eye');
-        icon.classList.add('fa-eye-slash');
-    } else {
-        passwordInput.type = 'password';
-        icon.classList.remove('fa-eye-slash');
-        icon.classList.add('fa-eye');
+        console.error('Error al enviar login:', error);
+        errorDiv.style.display = 'block';
+        errorDiv.textContent = 'Error de conexión con el servidor';
     }
 });
