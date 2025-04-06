@@ -558,10 +558,10 @@ const destinos = {
       descripcion: "Un recorrido lleno de arte urbano, música y cultura. La Comuna 13, anteriormente uno de los barrios más peligrosos de Medellín, se ha transformado en un símbolo de resiliencia y renovación urbana. Hoy es un destino turístico imprescindible, famoso por sus coloridos murales de grafiti, escaleras eléctricas al aire libre (las primeras en un asentamiento informal en el mundo) y su vibrante escena cultural. Los recorridos guiados por la comuna permiten a los visitantes conocer la historia de transformación del barrio, apreciar el arte urbano creado por artistas locales y disfrutar de presentaciones de hip-hop y breakdance. También hay numerosos cafés, tiendas de souvenirs y miradores con vistas panorámicas de la ciudad.",
       imagen: "img/Comuna13.webp",
       imagenes: [
-        "img/.jpg",
-        "img/.jpg",
-        "img/.jpg",
-        "img/.jpg"
+        "img/Comuna13.webp",
+        "img/comuna_13_dos.jpg",
+        "img/comuna_13_tres.jpg",
+        "img/comuna_13_cuatro.jpg",
       ],
       rating: 4.9,
       reviews: 250,
@@ -575,10 +575,10 @@ const destinos = {
       descripcion: "Parque acuático con piscinas y toboganes. El Acuaparque Ditaires es un complejo recreativo ubicado en el municipio de Itagüí, al sur del Valle de Aburrá. Este parque acuático cuenta con varias piscinas para todas las edades, toboganes, juegos interactivos de agua y amplias zonas verdes. Además de las atracciones acuáticas, el complejo incluye canchas deportivas, senderos para caminatas, zonas de picnic y un lago artificial. El parque está rodeado de abundante vegetación, lo que crea un ambiente fresco y natural. Es un destino muy popular entre familias, especialmente durante los fines de semana y temporadas de vacaciones.",
       imagen: "img/acuaparque_ditaires.jpg",
       imagenes: [
-        "img/.jpg",
-        "img/.jpg",
-        "img/.jpg",
-        "img/.jpg"
+        "img/acuaparque_ditaires.jpg",
+        "img/acuaparque_dos.jpg",
+        "img/acuaparque_tres.jpg",
+        "img/acuaparque_cuatro.jpg",
       ],
       rating: 4.6,
       reviews: 180,
@@ -592,10 +592,10 @@ const destinos = {
       descripcion: "Un espacio interactivo con fuentes y jardines zen. El Parque de los Pies Descalzos es un innovador espacio público ubicado en el centro de Medellín, junto al edificio de las Empresas Públicas de Medellín. Diseñado como un lugar para la estimulación sensorial y la relajación, el parque invita a los visitantes a quitarse los zapatos y caminar descalzos por diferentes superficies como arena, piedra y agua. Cuenta con un bosque de bambú, fuentes interactivas, un jardín zen y espacios para la meditación. Este parque representa la filosofía de la 'arquitectura para los sentidos' y ofrece un oasis de tranquilidad en medio del bullicio urbano. Es particularmente refrescante durante los días calurosos.",
       imagen: "img/parque_pies_descalzos.jpg",
       imagenes: [
-        "img/.jpg",
-        "img/.jpg",
-        "img/.jpg",
-        "img/.jpg"
+        "img/parque_pies_descalzos.jpg",
+        "img/parque_descalzo_dos.jpg",
+        "img/parque_descalzo_tres.jpg",
+        "img/parque_descalzo_cuatro.jpg"
       ],
       rating: 4.7,
       reviews: 160,
@@ -609,10 +609,10 @@ const destinos = {
       descripcion: "Ciencia, tecnología y astronomía en un solo lugar. El Parque Explora es un museo interactivo de ciencia y tecnología ubicado en el norte de Medellín. Con más de 300 experiencias interactivas distribuidas en varias salas temáticas, ofrece a visitantes de todas las edades la oportunidad de aprender sobre física, biología, tecnología y medio ambiente de manera divertida y participativa. El complejo incluye el Acuario más grande de Sudamérica, con especies de los ríos y mares de Colombia, y el Planetario de Medellín, donde se realizan proyecciones astronómicas inmersivas y se desarrollan actividades relacionadas con la astronomía. El Parque Explora es un referente de la transformación educativa y cultural de Medellín.",
       imagen: "img/parque_explora.jpg",
       imagenes: [
-        "img/.jpg",
-        "img/.jpg",
-        "img/.jpg",
-        "img/.jpg"
+        "img/parque_explora.jpg",
+        "img/parque_explora_dos.jpg",
+        "img/parque_explora_tres.jpg",
+        "img/parque_explora_cuatro.jpg"
       ],
       rating: 4.8,
       reviews: 200,
@@ -626,10 +626,10 @@ const destinos = {
       descripcion: "Un pulmón verde en la ciudad con mariposario y lagunas. El Jardín Botánico de Medellín Joaquín Antonio Uribe es un oasis natural de 14 hectáreas ubicado en el corazón de la ciudad. Alberga más de 4.500 flores y 139 especies de aves, siendo un importante centro de investigación y conservación de la biodiversidad. Entre sus principales atracciones se encuentran el Orquideorama, una impresionante estructura arquitectónica que semeja un conjunto de flores; el Mariposario, hogar de numerosas especies de mariposas; y el Herbario, que conserva una colección de más de 10.000 ejemplares de plantas. El jardín también cuenta con lagos, senderos ecológicos, restaurantes y espacios para eventos culturales y educativos.",
       imagen: "img/jardin_botanico.jpg",
       imagenes: [
-        "img/.jpg",
-        "img/.jpg",
-        "img/.jpg",
-        "img/.jpg"
+        "img/jardin_botanico.jpg",
+        "img/jardin_botanico_dos.jpg",
+        "img/jardin_botanico_tres.jpg",
+        "img/jardin_botanico_cuatro.jpg"
       ],
       rating: 4.9,
       reviews: 220,
@@ -643,10 +643,10 @@ const destinos = {
       descripcion: "Hogar de especies locales y exóticas.",
       imagen: "img/zoologico_santa_fe.jpg",
       imagenes: [
-        "img/.jpg",
-        "img/.jpg",
-        "img/.jpg",
-        "img/.jpg"
+        "img/zoologico_santa_fe.jpg",
+        "img/zoologico_santa_fe_dos.jpg",
+        "img/zoologico_santa_fe_tres.jpg",
+        "img/zoologico_santa_fe_cuatro.jpg"
       ],
       rating: 4.5,
       reviews: 190,
@@ -660,10 +660,10 @@ const destinos = {
       descripcion: "Parque de diversiones con atracciones mecánicas y actividades recreativas.",
       imagen: "img/parque_norte_medellin.jpg",
       imagenes: [
-        "img/.jpg",
-        "img/.jpg",
-        "img/.jpg",
-        "img/.jpg"
+        "img/parque_norte_medellin.jpg",
+        "img/parque_norte_medellin_dos.jpg",
+        "img/parque_norte_medellin_tres.jpg",
+        "img/parque_norte_medellin_cuatro.jpg"
       ],
       rating: 4.6,
       reviews: 210,
@@ -677,10 +677,10 @@ const destinos = {
       descripcion: "Lugar emblemático con arquitectura colonial y ambiente tradicional.",
       imagen: "img/parque_bello.jpg",
       imagenes: [
-        "img/.jpg",
-        "img/.jpg",
-        "img/.jpg",
-        "img/.jpg"
+        "img/parque_bello.jpg",
+        "img/parque_bello_dos.jpg",
+        "img/parque_bello_tres.jpg",
+        "img/parque_bello_cuatro.jpg"
       ],
       rating: 4.4,
       reviews: 120,
