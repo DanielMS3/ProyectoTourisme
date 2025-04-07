@@ -695,9 +695,9 @@ const destinos = {
       imagen: "img/centro_moravia.jpg",
       imagenes: [
         "img/centro_moravia.jpg",
-        "img/.jpg",
-        "img/.jpg",
-        "img/.jpg"
+        "img/centro_moravia_dos.jpg",
+        "img/centro_moravia_tres.jpg",
+        "img/centro_moravia_cuatro.jpg"
       ],
       rating: 4.7,
       reviews: 140,
@@ -711,10 +711,10 @@ const destinos = {
       descripcion: "En el parque principal se pueden conseguir todo tipo de artesanías de la región.",
       imagen: "img/callejon_artesano.jpg",
       imagenes: [
-        "img/.jpg",
-        "img/.jpg",
-        "img/.jpg",
-        "img/.jpg"
+        "img/callejon_artesano.jpg",
+        "img/callejon_artesano_dos.jpg",
+        "img/callejon_artesano_tres.jpg",
+        "img/callejon_artesano_cuatro.jpg"
       ],
       rating: 4.5,
       reviews: 100,
@@ -728,10 +728,10 @@ const destinos = {
       descripcion: "Un lugar tradicional con ambiente familiar y gastronómico.",
       imagen: "img/parque_sabaneta.jpg",
       imagenes: [
-        "img/.jpg",
-        "img/.jpg",
-        "img/.jpg",
-        "img/.jpg"
+        "img/parque_sabaneta.jpg",
+        "img/parque_sabaneta_dos.jpg",
+        "img/parque_sabaneta_tres.jpg",
+        "img/parque_sabaneta_cuatro.jpg"
       ],
       rating: 4.6,
       reviews: 150,
@@ -746,10 +746,10 @@ const destinos = {
         "Centro de reunión con jardines, fuente y quiosco donde se realizan eventos culturales. Está rodeado de cafés y restaurantes, ideal para pasear y disfrutar del ambiente.",
       imagen: "img/parque_estrella.jpg",
       imagenes: [
-        "img/.jpg",
-        "img/.jpg",
-        "img/.jpg",
-        "img/.jpg"
+        "img/parque_estrella.jpg",
+        "img/parque_estrella_dos.jpg",
+        "img/parque_estrella_tres.jpg",
+        "img/parque_estrella_cuatro.jpg"
       ],
       rating: 4.5,
       reviews: 110,
