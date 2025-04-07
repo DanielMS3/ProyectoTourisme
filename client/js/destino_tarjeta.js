@@ -694,7 +694,7 @@ const destinos = {
       descripcion: "Espacio de arte y comunidad con jardines y exposiciones.",
       imagen: "img/centro_moravia.jpg",
       imagenes: [
-        "img/.jpg",
+        "img/centro_moravia.jpg",
         "img/.jpg",
         "img/.jpg",
         "img/.jpg"
