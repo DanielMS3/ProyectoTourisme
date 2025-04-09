@@ -19,7 +19,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         if (response.ok) {
             // Redirige según el rol
             if (data.rol === 'usuario') {
-                window.location.href = 'index.html';
+                window.location.href = 'home.html';
             } else if (data.rol === 'negocio') {
                 window.location.href = 'empresa.html';
             } else {
